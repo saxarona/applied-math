@@ -1,0 +1,189 @@
+\documentclass[titlepage, letterpaper, fleqn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr} % fancy headers, of course!
+\usepackage{amsmath} % what do you think?
+\usepackage{amsthm} % theorems!
+\usepackage{extramarks} % more cute things
+\usepackage{enumitem} % i'm not sure...
+\usepackage{multicol} % multicolumn...?
+\usepackage{amssymb} % more symbols
+\usepackage{booktabs} % cool looking tables
+\usepackage{tikz} %venn and shizzle
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+
+%
+% You should change this things~
+%
+
+\newcommand{\mahteacher}{Dr. Viacheslav Kalashnikov}
+\newcommand{\mahclass}{Applied Mathematics}
+\newcommand{\mahtitle}{Activity 6 - Exercise 1.2.3: Reflexivity and Transitivity}
+\newcommand{\mahdate}{August 31, 2016}
+\newcommand{\spacepls}{\vspace{5mm}}
+\renewcommand\qedsymbol{\(\blacksquare\)}
+
+%
+% Header markings
+%
+
+\pagestyle{fancy}
+\lhead{1170065 - Xavier Sánchez}
+\chead{}
+\rhead{}
+\lfoot{}
+\rfoot{}
+
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+
+%
+% Create Problem Sections (stolen directly from jdavis/latex-homework-template @ github!)
+%
+
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+\stepcounter{#1}
+\nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Exercise \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\Large Solution}}
+
+%Alias for the new step section
+\newcommand{\steppy}[1]{\textbf{\large #1}}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+\ifnum#1>0
+\setcounter{homeworkProblemCounter}{#1}
+\fi
+\section{Exercise \arabic{homeworkProblemCounter}}
+\setcounter{partCounter}{1}
+\enterProblemHeader{homeworkProblemCounter}
+}{
+\exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Venn diagrams defs
+%
+
+% \def\firstcircle{(0,0) circle (1.5cm)}
+% \def\secondcircle{(0:2cm) circle (1.5cm)}
+% \colorlet{circle edge}{blue!50}
+% \colorlet{circle area}{blue!20}
+
+% \tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+%     outline/.style={draw=circle edge, thick}}
+
+%
+% My actual info
+%
+
+\title{
+\vspace{1in}
+\textbf{Tecnológico de Monterrey} \\
+\vspace{0.5in}
+\textmd{\mahclass} \\
+\large{\textit{\mahteacher}} \\
+\vspace{0.5in}
+\textsc{\mahtitle}
+\author{01170065  - MIT \\
+Xavier Fernando Cuauhtémoc Sánchez Díaz \\
+\texttt{xavier.sanchezdz@gmail.com}}
+\date{\mahdate}
+}
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+%
+% Actual document starts here~
+%
+
+{\large \textbf{a)} Show that \(R\) is reflexive over \(A\) iff \(I_A \subseteq R\).
+\(I_A\) is the identity relation over \(A\).}
+
+\begin{proof}
+Assume \(R\) is reflexive over \(A\).\\
+Therefore, \((a,a) \in R : a \in A\), and so \(a,a \in I_A\).\\
+Because \((a,a) \in R\) and \((a,a) \in I_A\), then \(I_A \subseteq R\).
+
+\spacepls
+
+Now assume \(I_A \subseteq R\).\\
+Therefore, \((a,a) \in I_A : a \in A\).\\
+And if \(I_A \subseteq R\), then \((a,a) \in R : a \in A\).\\
+Therefore, \(R\) is reflexive over \(A\).
+\end{proof}
+
+\spacepls
+
+{\large \textbf{b)} Show that the converse of a relation \(R\) that is reflexive over \(A\) is also reflexive over \(A\).}
+
+\begin{proof}
+Assume \(R\) is reflexive over A.\\
+So by definition, \((a,a) \in R : a \in A\).\\
+However, since domain and range are the same, then \((a,a) \in R^{-1} : a \in A\).\\
+Hence, \(R^{-1}\) is also reflexive over A.
+
+\spacepls
+
+Now assume \(R^{-1}\) is reflexive over A.\\
+So by definition, \((a,a) \in R^{-1} : a \in A\).\\
+However, since domain and range are the same, then \((a,a) \in R : a \in A\).\\
+Therefore, \(R\) is also reflexive over A.
+\end{proof}
+
+\spacepls
+
+{\large \textbf{c)} Show that \(R\) is transitive iff \(R \circ R \subseteq R\)}.
+
+\begin{proof}
+Let \(a \in A, b \in B, c \in C\).\\
+Let \((a,b) \in R, (b,c) \in R\) and \((a,c) \in R\).\\
+By definition, \((a,c) \in R \circ R\),\\
+and since \((a,c) \in R\), then \(R \circ R \subseteq R\).\\
+Hence, \(R\) is transitive.
+
+\spacepls
+
+Now assume \(R\) is transitive.\\
+If \(R\) is transitive, then \((a,b) \in R, (b,c) \in R\) and also \((a,c) \in R\),\\
+and by definition, \((a,c) \in R \circ R\).\\
+And since \((a,c) \in R\) and \((a,c) \in R \circ R\), then \(R \circ R \subseteq R\).
+\end{proof}
+
+\end{document}

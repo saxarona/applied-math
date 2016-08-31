@@ -1,0 +1,245 @@
+\documentclass[titlepage, letterpaper, fleqn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr} % fancy headers, of course!
+\usepackage{amsmath} % what do you think?
+\usepackage{amsthm} % theorems!
+\usepackage{extramarks} % more cute things
+\usepackage{enumitem} % i'm not sure...
+\usepackage{multicol} % multicolumn...?
+\usepackage{amssymb} % more symbols
+\usepackage{booktabs} % cool looking tables
+\usepackage{tikz} %venn and shizzle
+\usepackage{lipsum} %lorem ipsum dolor sit amet f u
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+
+%
+% You should change this things~
+%
+
+\newcommand{\mahteacher}{Dr. Viacheslav Kalashnikov}
+\newcommand{\mahclass}{Applied Mathematics}
+\newcommand{\mahtitle}{Activities 13, 14 \& 15}
+\newcommand{\mahdate}{September 1, 2016}
+\newcommand{\spacepls}{\vspace{5mm}}
+\renewcommand\qedsymbol{\(\blacksquare\)}
+
+%
+% Header markings
+%
+
+\pagestyle{fancy}
+\lhead{1170065 - Xavier Sánchez}
+\chead{}
+\rhead{}
+\lfoot{}
+\rfoot{}
+
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+
+%
+% Create Problem Sections (stolen directly from jdavis/latex-homework-template @ github!)
+%
+
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+\stepcounter{#1}
+\nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Exercise \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\Large Solution}}
+
+%Alias for the new step section
+\newcommand{\steppy}[1]{\textbf{\large #1}}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+\ifnum#1>0
+\setcounter{homeworkProblemCounter}{#1}
+\fi
+\section{Exercise \arabic{homeworkProblemCounter}}
+\setcounter{partCounter}{1}
+\enterProblemHeader{homeworkProblemCounter}
+}{
+\exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Venn diagrams defs
+%
+
+% \def\firstcircle{(0,0) circle (1.5cm)}
+% \def\secondcircle{(0:2cm) circle (1.5cm)}
+% \colorlet{circle edge}{blue!50}
+% \colorlet{circle area}{blue!20}
+
+% \tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+%     outline/.style={draw=circle edge, thick}}
+
+%
+% My actual info
+%
+
+\title{
+\vspace{1in}
+\textbf{Tecnológico de Monterrey} \\
+\vspace{0.5in}
+\textmd{\mahclass} \\
+\large{\textit{\mahteacher}} \\
+\vspace{0.5in}
+\textsc{\mahtitle}\\
+\textsc{1.4.1: Proof by simple induction}\\
+\textsc{1.4.2: Definition by simple recursion}\\
+\textsc{1.4.3: Proof by cumulative induction}\\
+\author{01170065  - MIT \\
+Xavier Fernando Cuauhtémoc Sánchez Díaz \\
+\texttt{xavier.sanchezdz@gmail.com}}
+\date{\mahdate}
+}
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+%
+% Actual document starts here~
+%
+
+\section{Exercise 1.4.1}
+
+{\large \textbf{a)} Use simple induction to show that for every positive integer \(n\), \(5^n - 1\) is divisible by 4.}
+
+\begin{proof}
+\lipsum[1]
+\end{proof}
+
+\spacepls
+
+{\large \textbf{b)} Use simple induction to show that for every positive integer \(n\), \(n^3 - n\) is divisible by 3.}
+%Hint: in the induction step, you will need to make use of the arithmetic fact that (k + 1)^3 = k^3 +3k^2 + 3k + 1.
+
+\begin{proof}
+\lipsum[1]
+\end{proof}
+
+\spacepls
+
+{\large \textbf{c)} Show by simple induction that for every natural number \(n\), \(\sum \{2^i \colon 0 \leq i \leq n\} = 2^{n+1} - 1\).}
+
+\begin{proof}
+\lipsum[1]
+\end{proof}
+
+\section{Exercise 1.4.2}
+
+{\large \textbf{a)} Let \(f \colon \mathbb{N} \to \mathbb{N}\) be the function defined by putting \(f(0) = 0\) and \(f(n+1) = n\) for all \(n \in \mathbb{N}\).}\\
+\textbf{i)} Evaluate this function bottom-up for all arguments 0-5.
+
+\begin{proof}
+\lipsum[1]
+\end{proof}
+
+\spacepls
+
+\textbf{ii)} Explain what \(f\) does by expressing it in explicit terms (i.e. without a recursion).
+
+\spacepls
+
+{\large \textbf{b)} Let \(f \colon \mathbb{N}^+ \to \mathbb{N}\) be  the function that takes each positive integer \(n\) to the greatest natural number \(p\) with \(2^p \leq n\). Define this function by a simple recursion.}
+%hint: You will need to divide the recursion step into two cases.
+
+\begin{proof}
+\lipsum[1]
+\end{proof}
+
+\spacepls
+
+
+{\large \textbf{c)} Let \(g \colon \mathbb{N} \times \mathbb{N} \to \mathbb{N}\) be defined by putting \(g(m,0) = m\) for all \(m \in \mathbb{N}\) and \(g(m,n+1) = f(g(m,n))\) where \(f\) is defined in the previous part of this exercise.}\\
+\textbf{i)} Evaluate \(f(3,4)\) top-down.
+
+\begin{proof}
+\lipsum[1]
+\end{proof}
+
+\spacepls
+
+\textbf{ii)} Explain what \(f\) does by expressing it in explicit terms.
+
+\begin{proof}
+\lipsum[1]
+\end{proof}
+
+\section{Exercise 1.4.3}
+
+{\large \textbf{a)} Use cumulative induction to show that any postage cost of four or more pence can be covered by two-pence and five-pence stamps.}
+
+\begin{proof}
+\lipsum[1]
+\end{proof}
+
+\spacepls
+
+{\large \textbf{b)} Use cumulative induction to show that for every natural number \(n, F(n) \leq 2^n - 1\), where \(F\) is the Fibonacci function.}
+
+\begin{proof}
+\lipsum[1]
+\end{proof}
+
+\spacepls
+
+{\large \textbf{c)} Calculate \(F(5)\) top-down, and then again bottom-up, where again \(F\) is the Fibonacci function.}
+
+\begin{proof}
+\lipsum[1]
+\end{proof}
+
+\spacepls
+
+{\large \textbf{d)} Express each of the numbers 14, 15 and 16 as a sum of 3s and/or 8s. Using this fact in your basis, show by cumulative induction that every positive integer \(n \geq 14\) may be expressed as a sum of 3s and/or 8s}.
+
+\begin{proof}
+\lipsum[1]
+\end{proof}
+
+\spacepls
+
+{\large \textbf{e)} Show by induction that for every natural number \(n, A(1,n) = n+2\), where \(A\) is the Ackermann function.}
+
+\begin{proof}
+\lipsum[1]
+\end{proof}
+
+\end{document}

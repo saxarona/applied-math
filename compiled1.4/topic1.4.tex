@@ -26,7 +26,7 @@
 \newcommand{\mahteacher}{Dr. Viacheslav Kalashnikov}
 \newcommand{\mahclass}{Applied Mathematics}
 \newcommand{\mahtitle}{Activities 13, 14 \& 15}
-\newcommand{\mahdate}{September 1, 2016}
+\newcommand{\mahdate}{September 7, 2016}
 \newcommand{\spacepls}{\vspace{5mm}}
 \renewcommand\qedsymbol{\(\blacksquare\)}
 
@@ -142,7 +142,24 @@ Xavier Fernando Cuauhtémoc Sánchez Díaz \\
 {\large \textbf{a)} Use simple induction to show that for every positive integer \(n\), \(5^n - 1\) is divisible by 4.}
 
 \begin{proof}
-\lipsum[1]
+1. Basis \\
+\[5 ^1 - 1 = 5 - 1 = 4 \tag*{n = 1}\]
+2. Induction hypothesis \\
+\begin{align*}
+& 5^k - 1 \text{ is divisible by 4} \tag*{n=k}\\
+& 5^k - 1 = 4m, m \in \mathbb*{N}\\
+& 5^k = 4m + 1 \tag*{arithmetic}
+\end{align*}
+3. Induction step, for \(k = k+1\) \\
+\begin{align*}
+5^{k+1} - 1 & = \\
+& = 5 \cdot 5^k - 1 \\
+& = 5(4m + 1) - 1 \tag*{substitution with hypothesis}\\
+& = 20m + 5 - 1\\
+& = 20m + 4\\
+& = 4(5m+1)
+\end{align*}
+Therefore, \(5^{k+1}-1 = 4(5m+1)\), and thus is divisible by 4.
 \end{proof}
 
 \spacepls
@@ -151,15 +168,49 @@ Xavier Fernando Cuauhtémoc Sánchez Díaz \\
 %Hint: in the induction step, you will need to make use of the arithmetic fact that (k + 1)^3 = k^3 +3k^2 + 3k + 1.
 
 \begin{proof}
-\lipsum[1]
+1. Basis \\
+\[1^3 - 1 = 1 - 1 = 0 \tag*{n=1}\]
+2. Induction hypothesis\\
+\begin{align*}
+& k^3 - k \text{ is divisible by 3} \tag{n=k} \\
+& k^3 - k = 3m, m \in \mathbb{N}
+\end{align*}
+3. Induction step, for \(k + k+1\) \\
+\begin{align*}
+(k+1)^3 - (k+1) & = \\
+& = k^3 + 3k^2 + 3k + 1 - (k + 1)\tag *{arithmetic} \\
+& = k^3 + 3k^2 + 3k - k \tag*{ditto}\\
+& = (k^3 - k) + 3k^2 + 3k \tag*{reordering}\\
+& = 3m + 3k^2 + 3k \tag*{substitution by hypothesis}\\
+& = 3(m + k^2 + k) \tag*{arithmetic}
+\end{align*}
+Therefore, \(\exists m \in \mathbb{N}\) such that \(k+1\) is divisible by 3, so \(\forall n \in \mathbb{N}, n^3 - n\) is divisible by 3.
 \end{proof}
 
-\spacepls
+\pagebreak
 
 {\large \textbf{c)} Show by simple induction that for every natural number \(n\), \(\sum \{2^i \colon 0 \leq i \leq n\} = 2^{n+1} - 1\).}
 
 \begin{proof}
-\lipsum[1]
+1. Basis, with \(n = 1\) \\
+\begin{align*}
+& 2^{(1 + 1)} - 1 = 2^2 -1 = 4 - 1 = 3 \tag*{RHS}\\
+& 2^0 + 2^1 = 1 + 2 = 3 \tag*{LHS}\\
+\end{align*}
+2. Induction hypothesis\\
+\[2^{k+1}-1 = 2^0 + 2^1 + \dots + 2^k \tag*{n=k}\]
+3. Induction step, for \(k = k + 1\)\\
+\begin{align*}
+& 2^{(k+1)+1} -1 =\\
+& = 2^{k+2} - 1\\
+& = 2 \cdot 2^{k+1} -1\\
+& = 2(2^{k+1} - 1) -1 + 2\tag*{modifications to match hypothesis}\\ 
+& = 2(2^{k+1} - 1) + 1 \tag*{arithmetic}\\
+& = 2(2^0 + 2^1 + \dots + 2^k) + 1 \tag*{substitution by hypothesis}\\
+& = 2^1 + 2^2 + \dots + 2^{k+1} + 1 \tag*{ditto}\\
+& = 2^0 + 2^1 + 2^2 + \dots + 2^{k+1} \tag*{substitute 1 by \(2^0\)}
+\end{align*}
+Therefore, \(2^{(k+1)+1} -1 = 2^0 + 2^1 + \dots + 2^{k+1}\)
 \end{proof}
 
 \section{Exercise 1.4.2}
@@ -167,40 +218,66 @@ Xavier Fernando Cuauhtémoc Sánchez Díaz \\
 {\large \textbf{a)} Let \(f \colon \mathbb{N} \to \mathbb{N}\) be the function defined by putting \(f(0) = 0\) and \(f(n+1) = n\) for all \(n \in \mathbb{N}\).}\\
 \textbf{i)} Evaluate this function bottom-up for all arguments 0-5.
 
-\begin{proof}
-\lipsum[1]
-\end{proof}
+
+\begin{align*}
+f(0) = 0\\
+f(0+1) = f(1) = 0\\
+f(1+1) = f(2) = 1\\
+f(2+1) = f(3) = 2\\
+f(3+1) = f(4) = 3\\
+f(4+1) = f(5) = 4\\
+f(5+1) = f(6) = 5\\
+\end{align*}
 
 \spacepls
 
 \textbf{ii)} Explain what \(f\) does by expressing it in explicit terms (i.e. without a recursion).
 
-\spacepls
+\[f(n) =
+\begin{cases}
+& n -1 \colon n \in \mathbb{N}, n > 0 \\
+& 0, n = 0
+\end{cases}
+\]
+
+\pagebreak
 
 {\large \textbf{b)} Let \(f \colon \mathbb{N}^+ \to \mathbb{N}\) be  the function that takes each positive integer \(n\) to the greatest natural number \(p\) with \(2^p \leq n\). Define this function by a simple recursion.}
 %hint: You will need to divide the recursion step into two cases.
 
-\begin{proof}
-\lipsum[1]
-\end{proof}
+1. Basis: \(f(1) = 0\).
 
-\spacepls
-
+\[f(n+1) =
+\begin{cases}
+\log_2 (n+1), \log_2 (n+1) \in \mathbb{N}\\
+f(n), \log_2 (n+1) \not \in \mathbb{N}
+\end{cases}
+\]
 
 {\large \textbf{c)} Let \(g \colon \mathbb{N} \times \mathbb{N} \to \mathbb{N}\) be defined by putting \(g(m,0) = m\) for all \(m \in \mathbb{N}\) and \(g(m,n+1) = f(g(m,n))\) where \(f\) is defined in the previous part of this exercise.}\\
-\textbf{i)} Evaluate \(f(3,4)\) top-down.
+\textbf{i)} Evaluate \(g(3,4)\) top-down.
 
-\begin{proof}
-\lipsum[1]
-\end{proof}
-
+\begin{align*}
+g(3,4) & = f(g(3,3)) \\
+& = f(f(g(3,2)))\\
+& = f(f(f(g(3,1))))\\
+& = f(f(f(f(g(3,0)))))\\
+& = f(f(f(f(3))))\\
+& = f(f(f(2)))\\
+& = f(f(1))\\
+& = f(0)\\
+& = 0
+\end{align*}
 \spacepls
 
 \textbf{ii)} Explain what \(f\) does by expressing it in explicit terms.
 
-\begin{proof}
-\lipsum[1]
-\end{proof}
+\[f(n) =
+\begin{cases}
+n - 1 \colon n \in \mathbb{N}, n > 0\\
+0, n = 0
+\end{cases}
+\]
 
 \section{Exercise 1.4.3}
 

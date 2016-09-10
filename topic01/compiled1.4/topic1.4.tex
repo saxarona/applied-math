@@ -284,15 +284,34 @@ n - 1 \colon n \in \mathbb{N}, n > 0\\
 {\large \textbf{a)} Use cumulative induction to show that any postage cost of four or more pence can be covered by two-pence and five-pence stamps.}
 
 \begin{proof}
-\lipsum[1]
+Let \(j\) be any cost of four or more pence.\\
+1. Basis\\
+\[4 = (2)(\$2) + (0)(\$5)\]
+\[4 = (n)(\$2) + (m)(\$5)\]
+2. Inductive step\\
+Let \(k\) be any natural number greater than \(j\) that has this property.\\
+Since \(n\$2\) covers all even numbers, then just odd numbers remain.\\
+And since \(n\$2\) is even, and \(m\$5\) is odd for all \(m\) that are odd,\\
+then a combination of \(n\$2\) and \(m\$5\) covers any number \(4 \leq j < k\) such that \(k\).
 \end{proof}
 
-\spacepls
+\pagebreak
 
 {\large \textbf{b)} Use cumulative induction to show that for every natural number \(n, F(n) \leq 2^n - 1\), where \(F\) is the Fibonacci function.}
 
 \begin{proof}
-\lipsum[1]
+1. Basis\\
+\begin{align*}
+F(3) \leq 2^3 -1\\
+2 \leq 8 - 1\\
+2 \leq 7
+\end{align*}
+2. Induction step\\
+Since \(F(a)\) can be expressed as \(F(a-1) + F(a-2)\), then \(F(a) > f(a-1)\) and \(F(a) > F(a-2)\).\\
+Now assume \(F(a +2) = F(j)\),\\
+then \(F(j)\) > \(F(a)\) and thus \(j > a\).\\
+So \(2^j > 2^a\), and so is \(2^j -1 > 2^a -1\).\\
+Therefore, there is a number \(k > j > a\) for which this property holds.
 \end{proof}
 
 \spacepls
@@ -300,7 +319,23 @@ n - 1 \colon n \in \mathbb{N}, n > 0\\
 {\large \textbf{c)} Calculate \(F(5)\) top-down, and then again bottom-up, where again \(F\) is the Fibonacci function.}
 
 \begin{proof}
-\lipsum[1]
+\begin{align*}
+F(5) &= F(4) + F(3)\\
+& = F(3) + F(2) + F(2) + F(1)\\
+& = F(2) + F(1) + F(1) + F(0) + F(1) + F(0) + F(1)
+& = F(1) + F(0) + F(1) + F(1) + F(0) + F(1) + F(0) + F(1)
+& = 1 + 0 + 1 + 1 + 0 + 1 + 0 + 1
+& = 5
+\end{align*}
+
+\begin{align*}
+F(0) &= 0\\
+F(1) &= 1\\
+F(2) &= F(1) + F(0) = 1 + 0 = 1\\
+F(3) &= F(2) + F(1) = 1 + 1 = 2\\
+F(4) &= F(3) + F(2) = 2 + 1 = 3\\
+F(5) &= F(4) + F(3) = 3 + 2 = 5
+\end{align*}
 \end{proof}
 
 \spacepls
@@ -308,7 +343,17 @@ n - 1 \colon n \in \mathbb{N}, n > 0\\
 {\large \textbf{d)} Express each of the numbers 14, 15 and 16 as a sum of 3s and/or 8s. Using this fact in your basis, show by cumulative induction that every positive integer \(n \geq 14\) may be expressed as a sum of 3s and/or 8s}.
 
 \begin{proof}
-\lipsum[1]
+1. Basis\\
+\begin{align*}
+14 = 3 + 3 + 8\\
+15 = 3 + 3 + 3 + 3 + 3\\
+16 = 8 + 8
+\end{align*}
+2. Induction step\\
+Let \(j\) be any natural number greater than 14, and \(k\) be any natural number greater than \(j\). And assume \(j\) has this property shown on the basis.\\
+Since 14 can be expressed as the sum of 3 and 8, all numbers which can be obtained adding 3s or 8s (i.e. 17 = 14 + 3, or 22 = 14 + 8) can be expressed in the same way.\\
+The same follows for all multiples of 3 and 8 (like  15, or 16).\\
+And since we only have three cases in succession, then the following \(n \in \mathbb{N}\) is in the first case again.
 \end{proof}
 
 \spacepls
@@ -316,7 +361,22 @@ n - 1 \colon n \in \mathbb{N}, n > 0\\
 {\large \textbf{e)} Show by induction that for every natural number \(n, A(1,n) = n+2\), where \(A\) is the Ackermann function.}
 
 \begin{proof}
-\lipsum[1]
+1. Basis, for \(n = 1\)
+\begin{align*}
+    A(1,1) & = A(0,A(1,0))\\
+    & = A(0, A(0,1))\\
+	& = A(0,2)\\
+	& = 3
+\end{align*}
+Let \(j\) be any natural numbewr greater than 1, that has this property.\\
+\begin{align*}
+A(1,j) & = j + 2\\
+& = A(1,,j+1) \tag*{by induction}\\
+& = A(0, A(1,j)) = A(1,j) + 1 \tag*{by definition}\\
+& = A(i, j)  = j + 2 + 1\\
+& = j + 3
+\end{align*}
+Therefore, since \(j\) has the property, so does \(k\) such that \(k \in \mathbb{N}\) and \(n < j < k\).
 \end{proof}
 
 \end{document}

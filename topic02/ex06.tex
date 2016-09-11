@@ -1,0 +1,195 @@
+\documentclass[titlepage, letterpaper, fleqn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr} % fancy headers, of course!
+\usepackage{amsmath} % what do you think?
+\usepackage{amsthm} % theorems!
+\usepackage{extramarks} % more cute things
+\usepackage{enumitem} % i'm not sure...
+\usepackage{multicol} % multicolumn...?
+\usepackage{amssymb} % more symbols
+\usepackage{booktabs} % cool looking tables
+\usepackage{tikz} %venn and shizzle
+\usepackage{lipsum} %lorem ipsum dolor sit amet f u
+\usepackage{mathrsfs} %math script for calligraphic scripting, I GUESS
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+
+%
+% You should change this things~
+%
+
+\newcommand{\mahteacher}{Dr. Viacheslav Kalashnikov}
+\newcommand{\mahclass}{Applied Mathematics}
+\newcommand{\mahtitle}{Topic II - Activity 6}
+\newcommand{\mahdate}{September 14, 2016}
+\newcommand{\spacepls}{\vspace{5mm}}
+\renewcommand\qedsymbol{\(\blacksquare\)}
+
+%
+% Header markings
+%
+
+\pagestyle{fancy}
+\lhead{1170065 - Xavier Sánchez}
+\chead{}
+\rhead{}
+\lfoot{}
+\rfoot{}
+
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+
+%
+% Create Problem Sections (stolen directly from jdavis/latex-homework-template @ github!)
+%
+
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+\stepcounter{#1}
+\nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Exercise \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\Large Solution}}
+
+%Alias for the new step section
+\newcommand{\steppy}[1]{\textbf{\large #1}}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+\ifnum#1>0
+\setcounter{homeworkProblemCounter}{#1}
+\fi
+\section{Exercise \arabic{homeworkProblemCounter}}
+\setcounter{partCounter}{1}
+\enterProblemHeader{homeworkProblemCounter}
+}{
+\exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Venn diagrams defs
+%
+
+% \def\firstcircle{(0,0) circle (1.5cm)}
+% \def\secondcircle{(0:2cm) circle (1.5cm)}
+% \colorlet{circle edge}{blue!50}
+% \colorlet{circle area}{blue!20}
+
+% \tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+%     outline/.style={draw=circle edge, thick}}
+
+%
+% My actual info
+%
+
+\title{
+\vspace{1in}
+\textbf{Tecnológico de Monterrey} \\
+\vspace{0.5in}
+\textmd{\mahclass} \\
+\large{\textit{\mahteacher}} \\
+\vspace{0.5in}
+\textsc{\mahtitle}\\
+\textsc{2.1.3 Propositional Logic}\\
+\author{01170065  - MIT \\
+Xavier Fernando Cuauhtémoc Sánchez Díaz \\
+\texttt{xavier.sanchezdz@gmail.com}}
+\date{\mahdate}
+}
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+%
+% Actual document starts here~
+%
+
+\section{Exercise 2.1.3}
+
+{\large \textbf{a)} Prove or disprove \(\models (A \implies B) \vee (B \implies A)\):}
+
+\begin{proof}
+Since this formula consists of a disjunction of two subformulas, then if any subformula is true, so is its value.
+Now, the first subformula \(A \implies B\) can only be false if \(A\) is true and \(B\) is false.
+Let's assume it is false, so we now focus on the second subformula \(B \implies A\).
+Then, the subformula \(B \implies A\) will always be true since \(B\) is false, and any implication is true when its hypothesis (\(B\)) is false.
+
+Conversely, assuming that the first subformula \(A \implies B\) is true, then the value of the formula is also true.
+Therefore, \((A \implies B) \vee (B \implies A)\) is valid.
+\end{proof}
+
+\spacepls
+
+{\large \textbf{b)} Prove or disprove \(\models((A \implies B) \implies B) \implies B\):}
+
+\begin{proof}
+This formula is not valid. Consider the following counterexample, when \(v_{\mathscr{I}}(B) = F\) and \(v_{\mathscr{I}}(A) = T\):
+
+\begin{align*}
+& ((A \implies B) \implies B) \implies B \equiv \\
+& \equiv ((T \implies F) \implies F) \implies F\\
+& \equiv (F \implies F) \implies F\\
+& \equiv T \implies F\\
+& \equiv F
+\end{align*}
+
+Therefore, \(\not \models ((A \implies B) \implies B) \implies B\).
+\end{proof}
+
+\spacepls
+
+{\large \textbf{c)} Prove or disprove \(\models (A \iff B) \iff (A \iff (B \iff A))\):}
+
+\begin{proof}
+This formula is not valid. Consider  the following counterexample with \(v_{\mathscr{I}}(B) = F\). If \(B\) is false, then the first subformula \(A \iff B\) is also false. Thus, the whole formula is false.
+Therefore, \(\not \models (A \iff B) \iff (A \iff (B \iff A))\).
+\end{proof}
+
+\spacepls
+
+{\large \textbf{d)} Prove or disprove \(\models ((A \wedge B) \implies C) \implies ((A \implies C) \vee (B \implies C))\):}
+
+\begin{proof}
+This is a valid formula.
+The only way it could yield a false value is if the second subformula\\
+\((A \implies C) \vee (B \implies C))\) is false.
+This is a disjunction, so both atoms should be false, which is only possible if both \(A\) and \(B\) are assumed to be false and \(C\) is assumed to be true.\\
+Assuming the conclusion of the complete formula is false, then we must ensure the hypothesis of the complete formula is true.\\
+It follows that \(A \wedge B\) is true, and \(C\) is false, so the whole hypothesis is false. And if the hypothesis is false, then whole formula is true.
+Therefore, \(\models ((A \wedge B) \implies C) \implies ((A \implies C) \vee (B \implies C))\).
+\end{proof}
+
+
+\end{document}

@@ -27,9 +27,10 @@
 
 \newcommand{\mahteacher}{Dr. Viacheslav Kalashnikov}
 \newcommand{\mahclass}{Applied Mathematics}
-\newcommand{\mahtitle}{Topic II - Activity 9}
+\newcommand{\mahtitle}{Topic II - Activity 8}
 \newcommand{\mahdate}{September 28, 2016}
 \newcommand{\spacepls}{\vspace{5mm}}
+\newcommand{\numberthis}{\addtocounter{equation}{1}\text{\theequation}}
 \renewcommand\qedsymbol{\(\blacksquare\)}
 
 %
@@ -120,9 +121,10 @@
 \large{\textit{\mahteacher}} \\
 \vspace{0.5in}
 \textsc{\mahtitle}\\
-\textsc{2.3.1 Natural Deduction}\\
-\textsc{2.3.2 Propositional Logic}\\
-\textsc{2.3.3 Propositional Logic}\\
+\textsc{2.2.1 Propositional Logic}\\
+\textsc{2.2.2 Propositional Logic}\\
+\textsc{2.2.3 Propositional Logic}\\
+%\textsc{2.2.4 Propositional Logic}
 \author{01170065  - MIT \\
 Xavier Fernando Cuauhtémoc Sánchez Díaz \\
 \texttt{xavier.sanchezdz@gmail.com}}
@@ -139,176 +141,148 @@ Xavier Fernando Cuauhtémoc Sánchez Díaz \\
 % Actual document starts here~
 %
 
-\section{Exercise 2.3.1}
+\section{Exercise 2.2.1}
 
-{\large \textbf{a)} Show that \(\forall x p(x) \wedge \forall x q(x) \implies \forall x (p(x) \wedge q(x))\) is a valid formula.}
+{\large \textbf{a)} Prove \((A \implies B) \implies (\neg B \implies \neg A)\) in \(\mathscr{G}\).}
 
-\spacepls
+The semantic tableau for the converse of \((A \implies B) \implies (\neg B \implies \neg A)\) is as follows:
 
-This formula is valid since universal quantifiers are distributable over conjunction in both ways. Nevertheless, proof is as follows.
-
-\begin{proof}
-The converse of this implication is unsatisfiable.
-
-\begin{align*}
-& \neg (\forall x p(x) \wedge \forall x q(x) \implies \forall x (p(x) \wedge q(x))) = & \tag*{Converse}
-\\ & = \neg (\neg (\forall x p(x) \wedge \forall x q(x)) \vee \forall x (p(x) \wedge q(x))) &\tag*{Material implication}
-\\ & = (\forall x p(x) \wedge \forall x q(x)) \wedge \neg \forall x (p(x) \wedge q(x)) &\tag*{de Morgan}
-\\ & = \forall x p(x) \wedge \forall x q(x) \wedge \exists x \neg (p(x) \wedge q(x)) &\tag*{Negation of \(\forall\) is \(\exists \neg\)}
-\\ & = \forall x p(x) \wedge \forall x q(x) \wedge \exists x (\neg p(x) \vee \neg q(x)) &\tag*{de Morgan}
-\\ & = \forall x p(x) \wedge \forall x q(x) \wedge (\exists x \neg p(x) \vee \exists x \neg q(x)) &\tag*{\(\exists\) is distributive over \(\vee\)}
-\\ & = (\forall x p(x) \wedge \forall x q(x) \wedge \exists x \neg p(x)) \vee (\forall x p(x) \wedge \forall x q(x) \wedge \exists x \neg q(x)) &\tag*{\(\wedge\) is distributive over \(\vee\)}
-\end{align*}
-
-And since both \(\forall x p(x) \wedge \forall x q(x) \wedge \exists x \neg p(x)\) and \(\forall x p(x) \wedge \forall x q(x) \wedge \exists x \neg q(x))\) are contradictions, then the converse is unsatisfiable, and thus the original formula is valid.
-\end{proof}
-
-\spacepls
-
-{\large \textbf{b)} Show that \(\forall x (p(x) \implies q(x)) \implies (\forall x p(x) \implies \forall x q(x))\) is a valid formula but its converse \((\forall x p(x) \implies \forall x q(x)) \implies \forall x (p(x) \implies q(x))\) is not.}
-
-\spacepls
-
-To show the validity of the first part of the exercise, proving the converse suffices.
-\begin{proof}
-\begin{align*}
-&\neg(\forall x (p(x) \implies q(x)) \implies (\forall x p(x) \implies \forall x q(x))) & \tag*{Converse}
-\\ & = \neg(\neg (\forall x (p(x) \implies q(x))) \vee (\forall x p(x) \implies \forall x q(x))) & \tag*{Material implication}
-\\ & = \forall x (p(x) \implies q(x)) \wedge \neg (\forall x p(x) \implies \forall x q(x)) & \tag*{de Morgan}
-\\ & =\forall x (\neg p(x) \vee q(x)) \wedge \neg(\neg \forall x p(x) \vee \forall x q(x)) & \tag*{Material implication}
-\\ & =\forall x (\neg p(x) \vee q(x)) \wedge \forall x p(x) \vee \neg \forall x q(x) & \tag*{de Morgan}
-\\ & = \neg \exists x \neg (\neg p(x) \vee q(x)) \wedge \forall x p(x) \vee \neg \forall x q(x) & \tag*{Duality of quantifiers}
-\\ & = \neg \exists x (p(x) \wedge \neg q(x)) \wedge \forall x p(x) \vee \neg \forall x q(x) & \tag*{de Morgan}
-\\ & = \neg \exists x p(x) \wedge \neg \exists x \neg q(x) \wedge \forall x p(x) \vee \neg \forall x q(x) & \tag*{\(\exists\) distributes over \(\wedge\)}
-\\ & = \neg \exists x p(x) \wedge \neg \exists x \neg q(x) \wedge \forall x p(x) \wedge \exists x \neg q(x) & \tag*{Duality of quantifiers}
-\\ & = \neg \exists x p(x) \wedge \forall x p(x) \wedge \neg \exists x \neg q(x) \wedge \exists x \neg q(x) & \tag*{\(\wedge\) is commutative}
-\end{align*}
-And since both \(\neg \exists x p(x) \wedge \forall x p(x)\) and \(\neg \exists x \neg q(x) \wedge \exists x \neg q(x)\) are contradictions, then the converse is unsatisfiable, and thus the original formula is valid.
-\end{proof}
-
-\spacepls
-
-The second part of the exercise can be falsified using a counterexample:
-
-\begin{proof}
-Let \(x\) be any piece in a chess game where I'm playing the white pieces, \(p(x)\) mean ``\(x\) is a white'' and \(q(x)\) mean ``\(x\) is a piece I own''.
-
-Then, \(\forall x(p(x) \implies q(x))\) means ``all white pieces are my pieces'' which is true.
-
-However, \(\forall x p(x) \implies \forall x q(x)\) means ``if all pieces are white, then all pieces are mine'', which is not true since there could be pieces that are not mine (i.e. black pieces) even if all white pieces are in my possession.
-
-So the implication \((\forall x p(x) \implies \forall x q(x)) \implies \forall x (p(x) \implies q(x))\) is falsifiable.
-\end{proof}
-
-\section{Exercise 2.3.2}
-
-{\large \textbf{a)} Prove that \((\forall x p(x) \implies \forall x q(x)) \implies \forall x (p(x) \implies q(x))\) is not valid by constructing a semantic tableau for its negation.}
-
-\spacepls
-\begin{proof}
-The following tableau corresponds to the negation of \((\forall x p(x) \implies \forall x q(x)) \implies \forall x (p(x) \implies q(x))\).
 \spacepls
 
 \begin{tikzpicture}
 \tikzset{every tree node/.style={align=center,anchor=north}}
+\tikzset{sibling distance=50pt}
+\tikzset{level distance=35pt}
 \tikzset{grow'=down}
-\Tree [.{$\neg ((\forall x p(x) \implies \forall x q(x)) \implies \forall x (p(x) \implies q(x)))$}  
-    [.{$\forall x p(x) \implies \forall x q(x), \neg \forall x (p(x) \implies q(x))$} [
-    .{$\forall x q(x), \neg \forall x (p(x \implies q(x)))$} [.{$\forall x q(x), \exists x \neg (p(x) \implies q(x))$} [.{$\forall x q(x), \neg (p(a_3) \implies q(a_3))$} 
-    {$\forall x q(x), p(a_3), \neg q(a_3)$}\\{$\bigodot$} ] ] ]
-    [.{$\neg \forall x p(x), \neg \forall x (p(x) \implies q(x))$} 
-    [.{{$\exists x \neg p(x), \exists x \neg (p(x) \implies q(x))$}} 
-    [.{$\neg p(a_1), \neg (p(a_2) \implies q(a_2))$} {$\neg p(a_1), p(a_2), \neg q(a_2)$}\\{$\bigodot$} ] ] ] ] ]
+\Tree [.{$\neg((A \implies B) \implies (\neg B \implies \neg A))$} 
+[.{$A \implies B, \neg (\neg B \implies \neg A)$} 
+[.{$A \implies B, \neg B, A$} 
+[.{$B, \neg B, A$}\\{$\times$} ] 
+[.{$\neg A, \neg B, A$}\\{$\times$} ] ] ] ]
 \end{tikzpicture}
 
 \spacepls
 
-The right branch is considered finite and open since there's a universally quantified formula. And since there are open branches, then the original formula is falsifiable.
+\begin{proof}
+\begin{align}
+& A, B, \neg A & \text{Axiom} \label{ax1a}
+\\ & \neg B, B, \neg A & \text{Axiom} \label{ax2a}
+\\ & \neg(A \implies B), B, \neg A & \text{$\beta$-rule on \ref{ax1a} and \ref{ax2a}} \label{step3a}
+\\ & \neg(A \implies B), \neg B \implies \neg A & \text{$\alpha$-rule on \ref{step3a}} \label{step4a}
+\\ & (A \implies B) \implies (\neg B \implies \neg A) & \text{$\alpha$-rule on \ref{step4a}}
+\end{align}
 \end{proof}
 
-\section{Exercise 2.3.3}
+{\large \textbf{b)} Prove \((A \implies B) \implies ((\neg A \implies B)\implies B)\) in \(\mathscr{G}\).}
 
-{\large \textbf{a)} Prove that \(\exists x (A(x) \implies B(x)) \iff (\forall x A(x) \implies \exists x B(x))\) is valid.}
+The semantic tableau for the converse of \((A \implies B) \implies ((\neg A \implies B)\implies B)\) is as follows:
 
 \spacepls
 
-\(\exists x (A(x) \implies B(x))\) is logically equivalent to \((\forall x A(x) \implies \exists x B(x))\), so this formula is valid.
+\begin{tikzpicture}
+\tikzset{every tree node/.style={align=center,anchor=north}}
+\tikzset{sibling distance=30pt}
+\tikzset{grow'=down}
+\Tree [.{$\neg ((A \implies B) \implies ((\neg A \implies B) \implies B))$} 
+      [.{$A \implies B, \neg ((\neg A \implies B) \implies B)$} 
+      [.{$A \implies B, \neg A \implies B, \neg B$} 
+      [.{$B, \neg A \implies B, \neg B$} {$B, B, \neg B$\\{$\times$}} {$B, A, \neg B$\\{$\times$}} ] 
+      [.{$\neg A, \neg A \implies B, \neg B$} {$\neg A, B, \neg B$\\{$\times$}} {$\neg A, A, \neg B$\\{$\times$}} ] ] ] ]
+\end{tikzpicture}
+
+\begin{proof}
+\begin{align}
+& A, \neg A, B & \text{Axiom} \label{ax1b}
+\\ & A \neg B, B & \text{Axiom} \label{ax2b}
+\\ & \neg B, \neg A, B & \text{Axiom} \label{ax3b}
+\\ & \neg B, \neg B, B & \text{Axiom} \label{ax4b}
+\\ & A, \neg(\neg A \implies B), B & \text{$\beta$-rule on \ref{ax1b}, \ref{ax2b}} \label{step5b}
+\\ & \neg B, \neg(\neg A \implies B), B & \text{$\beta$-rule on \ref{ax3b}, \ref{ax4b}} \label{step6b}
+\\ & \neg (A \implies B), \neg (\neg A \implies B), B & \text{$\beta$-rule on \ref{step5b}, \ref{step6b}} \label{step7b}
+\\ & \neg (A \implies B), (\neg A \implies B) \implies B & \text{$\alpha$-rule on \ref{step7b}} \label{step8b}
+\\ & (A \implies B) \implies ((\neg A \implies B)\implies B) & \text{$\alpha$-rule on \ref{step8b}}
+\end{align}
+\end{proof}
+
+{\large \textbf{c)} Prove \(((A \implies B) \implies A) \implies A\) in \(\mathscr{G}\).}
+
+The semantic tableau for the converse of \(((A \implies B) \implies A) \implies A\) is as follows:
+
+\spacepls
+
+\begin{tikzpicture}
+\tikzset{every tree node/.style={align=center,anchor=north}}
+\tikzset{sibling distance=30pt}
+\tikzset{grow'=down}
+\Tree [.{$\neg (((A \implies B) \implies A) \implies A)$} 
+[.{$(A \implies B) \implies A, \neg A$} 
+{$A, \neg A$}\\{$\times$} 
+[.{$\neg(A \implies B), \neg A$} 
+{$A, \neg B, \neg A$}\\{$\times$} ] ] ]
+\end{tikzpicture}
+
+\begin{proof}
+\begin{align}
+& \neg A, B, A & \text{Axiom} \label{ax1c}
+\\ & \neg A, A & \text{Axiom} \label{ax2c}
+\\ & A \implies B, A & \text{$\alpha$-rule on \ref{ax1c}} \label{step3c}
+\\ & \neg((A \implies B) \implies A), A & \text{$\beta$-rule on \ref{step3c}} \label{step4c}
+\\ & ((A \implies B) \implies A) \implies A & \text{$\alpha$-rule on \ref{step4c}}
+\end{align}
+\end{proof}
+
+\section{Exercise 2.2.2}
+
+{\large \textbf{a)} Prove the derived rule \textit{modus tollens}: \(\dfrac{\vdash \neg B \, \, \, \, \, \, \, \vdash A \implies B}{\vdash \neg A}\).}
+
+\spacepls
+
+To show that \textit{modus tollens} is a valid rule of inference, proving the converse should suffice:
 
 \begin{proof}
 \begin{align*}
-& \exists x (A(x) \implies B(x)) = &
-\\ & = \exists x (\neg A(x) \vee B(x)) & \tag*{Material implication}
-\\ & = \exists x \neg A(x) \vee \exists x B(x) & \tag*{$\exists$ distributes over $\vee$}
-\\ & = \neg \forall x A(x) \vee \exists x B(x) & \tag*{Duality of quantifiers}
-\\ & = \forall x A(x) \implies \exists x B(x) & \tag*{Material implication}
+& \neg((\neg B \wedge (A \implies B)) \implies \neg A) = & \tag*{Converse}
+\\ & = (\neg B \wedge (A \implies B)) \wedge A & \tag*{Material implication \& de Morgan}
+\\ & = \neg B \wedge (\neg A \vee B) \wedge A & \tag*{Material implication}
+\\ & = (A \wedge \neg B \wedge \neg A) \vee (A \wedge \neg B \wedge B) & \tag*{$\wedge$ is commutative, $\wedge$ distributes over $\vee$}
 \end{align*}
-\begin{align*}
-& \forall x A(x) \implies \exists x B(x) = &
-\\ & = \neg \forall x A(x) \vee \exists x B(x) & \tag*{Material implication}
-\\ & = \exists x \neg A(x) \vee \exists x B(x) & \tag*{Duality of quantifiers}
-\\ & = \exists x (\neg A(x) \vee B(x)) & \tag*{$\exists$ distributes over $\vee$}
-\\ & = \exists x (A(x) \implies B(x)) & \tag*{Material implication}
-\end{align*}
+
+Since both \(A \wedge \neg B \wedge \neg A\) and \(A \wedge \neg B \wedge B\) are contradictions, this converse is unsatisfiable.
+
+Therefore, \textit{modus tollens} is a valid inference rule.
 \end{proof}
 
-\pagebreak
+\section{Exercise 2.2.3}
 
-{\large \textbf{b)} Prove that \((\exists x A(x) \implies \forall x B(x)) \implies \forall x (A(x) \implies B(x))\) is valid.}
-
-\spacepls
+{\large \textbf{a)} Prove \(\vdash (A \implies B) \vee (B \implies A)\) in \(\mathscr{H}\):}
 
 \begin{proof}
-\begin{align*}
-& (\exists x A(x) \implies \forall x B(x)) = &
-\\ & = \neg \exists A(x) \vee \forall x B(x) & \tag*{Material implication}
-\\ & = \forall x \neg A(x) \vee \forall x B(x) & \tag*{Duality of quantifiers}
-\\ & = \forall x (\neg A(x) \vee B(x)) & \tag*{$\forall$ distributes over $\vee$}
-\\ & = \forall x (A(x) \implies B(x)) & \tag*{Material implication}
-\end{align*}
-\(\exists x A(x) \implies \forall x B(x)\) can be expressed as \(\forall x (A(x) \implies B(x))\), therefore the formula is valid.
+\begin{align}
+& \{\neg (A \implies B), B \} \vdash B & \text{Assumption} \label{ex3:a1}
+\\ & \{\neg (A \implies B), B \} \vdash \neg (A \implies B) & \text{Assumption} \label{ex3:a2}
+\\ & \{\neg (A \implies B), B \} \vdash \neg(A \implies B) \implies (A \wedge \neg B) & \text{Definition of \(\wedge\)} \label{ex3:step3}
+\\ & \{\neg (A \implies B), B \} \vdash (A \wedge \neg B) & \text{MP \ref{ex3:a2}, \ref{ex3:step3}} \label{ex3:step4}
+\\ & \{\neg (A \implies B), B \} \vdash (A \wedge \neg B) \implies A & \text{B is assumed on \ref{ex3:a1}} \label{ex3:step5}
+\\ & \{\neg (A \implies B), B \} \vdash A & \text{MP \ref{ex3:step4}, \ref{ex3:step5}} \label{ex3:step6}
+\\ & \{\neg (A \implies B)\} \vdash B \implies A & \text{Deduction \ref{ex3:step6}} \label{ex3:step7}
+\\ & \vdash \neg (A \implies B) \implies (B \implies A) & \text{Deduction \ref{ex3:step7}}
+\\ & \vdash (A \implies B) \vee (B \implies A) & \text{Definition of \(\vee\)}
+\end{align}
 \end{proof}
 
-\spacepls
+% I should finish this
+% \section{2.2.4}
 
-{\large \textbf{c)} Prove that \(\forall x (A(x) \vee B(x)) \implies (\forall x A(x) \vee \exists x B(x))\) is valid.}
+% {\large \textbf{a)} Prove \((A \implies B) \implies ((\neg A \implies B)\implies B)\) in \(\mathscr{H}\).}
 
-\spacepls
+% \begin{proof}
+% aa
+% \end{proof}
 
-\begin{proof}
-The converse of this implication is unsatisfiable.
-\begin{align*}
-& \neg (\forall x (A(x) \vee B(x)) \implies (\forall x A(x) \vee \exists x B(x))) = & \tag*{Converse}
-\\ & = \forall x (A (x) \vee B(x)) \wedge \neg (\forall x A(x) \vee \exists x B(x)) & \tag*{Material implication \& de Morgan}
-\\ & = \forall x (A (x) \vee B(x)) \wedge \neg \forall x A(x) \wedge \neg \exists B(x) & \tag*{de Morgan}
-\\ & = \neg \exists x \neg (A(x) \vee B(x)) \wedge \neg \forall x A(x) \wedge \neg \exists B(x) & \tag*{Duality of quantifiers}
-\\ & = \neg \exists x (\neg A(x) \wedge \neg B(x)) \wedge \neg \forall x A(x) \wedge \neg \exists B(x) & \tag*{de Morgan}
-\\ & = \neg \exists x \neg A(x) \wedge \neg \exists x \neg B(x) \wedge \forall x A(x) \wedge \neg \exists x B(x) & \tag*{$\exists$ distributes over $\wedge$}
-\\ & = \neg \exists x \neg A(x) \wedge \forall x B(x) \wedge \forall x A(x) \wedge \neg \exists x B(x) & \tag*{Duality of quantifiers}
-\end{align*}
-Since \(\forall x B(x) \wedge \neg \exists x B(x)\) is a contradiction, this converse is unsatisfiable.
+% {\large \textbf{c)} Prove \(((A \implies B) \implies A) \implies A\) in \(\mathscr{H}\).}
 
-Therefore, the original formula is valid.
-\end{proof}
+% \begin{proof}
+% aa
+% \end{proof}
 
-\spacepls
-
-{\large \textbf{d)} Prove that \(\forall x (A(x) \implies B(x)) \implies (\exists x A(x) \implies \exists x B(x))\) is valid.}
-
-\spacepls
-
-\begin{proof}
-The converse of this implication is unsatisfiable.
-\begin{align*}
-& \neg (\forall x (A(x) \implies B(x)) \implies (\exists x A(x) \implies \exists x B(x))) = & \tag*{Converse}
-\\ & = \forall x (A (x) \implies B(x)) \wedge \neg (\exists x A(x) \implies \exists x B(x)) & \tag*{Material implication \& de Morgan}
-\\ & = \forall x (A(x) \implies B(x)) \wedge \exists x A(x) \wedge \neg \exists x B(x) & \tag*{Material implication \& de Morgan}
-\\ & = \neg \exists \neg (A(x) \implies B(x)) \wedge \exists x A(x) \wedge \neg \exists x B(x) & \tag*{Duality of quantifiers}
-\\ & = \neg \exists x (A(x) \wedge \neg B(x)) \wedge \exists x A(x) \wedge \neg \exists x B(x) & \tag*{Material implication \& de Morgan}
-\\ & = \neg \exists x A(x) \wedge \neg \exists x \neg B(x) \wedge \exists x A(x) \wedge \neg \exists x B(x) & \tag*{$\exists$ distributes over $\wedge$}
-\\ & = \neg \exists x A(x) \wedge \forall x B(x) \wedge \exists x A(x) \wedge \neg \exists x B(x) & \tag*{Duality of quantifiers}
-\end{align*}
-Since \(\neg \exists x A(x) \wedge \exists x A(x)\) and \(\forall x B(x) \wedge \neg \exists x B(x)\) are contradictions, this converse is unsatisfiable.
-
-Therefore, the original formula is valid.
-\end{proof}
 \end{document}

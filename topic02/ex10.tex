@@ -1,0 +1,391 @@
+\documentclass[titlepage, letterpaper, fleqn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr} % fancy headers, of course!
+\usepackage{amsmath} % what do you think?
+\usepackage{amsthm} % theorems!
+\usepackage{extramarks} % more cute things
+\usepackage{enumitem} % i'm not sure...
+\usepackage{multicol} % multicolumn...?
+\usepackage{amssymb} % more symbols
+\usepackage{MnSymbol} % moar symbols?
+\usepackage{booktabs} % cool looking tables
+\usepackage{tikz} %venn and shizzle
+\usepackage{tikz-qtree-compat} %tableaux
+\usepackage{lipsum} %lorem ipsum dolor sit amet f u
+\usepackage{mathrsfs} %math script for calligraphic scripting, I GUESS
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+
+%
+% You should change this things~
+%
+
+\newcommand{\mahteacher}{Dr. Viacheslav Kalashnikov}
+\newcommand{\mahclass}{Applied Mathematics}
+\newcommand{\mahtitle}{Topic II - Activity 10}
+\newcommand{\mahdate}{September 28, 2016}
+\newcommand{\spacepls}{\vspace{5mm}}
+\newcommand{\until}{\mathscr{U}}
+\renewcommand\qedsymbol{\(\blacksquare\)}
+
+%
+% Header markings
+%
+
+\pagestyle{fancy}
+\lhead{1170065 - Xavier Sánchez}
+\chead{}
+\rhead{}
+\lfoot{}
+\rfoot{}
+
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+
+%
+% Create Problem Sections (stolen directly from jdavis/latex-homework-template @ github!)
+%
+
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+\stepcounter{#1}
+\nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Exercise \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\Large Solution}}
+
+%Alias for the new step section
+\newcommand{\steppy}[1]{\textbf{\large #1}}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+\ifnum#1>0
+\setcounter{homeworkProblemCounter}{#1}
+\fi
+\section{Exercise \arabic{homeworkProblemCounter}}
+\setcounter{partCounter}{1}
+\enterProblemHeader{homeworkProblemCounter}
+}{
+\exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% My actual info
+%
+
+\title{
+\vspace{1in}
+\textbf{Tecnológico de Monterrey} \\
+\vspace{0.5in}
+\textmd{\mahclass} \\
+\large{\textit{\mahteacher}} \\
+\vspace{0.5in}
+\textsc{\mahtitle}\\
+\textsc{2.4.1 Linear Temporal Logic}\\
+\textsc{2.4.2 Linear Temporal Logic}\\
+\textsc{2.4.3 Linear Temporal Logic}\\
+\textsc{2.4.4 Linear Temporal Logic}\\
+\textsc{2.4.5 Linear Temporal Logic}\\
+\textsc{2.5.1 Computational Tree Logic}\\
+\textsc{2.5.2 Computational Tree Logic}\\
+\textsc{2.6.1 Computational Tree Logic*}\\
+\author{01170065  - MIT \\
+Xavier Fernando Cuauhtémoc Sánchez Díaz \\
+\texttt{xavier.sanchezdz@gmail.com}}
+\date{\mahdate}
+}
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+%
+% Actual document starts here~
+%
+
+\section{Exercise 2.4.1}
+
+{\large \textbf{a)} Prove \(\models \neg \Diamond \neg p \implies \Box p\) (the converse direction of Theorem 13.14 in Ben-Ari, M.).}
+
+\spacepls
+
+\begin{proof}
+By duality of operators, \(\neg \Diamond \neg p\) can be expressed as \(\Box p\), therefore, the formula \(\neg \Diamond \neg p \implies \Box p\) is valid.
+\end{proof}
+
+\section{Exercise 2.4.2}
+
+{\large \textbf{a)} Prove Theorem 13.34 from Ben-Ari, M., \(\models (\Diamond \Box p \wedge \Box \Diamond q) \implies \Box \Diamond(p \wedge q).\)}
+
+\spacepls
+
+\begin{proof}
+\begin{align*}
+& \Diamond \Box p \wedge \Box \Diamond q = & \\
+& = \Box \Diamond p \wedge \Box \Diamond q & \tag*{Commutativity of $\Diamond \Box$} \\
+& = \Box \Diamond (p \wedge q) & \tag*{$\Box \, \& \, \Diamond$ distribute over $\wedge$}
+\end{align*}
+\end{proof}
+
+\section{Exercise 2.4.3}
+
+{\large \textbf{a)} Construct a tableau and find a model for the negation of \(\Box \Diamond p \implies \Diamond \Box p\).}
+
+\spacepls
+
+\begin{tikzpicture}
+\tikzset{every tree node/.style={align=center,anchor=north}}
+\tikzset{grow'=down}
+\Tree [.{$\neg (\Box \Diamond p \implies \Diamond \Box p)$} 
+[.{$\Box \Diamond p, \neg \Diamond \Box p$} 
+[.{$\Diamond p, \bigcirc \Box \Diamond, p, \neg \Diamond \Box p$} 
+[.{$\Diamond p, \bigcirc \Box \Diamond p, \neg \Box p, \neg \bigcirc \Diamond p$} 
+[.{$p, \bigcirc \Diamond p, \bigcirc \Box \Diamond p, \neg \Box p, \neg \bigcirc \Diamond p$}\\{$\times$} ] ] ] ] ]
+\end{tikzpicture}
+
+\begin{proof}
+Since the tableau for the negation of \(\Box \Diamond p \implies \Diamond \Box p\) shows a closed branch,
+then the original formula is valid.
+\end{proof}
+
+\pagebreak
+
+\section{Exercise 2.4.4}
+
+{\large \textbf{a)} Prove that a linear interpretation is characterized by \(\bigcirc A \iff \neg \bigcirc \neg A\) (Theorem 13.25 from Ben-Ari, M.).}
+
+\spacepls
+
+\begin{tikzpicture}
+\tikzset{every tree node/.style={align=center,anchor=north}}
+\tikzset{grow'=down}
+\Tree [.{$\neg(\bigcirc A \iff \neg \bigcirc \neg A)$}
+[.{$\neg (\neg \bigcirc \neg A \implies \bigcirc A)$} 
+[. \node[draw]{$\neg \bigcirc \neg A, \neg \bigcirc A$};
+[.{$A, \neg A$}\\{$\times$} ] ] ] 
+[.{$\neg (\bigcirc A \implies \neg \bigcirc \neg A)$} 
+[. \node[draw]{$\bigcirc A, \bigcirc \neg A$};
+[.{$A, \neg A$}\\{$\times$} ] ] ] ]
+\end{tikzpicture}
+
+\begin{proof}
+Since the converse of the double implication is marked as unsatisfiable in the LTL tableau,
+then it means the \(\bigcirc A\) is equivalent to \(\neg \bigcirc \neg A\) for LTL formulas.
+\end{proof}
+
+\section{Exercise 2.4.5}
+
+{\large \textbf{a)} Check if the formula \(\bigcirc \bigcirc A \implies \bigcirc A\) is satisfiable, and/or valid.}
+
+\spacepls
+
+\begin{tikzpicture}
+\tikzset{every tree node/.style={align=center,anchor=north}}
+\tikzset{grow'=down}
+\Tree [.{$\neg(\bigcirc \bigcirc A \implies \bigcirc A)$}
+[. \node[draw]{$\bigcirc \bigcirc A, \neg \bigcirc A$}; 
+[. \node[draw]{$\bigcirc A, \neg A$}; {$A, \neg A$}\\{$\times$} ] ] ]
+\end{tikzpicture}
+
+\begin{proof}
+Since the tableau ends with its only branch as closed, then the formula \(\bigcirc \bigcirc A \implies \bigcirc A\) is valid.
+\end{proof}
+
+{\large \textbf{b)} Check if the formula \(\bigcirc (A \vee \Diamond A) \implies \Diamond A\) is satisfiable, and/or valid.}
+
+\begin{tikzpicture}
+\tikzset{every tree node/.style={align=center,anchor=north}}
+\tikzset{grow'=down}
+\Tree [.{$\neg(\bigcirc(A \vee \Diamond A) \implies \Diamond A)$} 
+[.{$\bigcirc(A \vee \Diamond A), \neg \Diamond A$} 
+[. \node[draw]{$\bigcirc (A \vee \Diamond A), \neg A, \neg \bigcirc \Diamond A$}; 
+[.{$A \vee \Diamond A, \neg A, \neg \bigcirc \Diamond A$} 
+[.{$\Diamond A, \neg A, \neg \bigcirc \Diamond A$} {$A, \bigcirc \Diamond A, \neg A, \neg \bigcirc \Diamond A$}\\{$\times$} ] 
+[.{$A, \neg A, \neg \bigcirc \Diamond A$}\\{$\times$} ] ] ] ] ]
+\end{tikzpicture}
+
+\begin{proof}
+Since all branches in the tableau are closed, the formula \(\bigcirc (A \vee \Diamond A) \implies \Diamond A\) is valid.
+\end{proof}
+
+{\large \textbf{c)} Check if the formula \(\Box A \implies \neg \bigcirc (\neg A \wedge \Box \neg A)\) is satisfiable, and/or valid.}
+
+\spacepls
+
+\begin{tikzpicture}
+\tikzset{every tree node/.style={align=center,anchor=north}}
+\tikzset{grow'=down}
+\Tree [.{$\neg(\Box \implies \neg \bigcirc (\neg A \wedge \Box \neg A))$} 
+[.{$\Box, \bigcirc(\neg A \wedge \Box \neg A)$} 
+[.\node[draw]{$A, \bigcirc \Box A, \bigcirc (\neg A \wedge \Box \neg A)$}; 
+[.{$A, \Box A, \neg A, \Box \neg A$}\\{$\times$} ] ] ] ]
+\end{tikzpicture}
+
+\begin{proof}
+Since the only branch in the tableau is closed, \(\Box A \implies \neg \bigcirc (\neg A \wedge \Box \neg A)\) is a valid formula.
+\end{proof}
+
+{\large \textbf{d)} Check if the formula \((\Box A)\until(\Diamond B) \implies \Box(A \until \Box B)\) is satisfiable, and/or valid.}
+
+\spacepls
+
+\begin{tikzpicture}[scale=0.9]
+\tikzset{every tree node/.style={align=center,anchor=north, }}
+\tikzset{grow'=down}
+\Tree [.{$\neg((\Box A) \until (\Diamond B) \implies \Box (A \until \Diamond B))$} 
+[.{$(\Box A) \until (\Diamond B), \Box (A \until \Diamond B)$}
+[.{$(\Box A) \until (\Diamond B), A \until \Diamond B, \bigcirc \Box (A \until \Diamond B)$} 
+[.{$\Diamond B \vee (\Box A \wedge \bigcirc (\Box A \until \Diamond B)), A \until \Diamond B, \bigcirc \Box(A \until \Diamond B)$} 
+[.{$\Box A, \bigcirc(\Box A \until \Diamond B), A \until \Diamond B, \bigcirc \Box(A \until \Diamond B)$} {$A, \bigcirc \Box A, \bigcirc(\Box A \until \Diamond B), A \until \Diamond B, \bigcirc \Box(A \until \Diamond B)$}\\{$\vdots$} ] 
+[.\node[label={left:{\scriptsize $<l_0>$}}]{$\Diamond B, A \until \Diamond B, \bigcirc \Box(A \until \Diamond B)$}; 
+[.{$B, \bigcirc \Diamond B, A \until \Diamond B, \bigcirc \Box(A \until \Diamond B)$} 
+[.{$B, \bigcirc \Diamond B, \Diamond B \vee (A \wedge \bigcirc(A \until \Diamond B), \bigcirc \Box(A \until \Diamond B))$} 
+[.\node[draw]{$B, \bigcirc \Diamond B, A, \bigcirc(A \until \Diamond B), \bigcirc \Box ( A \until \Diamond B)$}; [.{$\Diamond B, A \until \Diamond B, \Box(A \until \Diamond B)$} {To $l_0$} ]  ] 
+[.{$B, \bigcirc \Diamond B, \Diamond B, \bigcirc \Box(A \until \Diamond B)$} [.\node[draw]{$B, \bigcirc \Diamond B, \bigcirc \Box(A \until \Diamond B)$};\\{$\vdots$} ] ] ] ] ] ] ] ] ]
+\end{tikzpicture}
+
+\begin{proof}
+As there is at least one branch that loops, it is an open tableau. Therefore, \((\Box A)\until(\Diamond B) \implies \Box(A \until \Box B)\)
+is not valid.
+\end{proof}
+
+\pagebreak
+
+{\large \textbf{e)} Check if the formula \(\Diamond B \implies (A \until B)\) is satisfiable, and/or valid.}
+
+\spacepls
+
+\begin{tikzpicture}
+\tikzset{every tree node/.style={align=center,anchor=north, }}
+\tikzset{grow'=down}
+\Tree [.{$\neg(\Diamond B \implies (A \until B))$} 
+[.{$\Diamond B, \neg(A \until B)$} 
+[.{$\Diamond B, \neg(B \vee (A \wedge \bigcirc(A \until B)))$} 
+[.{$\Diamond B, \neg B, \neg(A \wedge \bigcirc(A \until B))$} 
+[.{$\bigcirc \Diamond B, \neg B, \neg(A \wedge \bigcirc(A \until B))$} 
+[.\node[draw]{$\bigcirc \Diamond B, \neg B, \bigcirc(A \until B)$}; 
+[.{$\Diamond B, A \until B$}\\{$\vdots$} ] ]
+[.\node[draw]{$\bigcirc \Diamond B, \neg B, \neg A$}; 
+[.\node[label={left:{\scriptsize $<l_0>$}}]{$\Diamond B$}; 
+[.{$\bigcirc \Diamond B$} {To $l_0$} ] 
+[.{$B$\\{$\bigodot$}} ] ] ] ] 
+[.{$B, \neg B, \neg(A \wedge \bigcirc(A \until B))$}\\{$\times$} ] ] ] ] ]
+\end{tikzpicture}
+
+\begin{proof}
+As there is a loop and an open branch in the tableau, the formula \(\Diamond B \implies (A \until B)\) is not valid.
+\end{proof}
+
+\section{Exercise 2.5.1}
+
+{\large \textbf{a)} Is the following assertion correct? Provide a proof or a counterexample.
+
+If \(s \models \exists A\), then \(s \models \forall A\).}
+
+aa
+
+{\large \textbf{b)} Is the following assertion correct? Provide a proof or a counterexample.
+
+If \(s \models \forall A\), then \(s \models \exists A\).}
+
+aa
+
+{\large \textbf{c)} Is the following assertion correct? Provide a proof or a counterexample.
+
+If \(s \models \forall \Diamond A \vee \forall \Diamond B\), then \(s \models \forall \Diamond (A \vee B)\).}
+
+aa
+
+{\large \textbf{d)} Is the following assertion correct? Provide a proof or a counterexample.
+
+If \(s \models \forall \Diamond(A \vee B)\), then \(s \models \forall \Diamond A \vee \Diamond B\).}
+
+aa
+
+{\large \textbf{e)} Is the following assertion correct? Provide a proof or a counterexample.
+
+If \(s \models \forall (A \until B)\), then \(s \models \neg (\exists (\neg B \until(\neg A \wedge \neg B)) \vee \exists \Diamond \neg B)\).}
+
+aa
+
+\section{Exercise 2.5.2}
+
+{\large \textbf{b)} Let \(\Phi\) and \(\Psi\) be arbitrary CTL formulae. Is the following equivalence correct?
+\[\exists \bigcirc \exists \Diamond \Phi \equiv \exists \Diamond \exists \bigcirc \Phi\]}
+
+aa
+
+{\large \textbf{c)} Let \(\Phi\) and \(\Psi\) be arbitrary CTL formulae. Is the following equivalence correct?
+\[\forall \bigcirc \forall \Box \Phi \equiv \forall \Box \forall \bigcirc \Phi\]}
+
+aa
+
+{\large \textbf{d)} Let \(\Phi\) and \(\Psi\) be arbitrary CTL formulae. Is the following equivalence correct?
+\[\exists \bigcirc \exists \Box \Phi \equiv \exists \Box \exists \bigcirc \Phi\]}
+
+aa
+
+{\large \textbf{e)} Let \(\Phi\) and \(\Psi\) be arbitrary CTL formulae. Is the following equivalence correct?
+\[\forall \Box(\Phi \implies \Psi) \equiv (\exists \bigcirc \Phi \implies \exists \bigcirc \Psi)\]}
+
+\section{Exercise 2.6.1}
+
+{\large \textbf{a)} Is this equivalence correct? Provide a proof or a counterexample.
+\[\forall \bigcirc \forall \Box \Phi \equiv \forall \bigcirc \Box \Phi\]}
+
+aa
+
+{\large \textbf{b)} Is this equivalence correct? Provide a proof or a counterexample.
+\[\exists \bigcirc \exists \Box \Phi \equiv \exists \bigcirc \Box \Phi\]}
+
+aa
+
+{\large \textbf{c)} Is this equivalence correct? Provide a proof or a counterexample.
+\[\forall (\phi \wedge \psi) \equiv \forall \psi \wedge \forall \psi\]}
+
+aa
+
+{\large \textbf{d)} Is this equivalence correct? Provide a proof or a counterexample.
+\[\exists (\phi \wedge \psi) \equiv \exists \phi \wedge \exists \psi\]}
+
+aa
+
+{\large \textbf{e)} Is this equivalence correct? Provide a proof or a counterexample.
+\[\neg \forall(\phi \implies \psi) \equiv \exists (\phi \wedge \neg \psi)\]}
+
+aa
+
+{\large \textbf{f)} Is this equivalence correct? Provide a proof or a counterexample.
+\[\forall (\Diamond \Psi \wedge \Box \Phi) \equiv \forall \Diamond (\Psi \wedge \forall \Box \Phi) \wedge \forall \Box (\Phi \wedge \forall \Diamond \Psi)\]}
+\end{document}

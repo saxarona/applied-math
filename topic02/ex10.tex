@@ -152,9 +152,10 @@ By duality of operators, \(\neg \Diamond \neg p\) can be expressed as \(\Box p\)
 
 \begin{proof}
 \begin{align*}
-& \Diamond \Box p \wedge \Box \Diamond q = & \\
-& = \Box \Diamond p \wedge \Box \Diamond q & \tag*{Commutativity of $\Diamond \Box$} \\
-& = \Box \Diamond (p \wedge q) & \tag*{$\Box \, \& \, \Diamond$ distribute over $\wedge$}
+& (\Diamond \Box p \wedge \Box \Diamond q) \implies \Box \Diamond (p \wedge q) = &
+\\ & = (\Box \Diamond p \wedge \Box \Diamond q) \implies \Box \Diamond (p \wedge q) & \tag*{Commutativity of $\Diamond \Box$}
+\\ & = \Box (\Diamond p \wedge \Diamond q) \implies \Box \Diamond (p \wedge q) & \tag*{$\Box$ distributes over $\wedge$}
+\\ & = \Box (\Diamond p \wedge \Diamond q) \implies \Box (\Diamond p \wedge \Diamond q) & \tag*{$\Diamond$ distributes over $\wedge$ in this direction}
 \end{align*}
 \end{proof}
 
@@ -164,19 +165,30 @@ By duality of operators, \(\neg \Diamond \neg p\) can be expressed as \(\Box p\)
 
 \spacepls
 
-\begin{tikzpicture}
+\begin{tikzpicture}[scale=0.89]
 \tikzset{every tree node/.style={align=center,anchor=north}}
 \tikzset{grow'=down}
 \Tree [.{$\neg (\Box \Diamond p \implies \Diamond \Box p)$} 
 [.{$\Box \Diamond p, \neg \Diamond \Box p$} 
-[.{$\Diamond p, \bigcirc \Box \Diamond, p, \neg \Diamond \Box p$} 
-[.{$\Diamond p, \bigcirc \Box \Diamond p, \neg \Box p, \neg \bigcirc \Diamond p$} 
-[.{$p, \bigcirc \Diamond p, \bigcirc \Box \Diamond p, \neg \Box p, \neg \bigcirc \Diamond p$}\\{$\times$} ] ] ] ] ]
+[.\node[label=left:{\scriptsize $<l_0>$}]{$\Diamond p, \bigcirc \Box \Diamond p, \neg \Diamond \Box p$}; 
+[.\node[label=left:{\scriptsize $<l_1>$}]{$\Diamond p, \bigcirc \Box \Diamond p, \neg \Box p, \neg \bigcirc \Diamond \Box p$}; 
+[.{$\bigcirc \Diamond p, \bigcirc \Box \Diamond p, \neg \Box p, \neg \bigcirc \Diamond \Box p$} 
+[.{$\bigcirc \Diamond p , \bigcirc \Box \Diamond p, \neg \bigcirc \Box p, \neg \bigcirc \Diamond \Box p$} 
+[.{$\Diamond p, \Box \Diamond p, \neg \Box p, \neg \Diamond \Box p$} 
+[.{To $l_1$} ] ] ] 
+[.\node[draw]{$\bigcirc \Diamond p , \bigcirc \Box \Diamond p, \neg p, \neg \bigcirc \Diamond \Box p$}; 
+[.{$\Diamond p, \Box \Diamond p, \neg \Diamond \Box p$} 
+[.{To $l_0$} ] ] ] ] 
+[.{$p, \bigcirc \Box \Diamond p, \neg \Box p, \neg \bigcirc \Diamond \Box p$} 
+[.\node[draw]{$p, \bigcirc \Box \Diamond p, \neg \bigcirc \Box p, \neg \bigcirc \Diamond \Box p$}; 
+[.{$\Box \Diamond p, \neg \Box p, \neg \Diamond \Box p$} 
+[.{$\Diamond p, \bigcirc \Box \Diamond p, \neg \Box p, \neg \Diamond \Box p$} 
+[.{To $l_1$} ] ] ] ] 
+[.{$p, \bigcirc \Box \Diamond p, \neg p, \neg \bigcirc \Diamond \Box p$}\\{$\times$} ] ] ] ] ] ]
 \end{tikzpicture}
 
 \begin{proof}
-Since the tableau for the negation of \(\Box \Diamond p \implies \Diamond \Box p\) shows a closed branch,
-then the original formula is valid.
+Since the tableau for the negation of \(\Box \Diamond p \implies \Diamond \Box p\) shows a closed branch but many looped branches, it is then satisfiable.
 \end{proof}
 
 \pagebreak
@@ -260,19 +272,10 @@ Since the only branch in the tableau is closed, \(\Box A \implies \neg \bigcirc 
 
 \spacepls
 
-\begin{tikzpicture}[scale=0.9]
-\tikzset{every tree node/.style={align=center,anchor=north, }}
+\begin{tikzpicture}[scale=0.70]
+\tikzset{every tree node/.style={align=center,anchor=north}}
 \tikzset{grow'=down}
-\Tree [.{$\neg((\Box A) \until (\Diamond B) \implies \Box (A \until \Diamond B))$} 
-[.{$(\Box A) \until (\Diamond B), \Box (A \until \Diamond B)$}
-[.{$(\Box A) \until (\Diamond B), A \until \Diamond B, \bigcirc \Box (A \until \Diamond B)$} 
-[.{$\Diamond B \vee (\Box A \wedge \bigcirc (\Box A \until \Diamond B)), A \until \Diamond B, \bigcirc \Box(A \until \Diamond B)$} 
-[.{$\Box A, \bigcirc(\Box A \until \Diamond B), A \until \Diamond B, \bigcirc \Box(A \until \Diamond B)$} {$A, \bigcirc \Box A, \bigcirc(\Box A \until \Diamond B), A \until \Diamond B, \bigcirc \Box(A \until \Diamond B)$}\\{$\vdots$} ] 
-[.\node[label={left:{\scriptsize $<l_0>$}}]{$\Diamond B, A \until \Diamond B, \bigcirc \Box(A \until \Diamond B)$}; 
-[.{$B, \bigcirc \Diamond B, A \until \Diamond B, \bigcirc \Box(A \until \Diamond B)$} 
-[.{$B, \bigcirc \Diamond B, \Diamond B \vee (A \wedge \bigcirc(A \until \Diamond B), \bigcirc \Box(A \until \Diamond B))$} 
-[.\node[draw]{$B, \bigcirc \Diamond B, A, \bigcirc(A \until \Diamond B), \bigcirc \Box ( A \until \Diamond B)$}; [.{$\Diamond B, A \until \Diamond B, \Box(A \until \Diamond B)$} {To $l_0$} ]  ] 
-[.{$B, \bigcirc \Diamond B, \Diamond B, \bigcirc \Box(A \until \Diamond B)$} [.\node[draw]{$B, \bigcirc \Diamond B, \bigcirc \Box(A \until \Diamond B)$};\\{$\vdots$} ] ] ] ] ] ] ] ] ]
+\Tree [.{$\neg ((\Box A \until \Diamond B) \implies \Box (A \until \Diamond B))$} [.{$\Box A \until \Diamond B, \neg \Box (A \until \Diamond B)$} [.{$\Box A \until \Diamond B, \neg (A \until \Diamond B)$}\\{$\vdots$} ] [.{$\Box A \until \Diamond B, \neg (A \until \Diamond B)$} [.{$\Box A, \bigcirc(\Box A \until \Diamond B), \neg (A \until B)$}\\{$\vdots$} ] [.{$\Diamond B, \neg (A \until \Diamond B)$} [.{$\bigcirc \Diamond B, \neg (A \until \Diamond B)$} [.{$\bigcirc \Diamond B, \Box \neg B, (\neg A \vee \bigcirc \neg (A \until B))$} [.{$\bigcirc \Diamond B, \neg B, \bigcirc \Box \neg B, (\neg A \vee \bigcirc \neg (A \until \Diamond B))$} [.\node[draw]{$\bigcirc \Diamond B, \neg B, \bigcirc \neg(A \until \diamond B)$};\\{$\vdots$} ] [.\node[draw]{$\bigcirc \Diamond B, \neg B, \bigcirc \Box \neg B, \neg A$}; [.{$\Diamond B, \Box \neg B$} [.\node[label=left:{\scriptsize $<l_0>$}]{$\Diamond B, \neg B, \bigcirc \Box \neg B$}; [.\node[draw]{$\bigcirc \Diamond B, \neg B, \bigcirc \Box \neg B$}; [.{To $l_0$} ] ] [.{$B, \neg B, \bigcirc \Box \neg B$}\\{$\times$} ] ] ] ] ] ] ] [.{$B, \neg (A \until \Diamond B)$} [.{$B, \Box \neg B, \neg A \vee \bigcirc \neg(A \until B)$} [.{$B, \neg B, \bigcirc \Box \neg B, \neg A \vee \bigcirc \neg(A \until B)$}\\{$\times$} ] ] ] ] ] ] ]
 \end{tikzpicture}
 
 \begin{proof}

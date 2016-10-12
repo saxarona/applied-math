@@ -29,7 +29,7 @@
 \newcommand{\mahteacher}{Dr. Viacheslav Kalashnikov}
 \newcommand{\mahclass}{Applied Mathematics}
 \newcommand{\mahtitle}{Topic II - Activity 10}
-\newcommand{\mahdate}{September 28, 2016}
+\newcommand{\mahdate}{October 11, 2016}
 \newcommand{\spacepls}{\vspace{5mm}}
 \newcommand{\until}{\mathscr{U}}
 \renewcommand\qedsymbol{\(\blacksquare\)}
@@ -272,15 +272,15 @@ Since the only branch in the tableau is closed, \(\Box A \implies \neg \bigcirc 
 
 \spacepls
 
-\begin{tikzpicture}[scale=0.70]
+\begin{tikzpicture}[scale=0.67]
 \tikzset{every tree node/.style={align=center,anchor=north}}
 \tikzset{grow'=down}
 \Tree [.{$\neg ((\Box A \until \Diamond B) \implies \Box (A \until \Diamond B))$} [.{$\Box A \until \Diamond B, \neg \Box (A \until \Diamond B)$} [.{$\Box A \until \Diamond B, \neg (A \until \Diamond B)$}\\{$\vdots$} ] [.{$\Box A \until \Diamond B, \neg (A \until \Diamond B)$} [.{$\Box A, \bigcirc(\Box A \until \Diamond B), \neg (A \until B)$}\\{$\vdots$} ] [.{$\Diamond B, \neg (A \until \Diamond B)$} [.{$\bigcirc \Diamond B, \neg (A \until \Diamond B)$} [.{$\bigcirc \Diamond B, \Box \neg B, (\neg A \vee \bigcirc \neg (A \until B))$} [.{$\bigcirc \Diamond B, \neg B, \bigcirc \Box \neg B, (\neg A \vee \bigcirc \neg (A \until \Diamond B))$} [.\node[draw]{$\bigcirc \Diamond B, \neg B, \bigcirc \neg(A \until \diamond B)$};\\{$\vdots$} ] [.\node[draw]{$\bigcirc \Diamond B, \neg B, \bigcirc \Box \neg B, \neg A$}; [.{$\Diamond B, \Box \neg B$} [.\node[label=left:{\scriptsize $<l_0>$}]{$\Diamond B, \neg B, \bigcirc \Box \neg B$}; [.\node[draw]{$\bigcirc \Diamond B, \neg B, \bigcirc \Box \neg B$}; [.{To $l_0$} ] ] [.{$B, \neg B, \bigcirc \Box \neg B$}\\{$\times$} ] ] ] ] ] ] ] [.{$B, \neg (A \until \Diamond B)$} [.{$B, \Box \neg B, \neg A \vee \bigcirc \neg(A \until B)$} [.{$B, \neg B, \bigcirc \Box \neg B, \neg A \vee \bigcirc \neg(A \until B)$}\\{$\times$} ] ] ] ] ] ] ]
 \end{tikzpicture}
 
 \begin{proof}
-As there is at least one branch that loops, it is an open tableau. Therefore, \((\Box A)\until(\Diamond B) \implies \Box(A \until \Box B)\)
-is not valid.
+As there is at least one branch that loops and some branches that are closed, \((\Box A)\until(\Diamond B) \implies \Box(A \until \Box B)\)
+is not valid but satisfiable.
 \end{proof}
 
 \pagebreak
@@ -316,79 +316,221 @@ As there is a loop and an open branch in the tableau, the formula \(\Diamond B \
 
 If \(s \models \exists A\), then \(s \models \forall A\).}
 
-aa
+\spacepls
+
+This is not correct.
+\begin{proof}
+Let \(e_1\) be an edge between \(s\) and \(s'\), and \(v_{\mathscr{I}_{s'}}(A) = T\).
+
+Now assume \(e_2\) is an edge between \(s\) and \(s''\), and that \(v_{\mathscr{I}_{s''}}(A) = F\).
+
+Therefore, it exists a path where there's a state \(s'\) where \(A\) is true, but not all paths of \(s\) lead to states where \(A\) is true.
+\end{proof}
 
 {\large \textbf{b)} Is the following assertion correct? Provide a proof or a counterexample.
 
 If \(s \models \forall A\), then \(s \models \exists A\).}
 
-aa
+\spacepls
+
+This is correct.
+
+\begin{proof}
+Let \(e_1\) and \(e_2\) be edges connecting \(s\) to \(s'\) and \(s''\) respectively, and that the premise \(s \models \forall A\) is correct, so that \(v_{\mathscr{I}_{s'}}(A) = T, v_{\mathscr{I}_{s''}}(A) = T\).
+
+Therefore, there exists a path of \(s\) that leads to a state in which \(A\) is true.
+\end{proof}
+
+\pagebreak
 
 {\large \textbf{c)} Is the following assertion correct? Provide a proof or a counterexample.
 
 If \(s \models \forall \Diamond A \vee \forall \Diamond B\), then \(s \models \forall \Diamond (A \vee B)\).}
 
-aa
+\spacepls
+
+This is correct.
+
+\begin{proof}
+Let  the premise \(s \models \forall \Diamond A \vee \forall \Diamond B\) be true. For the premise to be true, either there are some states \(s', \, \dots , \, s^n\) in all paths connected to \(s\) in which A is true, or either there are some states \(s_1, \, \dots , \, s_m\) in all paths connected to \(s\) where \(B\) is true.
+
+This means that all paths connected to \(s\) have some states where either \(A\) or \(B\) is true, and therefore, the assertion holds.
+\end{proof}
+
+However, the converse direction does not hold, as is shown in the next exercise.
+
+\spacepls
 
 {\large \textbf{d)} Is the following assertion correct? Provide a proof or a counterexample.
 
 If \(s \models \forall \Diamond(A \vee B)\), then \(s \models \forall \Diamond A \vee \Diamond B\).}
 
-aa
+\spacepls
+
+This is not correct. Consider the following counterexample.
+
+\begin{proof}
+Let \(e_1\) and \(e_2\) be edges connecting \(s\) to \(s'\) and \(s''\) respectively, and that the premise is correct, so that \(v_{\mathscr{I}_{s'}}(A) = T, v_{\mathscr{I}_{s'}}(B) = F, v_{\mathscr{I}_{s''}}(A) = F, v_{\mathscr{I}_{s''}}(B) = T\).
+
+So it is true that all paths have at least one state in which either A or B is true, but conversely, not all paths lead to an \(A\) neither all paths lead to a \(B\).
+Therefore this implication is not correct.
+\end{proof}
 
 {\large \textbf{e)} Is the following assertion correct? Provide a proof or a counterexample.
 
 If \(s \models \forall (A \until B)\), then \(s \models \neg (\exists (\neg B \until(\neg A \wedge \neg B)) \vee \exists \Diamond \neg B)\).}
 
-aa
+\spacepls
+
+This is correct.
+
+\begin{proof}
+\begin{align*}
+& \forall (A \until B) \implies \neg (\exists (\neg B \until(\neg A \wedge \neg B)) \vee \exists \Diamond \neg B) =
+\\ & = \neg \exists (\neg B \until(\neg A \wedge \neg B)) \wedge \exists \Box \neg B & \tag*{Equivalence of $A \until B$}
+\\ & = \neg (\exists (B \until(\neg A \wedge \neg B)) \vee \exists \Diamond \neg B) & \tag*{de Morgan}
+\end{align*}
+\end{proof}
 
 \section{Exercise 2.5.2}
 
-{\large \textbf{b)} Let \(\Phi\) and \(\Psi\) be arbitrary CTL formulae. Is the following equivalence correct?
+{\large \textbf{a)} Let \(\Phi\) and \(\Psi\) be arbitrary CTL formulae. Is the following equivalence correct?
 \[\exists \bigcirc \exists \Diamond \Phi \equiv \exists \Diamond \exists \bigcirc \Phi\]}
 
-aa
+This is not correct. Consider the following counterexample.
 
-{\large \textbf{c)} Let \(\Phi\) and \(\Psi\) be arbitrary CTL formulae. Is the following equivalence correct?
+\begin{proof}
+Let the LHS of the equivalence be true.
+This means that there exists at least one path in which one of its states has at least one path with a state where \(\Phi\) is true.
+
+Now, let the RHS of the equivalence be true.
+This would mean all states of all the paths connected to the current state, have all their paths leading to a next state where \(\Phi\) is true; which is clearly different from the semantics of the LHS of the equivalence.
+\end{proof}
+
+{\large \textbf{b)} Let \(\Phi\) and \(\Psi\) be arbitrary CTL formulae. Is the following equivalence correct?
 \[\forall \bigcirc \forall \Box \Phi \equiv \forall \Box \forall \bigcirc \Phi\]}
 
-aa
+This equivalence is correct.
 
-{\large \textbf{d)} Let \(\Phi\) and \(\Psi\) be arbitrary CTL formulae. Is the following equivalence correct?
+\begin{proof}
+Let us consider the semantics of the LHS, assuming it holds true.
+LHS implies that all next states \(s'\) in all paths from the current state \(s\) have all states \(s'',\, \dots,\, s^n\)in all their paths with \(\Phi\) as true. This means that \(\Phi\) should be true for all states in all branches of all \(s''\) next states of \(s^i\), from \(i=1\) to \(i=n-1\).
+
+Now let's consider the RHS and assuming it's true.
+RHS implies that all states \(s', \, \dots , \, s^n\) from all paths from the current state \(s\) have a next state \(s^{i+1}\) in all their paths such that \(\Phi\) is true. This means that \(\Phi\) should be true for all the next states in all branches of \(s^{i+1}\) such that \(1<i<n\).
+
+Hence, the equivalence is correct. This also proves that \(\forall \bigcirc\) and \(\forall \Box\) are commutative.
+
+\end{proof}
+
+{\large \textbf{c)} Let \(\Phi\) and \(\Psi\) be arbitrary CTL formulae. Is the following equivalence correct?
 \[\exists \bigcirc \exists \Box \Phi \equiv \exists \Box \exists \bigcirc \Phi\]}
 
-aa
+This equivalence is not correct.
 
-{\large \textbf{e)} Let \(\Phi\) and \(\Psi\) be arbitrary CTL formulae. Is the following equivalence correct?
+\begin{proof}
+Considering the semantics of the LHS of the equivalence, we have that there is at least one path of the current state \(s\) in which the next state \(s'\) has at least one path with all its states with \(\Phi\) as true.
+
+Now let'sconsider the RHS, where we have that there is at least one path of the current state \(s\) in which all states have at least one path containing a next state \(s^{i+1}\) such that \(1<i<n\) where \(\Phi\) is true.
+
+The LHS of the equivalence refers to one of the next states with a branch (at least one) with all states (many) where \(\Phi\) is true, while RHS mentions that there exists a branch in which all states (many) have a branch that has a next state (at least one) in which \(\Phi\) is true.
+\end{proof}
+
+{\large \textbf{d)} Let \(\Phi\) and \(\Psi\) be arbitrary CTL formulae. Is the following equivalence correct?
 \[\forall \Box(\Phi \implies \Psi) \equiv (\exists \bigcirc \Phi \implies \exists \bigcirc \Psi)\]}
+
+This equivalence is not correct. Consider the following counterexample:
+
+\begin{proof}
+Let \(\Phi \implies \Psi\) be true, so that all states from all branches in the LHS of the equivalence are true.
+
+The RHS states that if there is at least one branch with a next state  in which \(\Phi\) is true, then there is at least one branch with a next state in which \(\Psi\) is true, but not necessarily the same.
+
+Therefore, a state could have \(\Phi\) as true, but a false value for \(\Psi\).
+\end{proof}
+
+\pagebreak
 
 \section{Exercise 2.6.1}
 
 {\large \textbf{a)} Is this equivalence correct? Provide a proof or a counterexample.
 \[\forall \bigcirc \forall \Box \Phi \equiv \forall \bigcirc \Box \Phi\]}
 
-aa
+This equivalence is correct.
+
+\begin{proof}
+\begin{align*}
+& \forall \bigcirc \forall \Box \Phi =
+\\ & = \forall \bigcirc \Box \Phi & \tag*{Quantifier absorption}
+\end{align*}
+\begin{align*}
+& \forall \bigcirc \Box \Phi =
+\\ & = \forall \bigcirc \forall \Box \Phi & \tag*{Quantifier absorption}
+\end{align*}
+\end{proof}
 
 {\large \textbf{b)} Is this equivalence correct? Provide a proof or a counterexample.
 \[\exists \bigcirc \exists \Box \Phi \equiv \exists \bigcirc \Box \Phi\]}
 
-aa
+This equivalence is not correct.
+
+\begin{proof}
+The LHS states that at least one of the next states of the branches of the current state \(s\), has at least one branch with all its states with \(\Phi\) as true.
+
+The RHS, however, mentions that at least one of the next states of the branches of the current state \(s\) always yields \(\Phi\) as true.
+
+For the RHS, consider a state \(s'\) with two edges \(e_1, e_2\) connecting to \(s'', s'''\) respectively. Since \(\Phi\) is always true in the future of \(s'\), then both \(s''\) and \(s'''\) should hold \(\Phi\).
+
+However, it is not the case for the LHS, since it explicitly states that at one branch (at least) of the state \(s'\) always holds \(\Phi\) as true. Therefore, these formulas are semantically different.
+\end{proof}
 
 {\large \textbf{c)} Is this equivalence correct? Provide a proof or a counterexample.
-\[\forall (\phi \wedge \psi) \equiv \forall \psi \wedge \forall \psi\]}
+\[\forall (\phi \wedge \psi) \equiv \forall \phi \wedge \forall \psi\]}
 
-aa
+This is correct.
+
+\begin{proof}
+\begin{align*}
+& \forall (\phi \wedge \psi) =
+\\ & = \forall \phi \wedge \forall \psi & \tag*{$\forall$ distributes over $\wedge$ in both directions}
+\end{align*}
+\end{proof}
+
+\pagebreak
 
 {\large \textbf{d)} Is this equivalence correct? Provide a proof or a counterexample.
 \[\exists (\phi \wedge \psi) \equiv \exists \phi \wedge \exists \psi\]}
 
-aa
+This equivalence is not correct.
+
+\begin{proof}
+Since \(\exists\) distributes over \(\wedge\) in only one direction (\(\exists (\phi \wedge \psi) \implies \exists \phi \wedge \exists \psi\)) but not the other way around, this equivalence is incorrect.
+\end{proof}
 
 {\large \textbf{e)} Is this equivalence correct? Provide a proof or a counterexample.
 \[\neg \forall(\phi \implies \psi) \equiv \exists (\phi \wedge \neg \psi)\]}
 
-aa
+This equivalence is correct.
+
+\begin{proof}
+\begin{align*}
+& \neg \forall(\phi \implies \psi) \equiv \exists (\phi \wedge \neg \psi) =
+\\ & = \exists \neg (\phi \implies \psi) \equiv \exists (\phi \wedge \neg \psi) & \tag*{Duality of quantifiers}
+\\ & = \exists \neg (\neg \phi \vee \psi) \equiv \exists (\phi \wedge \neg \psi) & \tag*{Material implication}
+\\ & = \exists (\phi \wedge \neg \psi) \equiv \exists (\phi \wedge \neg \psi) & \tag*{de Morgan}
+\end{align*}
+\end{proof}
 
 {\large \textbf{f)} Is this equivalence correct? Provide a proof or a counterexample.
 \[\forall (\Diamond \Psi \wedge \Box \Phi) \equiv \forall \Diamond (\Psi \wedge \forall \Box \Phi) \wedge \forall \Box (\Phi \wedge \forall \Diamond \Psi)\]}
+
+This equivalence is correct.
+
+\begin{proof}
+The LHS states that along all paths, \(\Psi\) is eventually true and \(\Phi\) is always true.
+
+The RHS states the same in a bit different manner: along all paths there is at least one state in which \(\Psi\) is true and along all paths all states have \(\Phi\) as true. And that along all paths, all states have \(\Phi\) as true, and along all paths \(\Psi\) is eventually true.
+
+This can be easily seen as the universal quantifier can be distributed over conjunction. And since LTL formulas (state formulas) are considered as always being quantified with \(\forall\).
+\end{proof}
 \end{document}

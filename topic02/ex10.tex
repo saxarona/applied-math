@@ -397,14 +397,19 @@ This is correct.
 {\large \textbf{a)} Let \(\Phi\) and \(\Psi\) be arbitrary CTL formulae. Is the following equivalence correct?
 \[\exists \bigcirc \exists \Diamond \Phi \equiv \exists \Diamond \exists \bigcirc \Phi\]}
 
-This is not correct. Consider the following counterexample.
+This is correct.
 
 \begin{proof}
 Let the LHS of the equivalence be true.
-This means that there exists at least one path in which one of its states has at least one path with a state where \(\Phi\) is true.
+This means that there exists at least one path in which one of the next states of the current state \(s\) has at least one path with a state where \(\Phi\) is true.
 
 Now, let the RHS of the equivalence be true.
-This would mean all states of all the paths connected to the current state, have all their paths leading to a next state where \(\Phi\) is true; which is clearly different from the semantics of the LHS of the equivalence.
+This would mean that exists at least one path in which one of its states has at least one next state in which \(\Phi\) is true.
+
+Let \(s^i\) be a state where \(\Phi\) holds and that is somehow connected to the current state \(s\).
+Since each state \(s^i\) has a previous state \(s^{i-1}\), then the RHS holds for \(s^{i-1}\). Since \(s\) is connected to \(s^1\), and \(s^1\) is connected to \(s^i\), then the LHS also holds.
+
+Therefore, the equivalence is correct.
 \end{proof}
 
 {\large \textbf{b)} Let \(\Phi\) and \(\Psi\) be arbitrary CTL formulae. Is the following equivalence correct?

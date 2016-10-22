@@ -1,0 +1,169 @@
+\documentclass[titlepage, letterpaper, fleqn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr} % fancy headers, of course!
+\usepackage{amsmath} % what do you think?
+\usepackage{amsthm} % theorems!
+\usepackage{extramarks} % more cute things
+\usepackage{enumitem} % i'm not sure...
+\usepackage{multicol} % multicolumn...?
+\usepackage{amssymb} % more symbols
+\usepackage{MnSymbol} % moar symbols?
+\usepackage{booktabs} % cool looking tables
+\usepackage{tikz} %venn and shizzle
+\usepackage{tikz-qtree-compat} %tableaux
+\usepackage{lipsum} %lorem ipsum dolor sit amet f u
+\usepackage{mathrsfs} %math script for calligraphic scripting, I GUESS
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+
+%
+% You should change this things~
+%
+
+\newcommand{\mahteacher}{Dr. Viacheslav Kalashnikov}
+\newcommand{\mahclass}{Applied Mathematics}
+\newcommand{\mahtitle}{Topic III - Activity 13}
+\newcommand{\mahdate}{October 26, 2016}
+\newcommand{\spacepls}{\vspace{5mm}}
+\newcommand{\until}{\mathscr{U}}
+\renewcommand\qedsymbol{\(\blacksquare\)}
+
+%
+% Header markings
+%
+
+\pagestyle{fancy}
+\lhead{1170065 - Xavier Sánchez}
+\chead{}
+\rhead{}
+\lfoot{}
+\rfoot{}
+
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+
+%
+% Create Problem Sections (stolen directly from jdavis/latex-homework-template @ github!)
+%
+
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+\stepcounter{#1}
+\nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Exercise \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\Large Solution}}
+
+%Alias for the new step section
+\newcommand{\steppy}[1]{\textbf{\large #1}}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+\ifnum#1>0
+\setcounter{homeworkProblemCounter}{#1}
+\fi
+\section{Exercise \arabic{homeworkProblemCounter}}
+\setcounter{partCounter}{1}
+\enterProblemHeader{homeworkProblemCounter}
+}{
+\exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% My actual info
+%
+
+\title{
+\vspace{1in}
+\textbf{Tecnológico de Monterrey} \\
+\vspace{0.5in}
+\textmd{\mahclass} \\
+\large{\textit{\mahteacher}} \\
+\vspace{0.5in}
+\textsc{\mahtitle}\\
+\textsc{3.3.1 Axioms of Probability}\\
+\textsc{3.3.2 Axioms of Probability}\\
+\textsc{3.3.3 Expected Value}\\
+\textsc{3.3.4 Expected Value}\\
+\author{01170065  - MIT \\
+Xavier Fernando Cuauhtémoc Sánchez Díaz \\
+\texttt{xavier.sanchezdz@gmail.com}}
+\date{\mahdate}
+}
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+%
+% Actual document starts here~
+%
+
+\section{Exercise 3.3.1}
+
+{\large Suppose \(A\) and \(B\) are mutually exclusive events in a sample space \(S\). \(C\) is another event in \(S, A \cup B \cup C + S\), and \(A\) and \(B\) have probabilities 0.4 and 0.2, respectively.\\
+\textbf{a)} What is \(P(A \cup B)\)?}
+
+\spacepls
+
+aa
+
+{\large \textbf{b)} Is it possible that \(P(C) = 0.2\)? Explain.}
+
+\spacepls
+
+aa
+
+\section{Exercise 3.3.2}
+
+{\large Suppose \(A\) and \(B\) are events in a sample space \(S\) with probabilities 0.8 and 0.7, respectively. Suppose also that \(P(A \cap B) = 0.6\). What is \(P(A \cup B)\)?}
+
+\spacepls
+
+aa
+
+\section{Exercise 3.3.3}
+
+{\large A company sends millions of people an entry form for a sweepstakes accompanied by an order form for a magazine subscription.
+The first, second and third prizes are \$ 10,000,000, \$ 1,000,000 and \$ 50,000 respectively.
+In order to qualify for a prize, a person is not required to order any magazines but has to spend 60 cents to mail back the entry form.
+If 30 millions people qualify by sending back their entry forms, what is a persons expected gain or loss?}
+
+\spacepls
+
+aa
+
+%FALTA 3.3.4!
+
+\end{document}

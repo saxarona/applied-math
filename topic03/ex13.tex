@@ -73,8 +73,13 @@
 \setcounter{homeworkProblemCounter}{1}
 \nobreak\extramarks{Exercise \arabic{homeworkProblemCounter}}{}\nobreak{}
 
+%Solution Environment
+\newenvironment{solution}
+{\renewcommand\qedsymbol{$\square$}\begin{proof}[Solution]}
+{\end{proof}}
+
 % Alias for the Solution section header
-\newcommand{\solution}{\textbf{\Large Solution}}
+%\newcommand{\solution}{\textbf{\Large Solution}}
 
 %Alias for the new step section
 \newcommand{\steppy}[1]{\textbf{\large #1}}
@@ -132,26 +137,33 @@ Xavier Fernando Cuauhtémoc Sánchez Díaz \\
 
 \section{Exercise 3.3.1}
 
-{\large Suppose \(A\) and \(B\) are mutually exclusive events in a sample space \(S\). \(C\) is another event in \(S, A \cup B \cup C + S\), and \(A\) and \(B\) have probabilities 0.4 and 0.2, respectively.\\
+{\large Suppose \(A\) and \(B\) are mutually exclusive events in a sample space \(S\). \(C\) is another event in \(S, A \cup B \cup C = S\), and \(A\) and \(B\) have probabilities 0.4 and 0.2, respectively.\\
 \textbf{a)} What is \(P(A \cup B)\)?}
 
-\spacepls
+\begin{solution}
+Since \(A,B\) are mutually exclusive events, then the probability of both events happening (\(P(AB)\)) is \(P(A) \times P(B) = 0.08\).
+We also know that \(P(A) \cup P(B)\) is \(P(A) + P(B) - P(AB) = 0.4 + 0.2 - 0.08 = 0.52\).
+\end{solution}
 
-aa
+\spacepls
 
 {\large \textbf{b)} Is it possible that \(P(C) = 0.2\)? Explain.}
 
-\spacepls
+\begin{solution}
+This can't be possible, since \(S = A \cup B \cup C\), and because \(A \cup B = 0.52\), then \(C = 1 - 0.52 = 0.48\). According to the axioms of probability, the sum of all events should equal 1.
+\end{solution}
 
-aa
+\spacepls
 
 \section{Exercise 3.3.2}
 
 {\large Suppose \(A\) and \(B\) are events in a sample space \(S\) with probabilities 0.8 and 0.7, respectively. Suppose also that \(P(A \cap B) = 0.6\). What is \(P(A \cup B)\)?}
 
-\spacepls
+\begin{solution}
+\(P(A \cup B) = P(A) + P(B) - P(AB)\) so  \(P(A \cup B) = 0.8 + 0.7 - 0.6 = 0.9\).
+\end{solution}
 
-aa
+\spacepls
 
 \section{Exercise 3.3.3}
 
@@ -160,17 +172,22 @@ The first, second and third prizes are \$ 10,000,000, \$ 1,000,000 and \$ 50,000
 In order to qualify for a prize, a person is not required to order any magazines but has to spend 60 cents to mail back the entry form.
 If 30 millions people qualify by sending back their entry forms, what is a persons expected gain or loss?}
 
-\spacepls
+\begin{solution}
+The expected gain of this lottery is the sum of all probabilities multiplied by its value –the prize minus the price.
+This is \(\dfrac{1}{30,000,000} (1 \cdot \$ 9,999,999.4 + 1 \cdot \$ 999,999.4 + 1 \cdot \$ 49,999.4 + 29,999,997 \cdot - \$ 0.6)\) which equals \(-0.231666\dots\).
+On average, a person will lose around 23 cents per try.
+\end{solution}
 
-aa
+\spacepls
 
 \section{Exercise 3.3.4}
 
 {\large An urn contains four balls numbered 2, 2, 5 and 6.
 If a person selects a set of two balls at random, what is the expected value of the sum of the numbers on the balls?}
 
-\spacepls
-
-aa
-
+\begin{solution}
+There are \(\binom{4}{2} = 6\) different ways to get two balls from the urn: \{(2a,2b), (2a,5), (2a,6), (2b,5), (2b,6), (5,6)\}.
+Therefore, the value of the sum of each pair is \{4, 7, 8, 7, 8, 11\}.
+This means that the expected value is \(\dfrac{1}{6} \cdot 4 + \dfrac{2}{6} \cdot 7 + \dfrac{2}{6} \cdot 8 + \dfrac{1}{6} \cdot 11 = 7.5\).
+\end{solution}
 \end{document}

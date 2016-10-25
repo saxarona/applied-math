@@ -73,8 +73,13 @@
 \setcounter{homeworkProblemCounter}{1}
 \nobreak\extramarks{Exercise \arabic{homeworkProblemCounter}}{}\nobreak{}
 
+%Solution Environment
+\newenvironment{solution}
+{\renewcommand\qedsymbol{$\square$}\begin{proof}[Solution]}
+{\end{proof}}
+
 % Alias for the Solution section header
-\newcommand{\solution}{\textbf{\Large Solution}}
+%\newcommand{\solution}{\textbf{\Large Solution}}
 
 %Alias for the new step section
 \newcommand{\steppy}[1]{\textbf{\large #1}}
@@ -132,62 +137,114 @@ Xavier Fernando Cuauhtémoc Sánchez Díaz \\
 
 {\large \textbf{a)} How many ways can the letters of the word \textit{ALGORITHM} be arranged in a row?}
 
-\spacepls
-
-aa
-
-{\large \textbf{b)} How many ways can the lletters of the word \textit{ALGORITHM} be arranged in a row if \textit{A} and \textit{L} must remain together (in order) as a unit?}
+\begin{solution}
+Since \textit{ALGORITHM} contains 9 letters, then the total number of ways in which the letters can be arranged are \(9! = 362880\).
+\end{solution}
 
 \spacepls
 
-aa
+{\large \textbf{b)} How many ways can the letters of the word \textit{ALGORITHM} be arranged in a row if \textit{A} and \textit{L} must remain together (in order) as a unit?}
+
+\begin{solution}
+Since \textit{AL} is a single element, then there are now 8 elements that can be switched around. Therefore, the number of ways in which the letters can be arranged are \(8! = 40320\).
+\end{solution}
+
+\spacepls
 
 {\large \textbf{c)} How many ways can the letters of the word \textit{ALGORITHM} be arranged in a row if the letters \textit{GOR} must remain together (in order) as a unit?}
 
-\spacepls
+\begin{solution}
+Since \textit{GOR} should remain together, then there's effectively 7 elements that can be switched around. Therefore, the number of ways in which the letters can be arranged are \(7! = 5040\).
+\end{solution}
 
-aa
+\spacepls
 
 {\large \textbf{d)} Five people are to be seated around a circular table. Two seatings are considered the same if one is a rotation of the other. How many different seatings are possible?}
 
-\spacepls
+\begin{solution}
+Since the table is round, there's no beginning or end to the assignment, and as such, only relative seating (around someone) matters.
+So the arrangement of the other four people around the first person describes all the possible seating orders.
+Therefore, the number of different seatings is \(4! = 24\).
+\end{solution}
 
-aa
+\spacepls
 
 \section{Exercise 3.2.2}
 
 {\large A computer programming team has 13 members.\\
 \textbf{a)} How many ways can a group of seven be chosen to work on a project?}
 
-\spacepls
+\begin{solution}
+This number is given by the binomial \(\binom{13}{7}\), which is calculated as:
+\[\binom{13}{7} = \dfrac{13!}{7!6!} = 1716\]
+\end{solution}
 
-aa
+\spacepls
 
 {\large \textbf{b)} Suppose seven team members are women and six are men.\\
 \textbf{i.} How many groups of seven can be chosen that contain four women and three men?}
 
-\spacepls
+\begin{solution}
+This process can be solved in two steps, first selecting women and then selecting men.
+The total combinations are the product of both numbers.
 
-aa
+So, for the women, we have:
+\[\binom{7}{4} = \dfrac{7!}{4!3!} = 7 \cdot 5 = 35\]
+
+Now, for the group of men, we have:
+\[\binom{6}{3} = \dfrac{6!}{3!3!} = 5 \cdot 4  = 20\]
+
+Therefore, the number of different combinations of four-women and three-men teams is \(35 \cdot 20 = 700\).
+\end{solution}
+
+\spacepls
 
 {\large \textbf{ii.)} How many groups of seven can be chosen that contain at least one man?}
 
-\spacepls
+\begin{solution}
+This is easily done with the difference rule.
+The number of teams with at least one man is the difference of the number of all teams of seven,
+minus the number of all teams with only women.
+We already know that the number of all 7-person teams is 1716.
+Now, since there are just seven women, and we're looking for an all-woman team of seven,
+then there's only one team that does not contain any men.
+Therefore, the number of teams that contain at least one man is 1715.
+\end{solution}
 
-aa
+\spacepls
 
 {\large \textbf{iii.)} How many groups of seven can be chosen that contain at most three women?}
+\begin{solution}
+In this case, it is easier to use the addition rule.
+The number of teams with at most three women is the sum of all teams that have one woman, plus those with two, and those with three women. The amount of men in each team configuration is left implicit, and so is the fact that there can't be any team of seven men if there are only six men available.
+\begin{align*}
+& \binom{6}{6} \cdot \binom{7}{1} = 1 \cdot 7 = 7 & \text{6M, 1W}
+\\ & \binom{6}{5} \cdot \binom{7}{2} = 6 \cdot 21 = 126 & \text{5M, 2W}
+\\ & \binom{6}{4} \cdot \binom{7}{3} = 15 \cdot 35 = 525 & \text{4M, 3W}
+\end{align*}
 
+Therefore, the amount of teams that contain at most three women is \(7 + 126 + 525 = 658\)
+\end{solution}
 \spacepls
-
-aa
 
 {\large \textbf{c)} Suppose two team members refuse to work together on projects. How many groups of seven can be chosen to work on a project?}
 
-\spacepls
+\begin{solution}
+Since we already calculated the amount of teams of seven, it is easier to use the difference rule in this case.
+The number of teams that do not contain both of two specific individuals is difference of all teams of seven members (1716) and the teams containing both individuals.
+The amount of teams containing both problematic individuals is given by the binomial \(\binom{11}{5} = 462\), since we can fill all 5 empty spots with any of the remaining 11 non-problematic individuals.
+Therefore, the number of team distribution that can be arranged with no problems at all is \(1716 - 462 = 1254\).
+\end{solution}
 
-aa
+\spacepls
 
 {\large \textbf{d)} Suppose two team members insist on either working together or not at all on projects. How many groups of seven can be chosen to work on a project?}
 
+\begin{solution}
+The number of teams containing both or neither team members is the sum of those teams containing both, plus those teams containing none of these individuals.
+For the teams containing both of these individuals, any combination of the remaining 11 members should suffice, therefore this is \(\binom{11}{5} = 462\).
+Now for the teams containing none of them, any individual can fill all the 7 spots, so this is \(\binom{11}{7} = 330\).
+Therefore, the amount of teams that can be arranged under these conditions is \(330 + 462 = 792\).
+
+\end{solution}
 \end{document}

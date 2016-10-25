@@ -73,8 +73,15 @@
 \setcounter{homeworkProblemCounter}{1}
 \nobreak\extramarks{Exercise \arabic{homeworkProblemCounter}}{}\nobreak{}
 
+
+%Solution Environment
+
+\newenvironment{solution}
+{\renewcommand\qedsymbol{$\square$}\begin{proof}[Solution]}
+{\end{proof}}
+
 % Alias for the Solution section header
-\newcommand{\solution}{\textbf{\Large Solution}}
+%\newcommand{\solution}{\textbf{\Large Solution}}
 
 %Alias for the new step section
 \newcommand{\steppy}[1]{\textbf{\large #1}}
@@ -132,60 +139,92 @@ Xavier Fernando Cuauhtémoc Sánchez Díaz \\
 
 {\large \textbf{a)} How many positive two-digit integers are multiples of 3?}
 
-\spacepls
+\begin{solution}
+The entire set of positive two-digit integers is from 10-99.
+There are 7 multiples of 3 between 10 and 30, i.e. 12, 15, 18, 21, 24, 27 and 30.
+There are another 10 from 31 to 60, and another 10 from 60 to 90.
+Finally, there are three more from 91 to 99.
+So, in total, there are 30 positive two-digit integers that are multiples of 3.
+\end{solution}
 
-aa
+\spacepls
 
 {\large \textbf{b)} What is the probability that a randomly chosen positive two-digit integer is a multiple of 3?}
 
-\spacepls
-
-aa
+\begin{solution}
+There are 90 positive two-digit integers, from 10 to 99.
+30 of those are multiples of 3, and therefore the probability that a randomly chosen positive two-digit integer is a multiple of 3 is of \(\dfrac{30}{90} = \dfrac{1}{3}\).
+\end{solution}
 
 {\large \textbf{c)} What is the probability that a randomly chosen positive two-digit integer is a multiple of 4?}
 
-\spacepls
+\begin{solution}
+There are 8 multiples of 4 between 10 and 40, i.e. 12, 16, 20, 24, 28, 32, 36 and 40.
+There are another 10 from 40 to 80.
+Finally, there are 4 more from 80 to 99.
+Therefore, there are 32 positive two-digit integers that are multiples of 4.
+\end{solution}
 
-aa
+\spacepls
 
 {\large \textbf{d)} How many positive three-digit integers are multiples of 6?}
 
-\spacepls
+\begin{solution}
+The entire set of positive three-digit integers comprises all number from 100 to 999.
+From 100 to 160, there are 10 multiples of 6.
+There are another 10 multiples of 6 from 160 to 220.
+This process can be repeated until getting 14 groups of 10, comprising all positive three-digit integers from 100 to 940.
+There are 9 more multiples of 6 from 940 to 999.
+Therefore, there are 149 positive three-digit integers that are multiples of 6.
+\end{solution}
 
-aa
+\spacepls
 
 {\large \textbf{e)} What is the probability that a randomly chosen positive three-digit integer is a multiple of 7?}
 
-\spacepls
+\begin{solution}
+There are 128 positive three-digit integers multiples of 7 (since \(7 \times 128 + 100 = 996\)).
+The whole set of positive three-digit integers contains 900 numbers.
+Therefore, the probability that a randomly chosen positive three-digit integer is a multiple of 7 is \(\dfrac{128}{900} = \dfrac{32}{225}\).
+\end{solution}
 
-aa
+\spacepls
 
 \section{Exercise 3.1.2}
 
 {\large Suppose \(A[1], A[2], A[3], \dots, A[n]\) is a one-dimensional array and \(n \geq 50\).\\
 \textbf{a)} How many elements are in the array?}
 
-\spacepls
+\begin{solution}
+Using theorem 9.1.1 from the book of Susanna S.epp, we know that any list of \(n\) numbers has \(n - m + 1\) such that \(m\) is the value of the first element. Hence, if \(n = 50\), then \(|A| = 50 - 1 + 1 = 50\). Therefore, the size of this array will always be \(n\).
+\end{solution}
 
-aa
+\spacepls
 
 {\large \textbf{b)} How many elements are in the subarray \(A[4], A[5],\dots , A[39]\)?}
 
-\spacepls
+\begin{solution}
+Using the same theorem 9.1.1, one can easily see that there are \(39 - 4 + 1 = 36\) elements in this subarray.
+\end{solution}
 
-aa
+\spacepls
 
 {\large \textbf{c)} If \(3 \leq m \leq n\), what is the probability that a randomly chosen array element is in the subarray \(A[3], A[4], \dots, A[m]\)}?
 
-\spacepls
+\begin{solution}
+Since two subarrays are created (one from 3 to \(m\), and another from \(m+1\) to \(n\)), then the probability of getting an element of the first subarray is the result of \(\dfrac{|A|}{|B|}\) such that \(A,B\) are the first and second subarrays respectively.
 
-aa
+\begin{align*}
+|A| & = m - 3 + 1 = m - 2 \\
+|B| & = n - (m + 1) + 1 = n - m \\[2ex]
+P(e) &= \frac{m-2}{n-m}
+\end{align*}
+\end{solution}
 
 {\large \textbf{d)} What is the probability that a randomly chosen array element is in the subarray shown below if \(n = 39\)?\\
 \(A[\frac{n}{2}], A[\frac{n}{2} + 1], \dots , A[n]\)}
 
-\spacepls
-
-aa
-
+\begin{solution}
+The total number of elements in the subarray is \(38 - \dfrac{38}{2} + 1 = 20\) since 39 is not even. So the probability of selecting a randomly chosen array element that belongs to this subarray is \(\dfrac{20}{N}\), where \(N\) is the number of the available elements to choose from.
+\end{solution}
 \end{document}

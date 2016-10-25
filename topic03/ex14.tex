@@ -73,8 +73,13 @@
 \setcounter{homeworkProblemCounter}{1}
 \nobreak\extramarks{Exercise \arabic{homeworkProblemCounter}}{}\nobreak{}
 
+%Solution Environment
+\newenvironment{solution}
+{\renewcommand\qedsymbol{$\square$}\begin{proof}[Solution]}
+{\end{proof}}
+
 % Alias for the Solution section header
-\newcommand{\solution}{\textbf{\Large Solution}}
+%\newcommand{\solution}{\textbf{\Large Solution}}
 
 %Alias for the new step section
 \newcommand{\steppy}[1]{\textbf{\large #1}}
@@ -135,24 +140,32 @@ Xavier Fernando Cuauhtémoc Sánchez Díaz \\
 
 {\large \textbf{a)} Suppose \(P(A \vert B) = \frac{1}{2}\) and \(P(AB) = \frac{1}{6}\). What is \(P(B)\)?}
 
+\begin{solution}
+Using conditional probability, we have that \(P(A \vert B) = \dfrac{P(AB)}{P(B)}\).\\
+Therefore \(P(B) = \dfrac{P(AB)}{P(A \vert B)} = \dfrac{\dfrac{1}{6}}{\dfrac{1}{2}} = \dfrac{1}{3}\).
+\end{solution}
+
 \spacepls
 
-aa
+{\large \textbf{b)} Suppose \(P(X \vert Y) = \frac{1}{3}\) and \(P(Y) = \frac{1}{4}\). What is \(P(XY)\)?}
 
-{\large \textbf{b)} Suppose \(P(X \vert Y) = \frac{1}{3}\) and \(P(Y) =- \frac{1}{4}\). What is \(P(XY)\)?}
+\begin{solution}
+Applying the same formula, we have that \(P(XY) = P(Y) \cdot P(X \vert Y) = \dfrac{1}{3} \cdot \dfrac{1}{4} = \dfrac{1}{12}\).
+\end{solution}
 
 \spacepls
-
-aa
 
 \section{Exercise 3.4.2}
 
 {\large The instructor of a discrete mathematics class gave two tests. Twenty-five percent of the students received an A on the first test and 15\% of the students received A's on both tests.
 What percent of the students who received A's on the first test also received A's on the second test?}
 
-\spacepls
+\begin{solution}
+We know that \(P(A_1) = 0.25\) and \(P(A_1 A_2) = 0.15\). We're looking for \(P(A_2 \vert A_1)\).
+\[P(A_2 \vert A_1) = \dfrac{P(A_1 A_2)}{P(A_1)} = \dfrac{0.15}{0.25} = 0.6 \qedhere\]
+\end{solution}
 
-aa
+\spacepls
 
 \section{Exercise 3.4.3}
 
@@ -161,9 +174,16 @@ Let \(A\) be the event that the number face up on the blue die is 2,
 and let \(B\) be the event that the number face up on the gray die is 4 or 5.
 Show that \(P(A \vert B) = P(A)\) and \(P(B \vert A) = P(B)\)}.
 
-\spacepls
+\begin{solution}
+Both \(P(A)\) and \(P(B)\) are implicitly given: \(\dfrac{1}{6}\) and \(\dfrac{1}{3}\) respectively.
 
-aa
+Now according to the definition of conditional probability, we have that \(P(A \vert B) = \dfrac{P(AB)}{P(B)}\), and since the roll of each dice is independent from each other, then \(P(AB) = P(A) \cdot P(B) = \dfrac{1}{18}\). This way, we can now solve \(P(A \vert B) = \dfrac{\frac{1}{18}}{\frac{1}{3}} = \dfrac{3}{18} = \dfrac{1}{6}\), which is actually \(P(A)\).
+
+The second event can be proved in a similar manner:
+\[P(B \vert A) = \dfrac{P(A) \cdot P(B)}{P(A)} = P(B) = \dfrac{1}{3}\]
+\end{solution}
+
+\spacepls
 
 \section{Exercise 3.4.4}
 
@@ -172,9 +192,15 @@ Let \(A\) be the event that a head appears on the first toss,
 and let \(B\) be the event that an even number of heads is obtained.
 Show that \(P(A \vert B) = P(A)\) and \(P(B \vert A) = P(B)\)}.
 
-\spacepls
+\begin{solution}
+For this exercise, \(P(B) = \dfrac{1}{2}\) since getting all tails also counts as 0 heads, and 0 is an even number.
+Again, the first toss does not influence the next tosses, so \(P(AB) = P(A) \cdot P(B) = \dfrac{1}{2} \cdot \dfrac{1}{2} = \dfrac{1}{4}\).
 
-aa
+\[P(A \vert B) = \dfrac{P(A)P(B)}{P(B)} = P(A) = \dfrac{1}{2}\\
+P(B \vert A) = \dfrac{P(A)P(B)}{P(A)} = P(B) = \dfrac{1}{2} \qedhere\]
+\end{solution}
+
+\spacepls
 
 \section{Exercise 3.4.5}
 
@@ -185,8 +211,12 @@ Now imagine the same kind of family—two children each of whom is equally likel
 Suppose you meet one of the children and see that it is a boy.
 What is the probability that the other child is a boy? Explain}.
 
-\spacepls
+\begin{solution}
+There are some implicit probabilities here: \(P(B) = P(A) = \dfrac{1}{2}\).
 
-aa
-
+Now, the first example was looking to find the probability of having two boys, that is the probability of a boy given that you already knew they had a boy.
+This time, however, we're asked to find out how likely is that the second child is a boy. We don't actually take into account the first one, because the fact that the first son is a boy does not alter the probability of the second son being a boy or a girl.
+It affects, however, the probability of having a group of two boys.
+Therefore, the probability of this independent event is \(\dfrac{1}{2}\).
+\end{solution}
 \end{document}

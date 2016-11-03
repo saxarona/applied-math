@@ -1,0 +1,235 @@
+\documentclass[titlepage, letterpaper, fleqn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr} % fancy headers, of course!
+\usepackage{amsmath} % what do you think?
+\usepackage{amsthm} % theorems!
+\usepackage{extramarks} % more cute things
+\usepackage{enumitem} % i'm not sure...
+\usepackage{multicol} % multicolumn...?
+\usepackage{amssymb} % more symbols
+\usepackage{MnSymbol} % moar symbols?
+\usepackage{booktabs} % cool looking tables
+\usepackage{tikz} %venn and shizzle
+\usepackage{tikz-qtree-compat} %tableaux
+\usepackage{lipsum} %lorem ipsum dolor sit amet f u
+\usepackage{mathrsfs} %math script for calligraphic scripting, I GUESS
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+
+%
+% You should change this things~
+%
+
+\newcommand{\mahteacher}{Dr. Viacheslav Kalashnikov}
+\newcommand{\mahclass}{Applied Mathematics}
+\newcommand{\mahtitle}{Topic III - Activity 15}
+\newcommand{\mahdate}{November 09, 2016}
+\newcommand{\spacepls}{\vspace{5mm}}
+\newcommand{\until}{\mathscr{U}}
+\renewcommand\qedsymbol{\(\blacksquare\)}
+
+%
+% Header markings
+%
+
+\pagestyle{fancy}
+\lhead{1170065 - Xavier Sánchez}
+\chead{}
+\rhead{}
+\lfoot{}
+\rfoot{}
+
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+
+%
+% Create Problem Sections (stolen directly from jdavis/latex-homework-template @ github!)
+%
+
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+\stepcounter{#1}
+\nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Exercise \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%Solution Environment
+\newenvironment{solution}
+{\renewcommand\qedsymbol{$\square$}\begin{proof}[Solution]}
+{\end{proof}}
+
+% Alias for the Solution section header
+%\newcommand{\solution}{\textbf{\Large Solution}}
+
+%Alias for the new step section
+\newcommand{\steppy}[1]{\textbf{\large #1}}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+\ifnum#1>0
+\setcounter{homeworkProblemCounter}{#1}
+\fi
+\section{Exercise \arabic{homeworkProblemCounter}}
+\setcounter{partCounter}{1}
+\enterProblemHeader{homeworkProblemCounter}
+}{
+\exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% My actual info
+%
+
+\title{
+\vspace{1in}
+\textbf{Tecnológico de Monterrey} \\
+\vspace{0.5in}
+\textmd{\mahclass} \\
+\large{\textit{\mahteacher}} \\
+\vspace{0.5in}
+\textsc{\mahtitle}\\
+\textsc{3.5.1 Bayes' Theorem}\\
+\textsc{3.5.2 Bayes' Theorem}\\
+\textsc{3.5.3 Bayes' Theorem}\\
+\author{01170065  - MIT \\
+Xavier Fernando Cuauhtémoc Sánchez Díaz \\
+\texttt{xavier.sanchezdz@gmail.com}}
+\date{\mahdate}
+}
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+%
+% Actual document starts here~
+%
+
+\section{Exercise 3.5.1}
+
+{\large One urn contains 12 blue balls and 7 white balls, and a second urn contains 8 blue balls and 19 white balls.
+An urn is selected at random, and a ball is chosen from the urn.
+
+\textbf{a)} What is the probability that the chosen ball is blue?}
+
+\begin{solution}
+First we have that \(P(B|U_1) = \frac{12}{19}, P(B|U_2) = \frac{8}{27}\).
+
+Since both urns are equally likely to be chosen, then we have \(P(U_1) = P(U_2) = \frac{1}{2}\).
+
+Then, by total probability, \(P(B) = P(B \cap U_1) + P(B \cap U_2)\).
+To obtain the probability of choosing both a blue ball and a specific urn, conditional probability equation can be used:
+\[P(B \cap U_1) = P(B|U_1) \cdot P(U_1) = \frac{12}{19} \cdot \frac{1}{2} = \frac{6}{19} \\
+P(B \cap U_2) = P(B|U_2) \cdot P(U_2) = \frac{8}{27} \cdot \frac{1}{2} = \frac{4}{27}\]
+\[P(B) = \frac{6}{19} + \frac{4}{27} = \frac{238}{513} \approx 0.4639 \qedhere \]
+\end{solution}
+
+\spacepls
+
+{\large \textbf{b)} If the chosen ball is blue, what is the probability that it came from the first urn?}
+
+\begin{solution}
+\[P(U_1|B) = \frac{P(B|U_1) \cdot P(U_1)}{P(B)} = \frac{\frac{12}{19} \cdot \frac{1}{2}}{\frac{238}{513}} = \frac{81}{19} \approx 0.6806 \qedhere\]
+\end{solution}
+
+\section{Exercise 3.5.2}
+
+{\large Redo the last exercise assuming that the first urn contains 4 blue balls and 16 white balls,
+and the second urn contains 10 blue balls and 9 white balls.}
+
+\begin{solution}
+First we have that \(P(B|U_1) = \frac{1}{5}\) and \(P(B|U_2) = \frac{10}{19}\).
+
+Again, both urns are equally likely to be chosen, hence \(P(U_1) = P(U_2) = \frac{1}{2}\).
+
+The probability of withdrawing a blue ball from a random urn is obtained as follows:
+
+\begin{align*}
+P(B) & = P(B \cap U_1) + P(B \cap U_2)
+\\ & = P(B|U_1) \cdot P(U_1) + P(B|U_2) \cdot P(U_2)
+\\ & = \frac{1}{5} \cdot \frac{1}{2} + \frac{10}{19} \cdot \frac{1}{2}
+\\ & = \frac{69}{190}
+\\ & \approx 0.3631 \,\,\square
+\end{align*}
+
+Now for the probability that the blue ball came from the first urn:
+
+\[P(U_1|B) = \frac{P(B|U_1) \cdot P(U_1)}{P(B)} = \frac{\frac{1}{5} \cdot \frac{1}{2}}{\frac{69}{190}} = \frac{19}{69} \approx 0.2753 \qedhere\]
+
+\end{solution}
+
+\spacepls
+
+\section{Exercise 3.5.3}
+
+{\large A drug-screening test is used in a large population of people of whom 4\% actually use drugs.
+Suppose that the false positive rate is 3\% and the false negative rate is 2\% .
+Thus a person who uses drugs tests positive for them 98\% of the time,
+and a person who doesn't use drugs tests negative for them 97\% of the time.
+
+\textbf{a)} What is the probability that a randomly chosen person who tests positive for drugs actually uses drugs?}
+
+\begin{solution}
+Let \(T\) be the event that the person tests positive and \(D_1\) the event that the person actually uses drugs.
+
+We're looking for \(P(D|T)\), which can be calculated with the Bayes' Theorem.
+We have the following data: \(P(T|D) = 0.98, P(\neg T | \neg D) = 0.97, P(D) = 0.04\).
+
+So, the probability of a person using drugs that tested positive is calculated as follows:
+
+\[P(D|T) = \frac{P(T|D) \cdot P(D)}{P(T)} = \frac{P(T|D) \cdot P(D)}{P(T|D) \cdot P(D) + P(T|\neg D) \cdot P(\neg D)}\]
+
+The rest of the probabilities can be obtained as the complement of their counterparts: \(P(T|\neg D) = 0.03\) and \(P(\neg D) = 0.96\).
+
+\begin{align*}
+P(D|T) & =  \frac{0.98 \cdot 0.04}{0.98 \cdot 0.04 + 0.03 \cdot 0.96)}\\
+& \approx 0.5764
+\end{align*}
+
+Thus the probability that a person who tested positive actually uses drugs is around 58\%.
+\end{solution}
+
+\spacepls
+
+{\large \textbf{b)} What is the probability that a randomly chosen person who tests negative for drugs does not use drugs?}
+
+\begin{solution}
+The same approach is used for this problem.
+
+\begin{align*}
+P(\neg D | \neg T) & = \frac{P(\neg T | \neg D) \cdot P(\neg D)}{P(\neg T | \neg D) \cdot P(\neg D) + P(\neg T | D) \cdot P(D)} \\[2ex]
+& = \frac{0.97 \cdot 0.96}{0.97 \cdot 0.96 + 0.02 \cdot 0.04}\\
+& \approx 0.9991
+\end{align*}
+Thus the probability that a person who tested negative does not use drugs is around 99\%.
+\end{solution}
+\end{document}

@@ -1,0 +1,182 @@
+\documentclass[titlepage, letterpaper, fleqn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr} % fancy headers, of course!
+\usepackage{amsmath} % what do you think?
+\usepackage{amsthm} % theorems!
+\usepackage{extramarks} % more cute things
+\usepackage{enumitem} % i'm not sure...
+\usepackage{multicol} % multicolumn...?
+\usepackage{amssymb} % more symbols
+\usepackage{MnSymbol} % moar symbols?
+\usepackage{booktabs} % cool looking tables
+\usepackage{tikz} %venn and shizzle
+\usepackage{tikz-qtree-compat} %tableaux
+\usepackage{lipsum} %lorem ipsum dolor sit amet f u
+\usepackage{mathrsfs} %math script for calligraphic scripting, I GUESS
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+
+%
+% You should change this things~
+%
+
+\newcommand{\mahteacher}{Dr. Viacheslav Kalashnikov}
+\newcommand{\mahclass}{Applied Mathematics}
+\newcommand{\mahtitle}{Topic III - Activity 16}
+\newcommand{\mahdate}{November 09, 2016}
+\newcommand{\spacepls}{\vspace{5mm}}
+\newcommand{\until}{\mathscr{U}}
+\renewcommand\qedsymbol{\(\blacksquare\)}
+
+%
+% Header markings
+%
+
+\pagestyle{fancy}
+\lhead{1170065 - Xavier Sánchez}
+\chead{}
+\rhead{}
+\lfoot{}
+\rfoot{}
+
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+
+%
+% Create Problem Sections (stolen directly from jdavis/latex-homework-template @ github!)
+%
+
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+\stepcounter{#1}
+\nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Exercise \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%Solution Environment
+\newenvironment{solution}
+{\renewcommand\qedsymbol{$\square$}\begin{proof}[Solution]}
+{\end{proof}}
+
+% Alias for the Solution section header
+%\newcommand{\solution}{\textbf{\Large Solution}}
+
+%Alias for the new step section
+\newcommand{\steppy}[1]{\textbf{\large #1}}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+\ifnum#1>0
+\setcounter{homeworkProblemCounter}{#1}
+\fi
+\section{Exercise \arabic{homeworkProblemCounter}}
+\setcounter{partCounter}{1}
+\enterProblemHeader{homeworkProblemCounter}
+}{
+\exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% My actual info
+%
+
+\title{
+\vspace{1in}
+\textbf{Tecnológico de Monterrey} \\
+\vspace{0.5in}
+\textmd{\mahclass} \\
+\large{\textit{\mahteacher}} \\
+\vspace{0.5in}
+\textsc{\mahtitle}\\
+\textsc{3.6.1 Random variables and expected values}\\
+\textsc{3.6.2 Random variables and expected values}\\
+\textsc{3.6.3 Random variables and expected values}\\
+\author{01170065  - MIT \\
+Xavier Fernando Cuauhtémoc Sánchez Díaz \\
+\texttt{xavier.sanchezdz@gmail.com}}
+\date{\mahdate}
+}
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+%
+% Actual document starts here~
+%
+
+\section{Exercise 3.6.1}
+
+{\large \textbf{a)} A fair die is rolled once.
+Let the random variable \(X\) equal the value that comes up.
+Find the expected value of \(X, E(X)\).}
+
+\spacepls
+
+{\large \textbf{b)} The die is now \textit{loaded} so that a 2 comes up twice as often than any other number.
+Find the new expected value of \(X\).}
+
+\spacepls
+
+{\large \textbf{c)} Your answer to part \textbf{b)} should be greater or less than your answer to part \textbf{a)}? Explain why.}
+
+\section{Exercise 3.6.2}
+
+{\large Two fair dices are rolled.
+The sample space \(S\) contains the 36 combinations of two numbers.
+For each member \((r, s)\) of \(S\),
+the random variable \(X(r,s) = r + s\).
+
+\textbf{a)} Write a table showing the values for \(X\), and the probability of those values; instead of 36 columns each with probability \(\frac{1}{36}\),
+do a column for each distinct valkue of \(X\) and show the probability of that value.}
+
+\spacepls
+
+{\large \textbf{b)} Find the expected value of the sum of the numbers that come up when two fair dice are rolled.}
+
+
+\section{Exercise 3.6.3}
+
+{\large At a gambling casino, a ball will be drawn from a bin containing 43 red balls, 27 green balls, and 8 blue balls.
+A player marks a game card with the color he or she believes will be picked.
+The prize money for guessing the correct color is:
+
+Red \$ 3.00
+
+Green \$ 6.00
+
+Blue \$ 10.00
+
+The price of the came card is \$5.00.
+Find the expected value of the prize money.}
+
+\end{document}

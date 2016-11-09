@@ -1,0 +1,410 @@
+\documentclass{beamer}
+\usepackage{graphicx, multirow, array, hyperref, listings}
+\usepackage[utf8]{inputenc}
+\usepackage{etoolbox}
+
+% There are many different themes available for Beamer. A comprehensive
+% list with examples is given here:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+% You can uncomment the themes below if you would like to use a different
+% one:
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+\usetheme{Boadilla}
+%\usetheme{boxes}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{default}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+\usecolortheme{rose}
+% \makeatletter
+% \patchcmd{\beamer@sectionintoc}
+%   {\vfill}
+%   {\vskip 2ex}
+%   {}
+%   {}
+% \makeatother
+
+\setbeamertemplate{sections/subsections in toc}[sections numbered]
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=cyan
+}
+%\parskip=1.5ex
+
+\title{Symmetric Eigenvalues Problems}
+
+% A subtitle is optional and this may be deleted
+\subtitle{Final Presentation}
+
+\author[X. S\'{a}nchez]{Xavier~S\'{a}nchez~D\'{i}az\\1170065}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[ITESM] % (optional, but mostly needed)
+{
+Applied Mathematics
+}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date{\today}
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+\subject{Applied Mathematics}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+% \logo{\pgfuseimage{university-logo}}
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+% \AtBeginSubsection[]
+% {
+%   \begin{frame}<beamer>{Outline}
+%     \tableofcontents[currentsection,currentsubsection]
+%   \end{frame}
+% }
+
+
+% Let's get started
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+
+\begin{frame}[allowframebreaks=1]{Outline}
+\tableofcontents[hideallsubsections=true]
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+
+
+% Section and subsections will appear in the presentation overview
+% and table of contents.
+\section{Eigenvalues and Eigenvectors}
+
+\subsection{Eigenvalues}
+
+\begin{frame}{Eigenvalues}{Eigenvalues and Eigenvectors}
+
+\begin{definition}
+The characteristic polynomial of a square matrix $A$ is
+
+\[p(x) = \text{det}(A - xI)\]
+
+The roots of the characteristic polynomial are the \textit{eigenvalues} of $A$.
+\end{definition}
+\end{frame}
+
+\begin{frame}{More about eigenvalues}{Eigenvalues and Eigenvectors}
+An $n$-by-$n$ matrix has $n$ eigenvalues. If these eigenvalues are real, they are usually indexed from largest to smallest:
+\[\lambda_n(A) \leq \dots \leq \lambda_1\]
+\pause
+If $X$ is a square matrix and it is non-singular (i.e. it has an inverse matrix), and $B = X^{-1} AX$, then $A$ and $B$ are similar.
+\pause
+
+If two matrices are similar they have \alert{exactly} the same eigenvalues.
+\end{frame}
+
+\subsection{Eigenvectors}
+
+\begin{frame}{Eigenvectors}{Eigenvalues and Eigenvectors}
+\begin{definition}
+If $\lambda \in \lambda (A)$, then there exists a nonzero vector $x$ so that $Ax = \lambda x$. This $x$ vector is said to be an \textit{eigenvector} for $A$ associated with $\lambda$.
+\end{definition}
+\end{frame}
+
+\section{QR Factorization}
+\begin{frame}{QR Factorization}{Definition}
+\begin{definition}
+If $A \in \mathbb{R}^{m \times n}$, then there exists an orthogonal $Q$ which is real and square with $m$ rows, and an upper triangular matrix $R$ with $m$ rows and $n$ columns so that
+
+\[A = QR\]
+\end{definition}
+\pause
+
+Recall that $Q$ is orthogonal if $Q^T Q = I$.
+\end{frame}
+
+\section{Symmetric Eigenvalues Problem}
+
+\begin{frame}{Description}{Symmetric Eigenvalues Problems}
+Intel offers the following description in the LAPACK Computational Routines webpage:
+
+\begin{definition}
+Given an $n$-by-$n$ real symmetric or complex Hermitian matrix $A$, find the eigenvalues $\lambda$ and the corresponding eigenvectors $x$ that satisfy the equation $Ax = \lambda x$.
+\end{definition}
+\pause
+
+These problems come in different `flavors'.
+\end{frame}
+
+\begin{frame}{Symmetric-Definite Generalized Eigenproblem}{Symmetric Eigenvalues Problems}
+
+\begin{block}{Symmetric-definite problem}
+\[Ax = \lambda B x\]
+for $A \in \mathbb{R}^{n \times n}$ which is symmetric, and $B \in \mathbb{R}^{n \times n}$ which is symmetric positive definite.
+\end{block}
+
+\pause
+
+Recall that a matrix $A \in \mathbb{R}^{n \times n}$ is positive definite if $x^T Ax > 0$ for all nonzero $x$ (which is a real vector).
+\end{frame}
+
+\begin{frame}{Generalized Singular Value Problem}{Symmetric Eigenvalues Problems}
+\begin{block}{Generalized singular value problem}
+\[A^T Ax = \mu^2 B^T Bx\]
+for $A \in \mathbb{R}^{m_1 \times n}$ and $B \in \mathbb{R}^{m_2 \times n}$.
+\end{block}
+\pause
+These problems are generalizations of the symmetric eigenvalue problem and the singular value problem respectively.
+\end{frame}
+
+\subsection{Properties}
+
+\begin{frame}{Some properties}{Symmetric Eigenvalue Problems}
+Symmetry guarantees that all of $A$'s eigenvalues are real, and that there is an orthonormal basis of eigenvectors.
+\pause
+Remember a set of vectors is orthonormal if it is not orthogonal, i.e. $x_i^T xj = \delta_{ij}$
+\pause
+
+\begin{theorem}
+If $A \in \mathbb{R}^{n \times n}$ is symmetric, then there exists a real orthogonal $Q$ such that
+\[Q^T A Q = \Lambda = \text{diag}(\lambda_1 , \dots , \lambda_n)\]
+\end{theorem}
+
+\pause
+
+The function \texttt{diag()} means a diagonal matrix, i.e. with both upper and lower bandwidth zero.
+\end{frame}
+
+\begin{frame}{Law of Inertia}{Symmetric Eigenvalue Problems}
+The \textit{inertia} of a symmetric matrix $A$ is a triplet of nonnegative integers $(m, z, p)$ where $m$, $z$ and $p$ are respectively the numbers of negative, zero and positive eigenvalues.
+\pause
+
+\subsection{Law of Inertia}
+
+\begin{theorem}{Sylvester Law of Inertia}
+
+If $A \in \mathbb{R}^{n \times n}$ is symmetric and $X \in \mathbb{R}^{n \times n}$ is non-singular, then $A$ and $X^T A X$ have the same inertia.
+\end{theorem}
+\pause
+Recall that a non-singular matrix always has an inverse.
+\end{frame}
+
+\section{Power Iterations}
+
+\begin{frame}[fragile]{What is a power iteration?}{Power Iterations}
+\begin{definition}
+A power iteration is an eigenvalue algorithm that will produce the a number $\lambda$, which is the greatest eigenvalue of $A$, and a nonzero vector $x$ (the corresponding eigenvector) such that
+\[A x = \lambda x\]
+\end{definition}
+\pause
+\begin{lstlisting}[mathescape=true]
+for $k=1,2,\dots$
+  $z^{(k)} = Aq^{(k-1)}$
+  $q^{(k)} = z^{(k)}/\Vert z^{(k)} \Vert _2$
+  $\lambda^{(k)} = [q^{(k)}]^T Aq^{(k)}$
+end
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Rayleigh Quotient Iteration}{Power Iterations}
+Based on the fact that
+\[\lambda = r(x) \equiv \dfrac{x^T Ax}{x^T x}\]
+\pause
+we have the algorithm:
+\begin{lstlisting}[mathescape=true]
+for $k=0,1,\dots$
+  $\mu_l = r(x_k)$
+  Solve $(A - \mu_k I) z_{k+1} = x_k$ for $z_{k+1}$
+  $x_{k+1} = z_{k+1}/ \Vert z_{k+1}\Vert_2$
+end
+\end{lstlisting}
+\end{frame}
+
+\section{QR and Tridiag}
+
+\begin{frame}{Reduction to Tridiagonal}{QR and Tridiag}
+If $A$ is symmetric, then it is possible to find an orthogonal $Q$ such that
+\[Q^T A Q = T\]
+ is tridiagonal. This is called the \alert{tridiagonal decomposition}.
+\end{frame}
+
+\begin{frame}{QR Factorization}{QR and Tridiag}
+Recall that if $A \in \mathbb{R}^{m \times n}$, then there exists an orthogonal $Q$ which is real and square with $m$ rows, and an upper triangular $R$ with $m$ rows and $n$ columns so that $A = QR$.
+
+\pause
+
+Also remember that a matrix $T$ is tridiagonal if it has the following format:
+
+\[
+\left[
+\begin{array}{cccc}
+a & b & 0 & 0 \\
+c & d & e & 0 \\
+0 & f & g & h \\
+0 & 0 & i & j
+\end{array}
+\right]
+\]
+
+\end{frame}
+
+\begin{frame}{QR Iteration and tridiagonal matrices}{QR and Tridiag}
+Some facts pertaining to the $QR$ iteration:
+
+\begin{itemize}
+  \item \textit{Preservation of Form}. If $T = QR$ is the $QR$ factorization of a symmetric tridiagonal matrix, then $Q$ has lower bandwidth 1 and $R$ has upper bandwidth 2. $Q^T T Q$ is also symmetric and tridiagonal.
+
+  \item \textit{Shifts}. If $s$ is a real number and $T - sI = QR$ is the QR factorization, then $RQ + sI = Q^TTQ$ is also tridiagonal.
+\end{itemize}
+\end{frame}
+
+\subsection{More on Tridiags}
+
+\begin{frame}[fragile]{Eigenvalues by Bisection}{More on Tridiagonals}
+If $T_r$ denote the leading $r$-by-$r$ principal submatrix of the matrix $T$, then its polynomial is $p_r(x) = \texttt{det}(T_r - xI)$.
+\pause
+Therefore, the following algorithm can calculate an approximation of the eigenvalue of $T$:
+\begin{lstlisting}[mathescape=true]
+while $|y - z| > \texttt{tol}\cdot (|y|+|z|)$
+  $x = (y + z)/2$
+  if $p_n(x) \cdot p_n(y) <0$
+    $z = x$
+  else
+    $y = x$
+  end
+end
+\end{lstlisting}
+\texttt{tol} is a small tolerance constant which is positive.
+\end{frame}
+
+\begin{frame}[fragile]{Sturm sequence}{More on Tridiagonals}
+Sometimes it is necessary to compute the $k$th largest eigenvalue of $T$
+for some prescribed value of $k$.
+By looking at sign changes in the strict order of the set of eigenvalues of $T_r$ one can get to the following algorithm:
+
+\begin{lstlisting}[mathescape=true]
+while $|z - y| > \texttt{u}(|y|+|z|)$
+  $x = (y + z)/2$
+  if $a(x) \geq n - k$
+    $z = x$
+  else
+    $y = x$
+  end
+end
+\end{lstlisting}
+where $a(\lambda)$ denotes the number of sign changes in the sequence $\{p_0(\lambda),\dots, p_n(\lambda)\}$
+\end{frame}
+
+\section{Jacobi Methods}
+\begin{frame}{Description}{Jacobi Method}
+Jacobi methods for the Symmetric Eigenvalue Problem work by performing a sequence of orthogonal similarity updates $A \leftarrow Q^T A Q$ with the property that each new $A$, although full, is more diagonal than the previous one.
+Eventually, the off-diagonal entries are small enough to be declared as zero.
+\end{frame}
+
+\begin{frame}[fragile]{Classic Jacobi}{Jacobi Method}
+Rows and columns ($p,q$) are altered when the subproblem is solved. $p,q$ are the rows and columns of the main submatrix  of $A$.
+\pause
+\begin{lstlisting}[mathescape=true]
+$V = I_n, \delta = \texttt{tol} \cdot \Vert A \Vert_F$
+while off($A) > \delta $
+  Choose ($p,q$) so $|a_{pq}| = \text{max}_{i\not = j} |a_{ij}|$
+  [$c,s$] = \texttt{symSchur2($A, p, q$)}
+  $A = J(p,q,\theta)^T A J(p,q,\theta)$
+  $V = V J(p,q,\theta)$
+end
+\end{lstlisting}
+Where $\Vert A \Vert_F$ is the Frobenius norm of $A$, and \texttt{symShcur2} is a function that generates the 2-by-2 symmetric Schur Decomposition.
+\end{frame}
+
+\begin{frame}{Symmetric Schur Decomposition}{Jacobi}
+\begin{definition}
+If $A \in \mathbb{R}^{n \times n}$ is symmetric, then there exists an orthogonal $Q$ so that
+\[Q^T A Q = \text{diag}(\lambda_1, \dots, \lambda_n)\]
+\end{definition}
+\end{frame}
+
+\section[SVD]{Single Value Decomposition}
+\begin{frame}{Description}{Single Value Decomposition}
+The single value decomposition (SVD) is an orthogonal matrix reduction.
+
+If $A$ is a real $m$-by-$n$ matrix, then there exists orthogonal matrices $U$ and $V$ (both square, $m$-by-$m$ and $n$-by-$n$ respectively) such that
+\[U^T A V = diag(\sigma_1 , \dots , \sigma_p) \in \mathbb{R}^{m \times n}, p = \text{min}{m,n}\]
+
+where $\sigma_1 \geq \sigma_2 \geq \dots \geq \sigma_p \geq 0$.
+\end{frame}
+
+\begin{frame}{The SVD Algorithm}{Single Value Decomposition}
+A variant of the $QR$ algorithm can be used to compute the SVD of an $A \in \mathbb{R}^{m \times n}$ with $m \geq n$:
+
+\begin{itemize}
+  \item \textit{Step 1}. Form $C = A^T A$,
+  \item \textit{Step 2}. Use the symmetric QR algorithm to compute $V_1^T C V_1 = diag(\sigma_i^2)$.
+  \item \textit{Step 3}. Apply $QR$ with column pivoting to $AV_1$ obtaining $U^T(AV_1)\Pi = R$
+\end{itemize}
+\pause
+Recall that $\Pi$ is a permutation matrix.
+\end{frame}
+
+\section{Quadratic Eigenvalue Problem}
+
+\begin{frame}{Description}{Quadratic Eigenvalue Problem}
+There are some more complex symmetric eigenvalue problems.
+
+\begin{example}
+\[(\lambda^2 M + \lambda C + K) x = 0\]
+where $M, C, K, \in \mathbb{R}^{n \times n}$
+\end{example}
+\pause
+The eigenvalue solves the following equation:
+\[\lambda = \dfrac{-(x^H C x) \pm \sqrt{(x^H C x)^2 -4(x^H Mx)(x^H Kx)}}{2(x^H Mx)}\]
+Assuming that $x^H M x \not = 0$.
+\pause
+
+Recall that $x^H$ is the conjugate transpose of a vector $x$.
+\end{frame}
+
+\begin{frame}
+\vspace{4ex}
+{\Huge Thank you!}
+%\vspace{2ex}
+%Slides available at \url{https://dl.dropboxusercontent.com/u/15350213/symm_eigen.pdf}
+
+\end{frame}
+\end{document}

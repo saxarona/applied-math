@@ -1,0 +1,161 @@
+\documentclass[titlepage, letterpaper, fleqn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr} % fancy headers, of course!
+\usepackage{amsmath} % what do you think?
+\usepackage{amsthm} % theorems!
+\usepackage{extramarks} % more cute things
+\usepackage{enumitem} % i'm not sure...
+\usepackage{multicol} % multicolumn...?
+\usepackage{amssymb} % more symbols
+\usepackage{MnSymbol} % moar symbols?
+\usepackage{booktabs} % cool looking tables
+\usepackage{tikz} %venn and shizzle
+\usepackage{tikz-qtree-compat} %tableaux
+\usepackage{lipsum} %lorem ipsum dolor sit amet f u
+\usepackage{mathrsfs} %math script for calligraphic scripting, I GUESS
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+
+%
+% You should change this things~
+%
+
+\newcommand{\mahteacher}{Dr. Viacheslav Kalashnikov}
+\newcommand{\mahclass}{Applied Mathematics}
+\newcommand{\mahtitle}{Topic IV - Activity 23}
+\newcommand{\mahdate}{November 16, 2016}
+\newcommand{\spacepls}{\vspace{5mm}}
+\newcommand{\until}{\mathscr{U}}
+\renewcommand\qedsymbol{\(\blacksquare\)}
+
+%
+% Header markings
+%
+
+\pagestyle{fancy}
+\lhead{1170065 - Xavier Sánchez}
+\chead{}
+\rhead{}
+\lfoot{}
+\rfoot{}
+
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+
+%
+% Create Problem Sections (stolen directly from jdavis/latex-homework-template @ github!)
+%
+
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+\stepcounter{#1}
+\nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Exercise \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%Solution Environment
+\newenvironment{solution}
+{\renewcommand\qedsymbol{$\square$}\begin{proof}[Solution]}
+{\end{proof}}
+
+% Alias for the Solution section header
+%\newcommand{\solution}{\textbf{\Large Solution}}
+
+%Alias for the new step section
+\newcommand{\steppy}[1]{\textbf{\large #1}}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+\ifnum#1>0
+\setcounter{homeworkProblemCounter}{#1}
+\fi
+\section{Exercise \arabic{homeworkProblemCounter}}
+\setcounter{partCounter}{1}
+\enterProblemHeader{homeworkProblemCounter}
+}{
+\exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% My actual info
+%
+
+\title{
+\vspace{1in}
+\textbf{Tecnológico de Monterrey} \\
+\vspace{0.5in}
+\textmd{\mahclass} \\
+\large{\textit{\mahteacher}} \\
+\vspace{0.5in}
+\textsc{\mahtitle}\\
+\textsc{Analysis of Variance (ANOVA)}\\
+\textsc{4.6.1}\\
+\author{01170065  - MIT \\
+Xavier Fernando Cuauhtémoc Sánchez Díaz \\
+\texttt{xavier.sanchezdz@gmail.com}}
+\date{\mahdate}
+}
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+%
+% Actual document starts here~
+%
+
+\section{Exercise 4.6.1}
+
+{\large A purification process for a chemical involves passing it, in solution, through a resin on which impurities are adsorbed.
+A chemical engineer wishing to test the efficiency of 3 different resins took a chemical solution and broke it into 15 batches.
+She tested each resin 5 times and then measured the concentration of impurities after passing through the resins. Her data were as follows:}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{@{}ccc@{}}
+\toprule
+Resin I & Resin II & Resin III \\ \midrule
+0.046 & 0.038 & 0.031 \\
+0.024 & 0.035 & 0.042 \\
+0.014 & 0.031 & 0.020 \\
+0.017 & 0.022 & 0.018 \\
+0.043 & 0.012 & 0.039 \\ \bottomrule
+\end{tabular}
+\caption{Concentration of Impurities}
+\label{tab4.6.1}
+\end{table}
+
+{\large Test the hypothesis that there is no difference in the efficiency of the resins.}
+
+aa
+
+\end{document}

@@ -1,0 +1,232 @@
+\documentclass[titlepage, letterpaper, fleqn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr} % fancy headers, of course!
+\usepackage{amsmath} % what do you think?
+\usepackage{amsthm} % theorems!
+\usepackage{extramarks} % more cute things
+\usepackage{enumitem} % i'm not sure...
+\usepackage{multicol} % multicolumn...?
+\usepackage{amssymb} % more symbols
+\usepackage{MnSymbol} % moar symbols?
+\usepackage{booktabs} % cool looking tables
+\usepackage{tikz} %venn and shizzle
+\usepackage{tikz-qtree-compat} %tableaux
+\usepackage{lipsum} %lorem ipsum dolor sit amet f u
+\usepackage{mathrsfs} %math script for calligraphic scripting, I GUESS
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+
+%
+% You should change this things~
+%
+
+\newcommand{\mahteacher}{Dr. Viacheslav Kalashnikov}
+\newcommand{\mahclass}{Applied Mathematics}
+\newcommand{\mahtitle}{Topic IV - Activity 20}
+\newcommand{\mahdate}{November 16, 2016}
+\newcommand{\spacepls}{\vspace{5mm}}
+\newcommand{\until}{\mathscr{U}}
+\renewcommand\qedsymbol{\(\blacksquare\)}
+
+%
+% Header markings
+%
+
+\pagestyle{fancy}
+\lhead{1170065 - Xavier Sánchez}
+\chead{}
+\rhead{}
+\lfoot{}
+\rfoot{}
+
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+
+%
+% Create Problem Sections (stolen directly from jdavis/latex-homework-template @ github!)
+%
+
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+\stepcounter{#1}
+\nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Exercise \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%Solution Environment
+\newenvironment{solution}
+{\renewcommand\qedsymbol{$\square$}\begin{proof}[Solution]}
+{\end{proof}}
+
+% Alias for the Solution section header
+%\newcommand{\solution}{\textbf{\Large Solution}}
+
+%Alias for the new step section
+\newcommand{\steppy}[1]{\textbf{\large #1}}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+\ifnum#1>0
+\setcounter{homeworkProblemCounter}{#1}
+\fi
+\section{Exercise \arabic{homeworkProblemCounter}}
+\setcounter{partCounter}{1}
+\enterProblemHeader{homeworkProblemCounter}
+}{
+\exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% My actual info
+%
+
+\title{
+\vspace{1in}
+\textbf{Tecnológico de Monterrey} \\
+\vspace{0.5in}
+\textmd{\mahclass} \\
+\large{\textit{\mahteacher}} \\
+\vspace{0.5in}
+\textsc{\mahtitle}\\
+\textsc{Parameter Estimation}\\
+\textsc{4.3.1}\\
+\textsc{4.3.2}\\
+\textsc{4.3.3}\\
+\textsc{4.3.4}\\
+\textsc{4.3.5}\\
+\textsc{4.3.6}\\
+\author{01170065  - MIT \\
+Xavier Fernando Cuauhtémoc Sánchez Díaz \\
+\texttt{xavier.sanchezdz@gmail.com}}
+\date{\mahdate}
+}
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+%
+% Actual document starts here~
+%
+
+\section{Exercise 4.3.1}
+
+{\large The height of a radio tower is to be measured by measuring both the horizontal distance $X$ from the center of its base to a mesuring instrument and the vertical angle of the measuring device.
+If five measurmenets of the distance $L$ give (in feet) the values
+
+150.42, 150.45, 150.49, 150.52, 150.40
+
+and four measurements of the angle $\theta$ give (in degrees) the values
+
+40.26, 40.27, 40.29, 40.26
+
+estimate the height of the tower.}
+
+aa
+
+\section{Exercise 4.3.2}
+
+{\large An electric scale gives a reading equal to the true weight plus a random error that is normally distributed with mean 0 and standard deviation $\sigma = 0.1$ mg.
+Suppose that the results of five successive weightings of the same object are as follows:
+
+3.142, 3.163, 3.155, 3.150, 3.141
+
+\textbf{a)} Determine a 95\% confidence interval estimate of the true weight.}
+
+aa
+
+\spacepls
+
+{\large \textbf{b)} Determine a 99\% confidence interval estimate of the true weight.}
+
+aa
+
+\spacepls
+
+\section{Exercise 4.3.3}
+
+{\large The standard deviation of test scores on a certain achievement test is 11.3.
+If a random sample of 81 students had a sample mean score of 74.6,
+find a 90\% confidence interval estimate for the average score of all students.}
+
+aa
+
+\spacepls
+
+\section{Exercise 4.3.4}
+
+{\large A sample of 20 cigarettes is tested to determine nicotine content and the average value observed was 1.2 mg.
+Compute a 99\% two-sided confidence interval for the mean nicotine content of a cigarette if the sample variance of a cigarette's nicotine content is $s=0.04$.}
+
+aa
+
+\spacepls
+
+\section{Exercise 4.3.5}
+
+{\large The capacities (in ampere-hours) of 10 batteries were recorded as follows:
+
+140, 136, 150, 144, 148, 152, 138, 141, 143, 151
+
+\textbf{a)}Estimate the population variance $\sigma^2$.}
+
+aa
+
+\spacepls
+
+{\large \textbf{b)} Compute a 99\% two-sided confidence interval for $\sigma^2$.}
+
+aa
+
+\spacepls
+
+{\large \textbf{c)} Compute a value $v$ that enables us to state, with 90\% confidence, that $\sigma^2$ is less than $v$.}
+
+aa
+
+\spacepls
+
+\section{Exercise 4.3.6}
+
+{\large Independent random samples are taken from the output of two machines on a production line.
+The weight of each item is of interest.
+From the first machine, a sample of size 36 is taken, with sample mean of weight of 120 grams and a sample variance of 4.
+
+From the second machine, a sample of size 64 is taken, with a sample mean weight of 130 grams and a sample variance of 5.
+
+It is assumed that the weights of items from the first machine are normally distributed with mean $\mu_1$ and variance $\sigma^2$, and that the weights of items from the second machine are normally distributed with mean $\mu_2$ and variance $\sigma^2$ (that is, the variances are assumed to be equal).
+
+Find a 99\% confidence interval for $\mu1 - \mu_2$.}
+
+aa
+
+\end{document}

@@ -1,0 +1,238 @@
+\documentclass[titlepage, letterpaper, fleqn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr} % fancy headers, of course!
+\usepackage{amsmath} % what do you think?
+\usepackage{amsthm} % theorems!
+\usepackage{extramarks} % more cute things
+\usepackage{enumitem} % i'm not sure...
+\usepackage{multicol} % multicolumn...?
+\usepackage{amssymb} % more symbols
+\usepackage{MnSymbol} % moar symbols?
+\usepackage{booktabs} % cool looking tables
+\usepackage{tikz} %venn and shizzle
+\usepackage{tikz-qtree-compat} %tableaux
+\usepackage{lipsum} %lorem ipsum dolor sit amet f u
+\usepackage{mathrsfs} %math script for calligraphic scripting, I GUESS
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+
+%
+% You should change this things~
+%
+
+\newcommand{\mahteacher}{Dr. Viacheslav Kalashnikov}
+\newcommand{\mahclass}{Applied Mathematics}
+\newcommand{\mahtitle}{Topic IV - Activity 19}
+\newcommand{\mahdate}{November 16, 2016}
+\newcommand{\spacepls}{\vspace{5mm}}
+\newcommand{\until}{\mathscr{U}}
+\renewcommand\qedsymbol{\(\blacksquare\)}
+
+%
+% Header markings
+%
+
+\pagestyle{fancy}
+\lhead{1170065 - Xavier Sánchez}
+\chead{}
+\rhead{}
+\lfoot{}
+\rfoot{}
+
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+
+%
+% Create Problem Sections (stolen directly from jdavis/latex-homework-template @ github!)
+%
+
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+\stepcounter{#1}
+\nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Exercise \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%Solution Environment
+\newenvironment{solution}
+{\renewcommand\qedsymbol{$\square$}\begin{proof}[Solution]}
+{\end{proof}}
+
+% Alias for the Solution section header
+%\newcommand{\solution}{\textbf{\Large Solution}}
+
+%Alias for the new step section
+\newcommand{\steppy}[1]{\textbf{\large #1}}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+\ifnum#1>0
+\setcounter{homeworkProblemCounter}{#1}
+\fi
+\section{Exercise \arabic{homeworkProblemCounter}}
+\setcounter{partCounter}{1}
+\enterProblemHeader{homeworkProblemCounter}
+}{
+\exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% My actual info
+%
+
+\title{
+\vspace{1in}
+\textbf{Tecnológico de Monterrey} \\
+\vspace{0.5in}
+\textmd{\mahclass} \\
+\large{\textit{\mahteacher}} \\
+\vspace{0.5in}
+\textsc{\mahtitle}\\
+\textsc{Normal, chi-square, F and (Student's) t-distributions}\\
+\textsc{4.2.1}\\
+\textsc{4.2.2}\\
+\textsc{4.2.3}\\
+\textsc{4.2.4}\\
+\textsc{4.2.5}\\
+\textsc{4.2.6}\\
+\author{01170065  - MIT \\
+Xavier Fernando Cuauhtémoc Sánchez Díaz \\
+\texttt{xavier.sanchezdz@gmail.com}}
+\date{\mahdate}
+}
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+%
+% Actual document starts here~
+%
+
+\section{Exercise 4.2.1}
+
+{\large If $X$ is a normal random variable with parameters $\mu = 10, \sigma^2 = 36$, compute the following.
+
+\textbf{a)}$P(X > 5)$:}
+
+aa
+
+\spacepls
+
+{\large \textbf{b)}$P(4 < X < 16)$:}
+
+aa
+
+\spacepls
+
+{\large \textbf{b)}$P(X < 8)$:}
+
+aa
+
+\spacepls
+
+{\large \textbf{b)}$P(X < 20)$:}
+
+aa
+
+\spacepls
+
+{\large \textbf{b)}$P(X > 16)$:}
+
+aa
+
+\spacepls
+
+\section{Exercise 4.2.2}
+
+{\large The scholastic Aptitude Test mathematics test scores across the population of high school seniors follow a normal distribution with mean 500 and a standard deviation 100.
+If five seniors are randomly chosen, find the probabiilty that all scored below 600.}
+
+aa
+
+\spacepls
+
+{\large Exactly three of them scored above 640.}
+
+aa
+
+\spacepls
+
+\section{Exercise 4.2.3}
+
+{\large If $X$ is a chi-square random variable with 6 degrees of freedom, find $P(X \leq 6)$:}
+
+aa
+
+\spacepls
+
+{\large Find $P(3 \leq X \leq 9)$:}
+
+aa
+
+\spacepls
+
+\section{Exercise 4.2.4}
+
+{\large If $X$ and $Y$ are independent chi-square random variables with 3 and 6 degrees of freedom, respectively, determine the probability that $X + Y$ will exceed 10.}
+
+aa
+
+\spacepls
+
+\section{Exercise 4.2.5}
+
+{\large If $T$ has a t-distribution with 8 degrees of freedom, find $P(T \geq 1)$:}
+
+aa
+
+\spacepls
+
+{\large Find $P(T \leq 2)$:}
+
+aa
+
+\spacepls
+
+{\large Find $P(-1 < T < 1)$:}
+
+aa
+
+\spacepls
+
+\section{Exercise 4.2.6}
+
+{\large If $T_n$ has a t distribution with $n$ degrees of freedom, show that $T_n^2$ has an F-distribution with 1 and $n$ degrees of freedom.}
+
+aa
+
+\end{document}

@@ -141,7 +141,7 @@ For mixtures of known percentages, the infrared spectroscopy gave the following 
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{@{}lllllll@{}}
+\begin{tabular}{@{}ccccccc@{}}
 \toprule
 Percentage & 0 & 20 & 40 & 60 & 80 & 100 \\
 Reading & 0.734 & 0.885 & 1.050 & 1.191 & 1.314 & 1.432 \\ \bottomrule
@@ -152,9 +152,17 @@ Reading & 0.734 & 0.885 & 1.050 & 1.191 & 1.314 & 1.432 \\ \bottomrule
 
 {\large If a new mixture gives an infrared spectroscopy reading of 1.15, estimate its percentage of natural rubber.}
 
-aa
+\begin{solution}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{img_4_5_1}
+	\caption{Scatter plot for Table \ref{tab4.5.1}}
+	\label{fig:4.5.1}
+\end{figure}
+Since the equation is given by the software, we can just replace with the reading: $y = 141.74 \times 1.15 - 106.05 \approx 56.951$
+\end{solution}
 
-\spacepls
+\pagebreak
 
 \section{Exercise 4.5.2}
 
@@ -184,12 +192,32 @@ x & y \\
 
 {\large \textbf{a)} Find the equation of the least squares line that approximates the regression of the test scores on the number of hours studied.}
 
-aa
+\begin{solution}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{img_4_5_2}
+	\caption{Scatter plot for Table \ref{tab4.5.2}}
+	\label{fig:4.5.2}
+\end{figure}
+
+
+This can be obtained \textit{by hand} using the following equation:
+\[B = \frac{\sum\limits_{i=1}^n x_i Y_i - \overline{x}\sum\limits_{i=1}^n Y_i}{\sum\limits_{i=1}^n x_i^2 - n \overline{x}^2}\]
+
+Replacing by the required data, we have that $\dfrac{6945 - 5640}{1376 - 1000} = 3.47074$
+
+Now we use the equation $A = \overline{Y} - B\overline{x} = 56.4- 34.70744 = 21.69256$.
+
+Therefore, $Y = 21.69256 + 3.47074x$ is the equation of the line that approximates the regression of the data.
+
+Additionally, a piece of software provides pretty much the same value, as can be seen in Fig. \ref{fig:4.5.2}.
+\end{solution}
 
 \spacepls
 
 {\large Predict the average test score of a person who studied 14 hours for the test.}
 
-aa
-
+\begin{solution}
+A simple substitution in $Y = 21.69256 + 3.47074x$ yields 70.28292 as the predicted average test score of a person who studied 14 hours for the test.
+\end{solution}
 \end{document}

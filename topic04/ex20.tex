@@ -1,4 +1,4 @@
-\documentclass[titlepage, letterpaper, fleqn]{article}
+\documentclass[titlepage, letterpaper]{article} %fleqn if you want left eqs
 \usepackage[utf8]{inputenc}
 \usepackage{fancyhdr} % fancy headers, of course!
 \usepackage{amsmath} % what do you think?
@@ -140,8 +140,8 @@ Xavier Fernando Cuauhtémoc Sánchez Díaz \\
 
 \section{Exercise 4.3.1}
 
-{\large The height of a radio tower is to be measured by measuring both the horizontal distance $X$ from the center of its base to a mesuring instrument and the vertical angle of the measuring device.
-If five measurmenets of the distance $L$ give (in feet) the values
+{\large The height of a radio tower is to be measured by measuring both the horizontal distance $X$ from the center of its base to a measuring instrument and the vertical angle of the measuring device.
+If five measurements of the distance $X$ give (in feet) the values
 
 150.42, 150.45, 150.49, 150.52, 150.40
 
@@ -151,7 +151,14 @@ and four measurements of the angle $\theta$ give (in degrees) the values
 
 estimate the height of the tower.}
 
-aa
+\begin{solution}
+As proved in the book, the maximum estimator of a normal sample is its mean, so we calculate the mean of distances $\overline{X} = 150.456$ and the mean of the angles $\overline{\theta} = 40.27$.
+
+Now, using the tangent of an angle we can estimate the height of the tower as shown:
+\[\tan \theta = \frac{\text{opposite}}{\text{adjacent}} \therefore \text{opposite} = \tan\theta \times \text{adjacent}\]
+
+When the values are substituted, we get that the tower is around 127.46059 feet tall.
+\end{solution}
 
 \section{Exercise 4.3.2}
 
@@ -162,13 +169,32 @@ Suppose that the results of five successive weightings of the same object are as
 
 \textbf{a)} Determine a 95\% confidence interval estimate of the true weight.}
 
-aa
+\begin{solution}
+First we need to calculate the mean of the sample: $\overline{x} = 3.1502$.
+
+The 95\% confidence interval estimate is obtained using the following:
+\[\overline{x} - 1.96 \frac{\sigma}{\sqrt{n}} < \mu < \overline{x} + 1.96 \frac{\sigma}{\sqrt{n}}\]
+
+The lower bound of the interval is $3.1502 - 1.96\frac{0.1}{\sqrt{5}} \approx 3.06254$,
+while the upper bound of the interval is $3.1502 + 1.96\frac{0.1}{\sqrt{5}} \approx 3.23785$.
+
+Because the estimate $\overline{x}$ is within the interval described above,
+we can be 95\% certain that the electric scale is reading accurately.
+\end{solution}
 
 \spacepls
 
 {\large \textbf{b)} Determine a 99\% confidence interval estimate of the true weight.}
 
-aa
+\begin{solution}
+The 99\% confidence interval estimate is obtained using the same approach as the above, but using $z_{0.005} = 2.58$.
+
+So, we have $3.1502 - 2.58\frac{0.1}{\sqrt{5}} = 3.03481$ as the lower bound,
+and $3.1502 + 2.58\frac{0.1}{\sqrt{5}} = 3.26558$.
+
+Since the estimate $\overline{x} = 3.1502$ is inside the interval described above,
+we can be 99\% certain that the electric scale is reading accurately.
+\end{solution}
 
 \spacepls
 
@@ -178,16 +204,34 @@ aa
 If a random sample of 81 students had a sample mean score of 74.6,
 find a 90\% confidence interval estimate for the average score of all students.}
 
-aa
+\begin{solution}
+The 90\% confidence interval estimate is obtained using the same approach as above, but using $z_{0.05} = 1.645$.
+
+So we have $74.6 - 1.645\frac{11.3}{\sqrt{81}} = 72.53461$ as the lower bound,
+and $74.6 + 1.645\frac{11.3}{\sqrt{81}} = 76.66538$.
+
+Since the mean $\overline{x} = 74.6$ is inside the interval described above,
+we can be 90\% certain that the average is a good estimation of the students' scores.
+\end{solution}
 
 \spacepls
 
 \section{Exercise 4.3.4}
 
 {\large A sample of 20 cigarettes is tested to determine nicotine content and the average value observed was 1.2 mg.
-Compute a 99\% two-sided confidence interval for the mean nicotine content of a cigarette if the sample variance of a cigarette's nicotine content is $s=0.04$.}
+Compute a 99\% two-sided confidence interval for the mean nicotine content of a cigarette if the sample variance of a cigarette's nicotine content is $s^2=0.04$.}
 
-aa
+\begin{solution}
+The 99\% confidence interval estimate is obtained using the same approach as above, but using $z_{0.005} = 2.58$.
+Before continuing, we need the standard deviation,
+which is obtained by calculating the square root of the sample variance:
+$s = \sqrt{0.04} = 0.2$
+
+So we have $1.2 - 2.58\frac{0.2}{\sqrt{20}} = 1.08461$ as the lower bound,
+and $1.2 + 2.58\frac{0.2}{\sqrt{20}} = 1.31538$ as the upper bound.
+
+Because the average value is 1.2 mg, then we can be 90\% certain that the test is correctly done.
+\end{solution}
 
 \spacepls
 
@@ -199,19 +243,36 @@ aa
 
 \textbf{a)}Estimate the population variance $\sigma^2$.}
 
-aa
+\begin{solution}
+The population variance can be estimated using $s^2$ as a maximum estimator.
+Calculating $s^2$ yields that $\sigma^2 = 32.23333$.
+\end{solution}
 
 \spacepls
 
 {\large \textbf{b)} Compute a 99\% two-sided confidence interval for $\sigma^2$.}
 
-aa
+Since the population variance $\sigma^2$ is not known,
+then to compute a 99\% two-sided confidence interval we need to do the following:
+\[\left\{\frac{(n-1)s^2}{\chi_{\alpha /2 ,n-1}^2}, \frac{(n-1)s^2}{\chi_{1 - \alpha /2 , n-1}^2}\right\}\]
+
+Substituting the values, we have $\dfrac{9 \times 32.23333}{23.589} = 12.29810$ as the lower bound,
+and $\dfrac{9 \times 32.23333}{1.735} = 167.20459$
+
+We can be 99\% certain that the population variance lies inside that interval.
 
 \spacepls
 
 {\large \textbf{c)} Compute a value $v$ that enables us to state, with 90\% confidence, that $\sigma^2$ is less than $v$.}
 
-aa
+\begin{solution}
+We need to calculate the lower interval (that is, the upper bound) to make sure that $\sigma^2$ is less than $v$.
+For this, we can use the following equation:
+
+\[\frac{(n-1)S^2}{\chi_{1-\alpha,n-1}^2}\]
+
+So we have that the upper bound is $\dfrac{9 \times 32.23333}{4.168} = 69.6017$ and therefore we are 90\% certain that $\sigma^2$ is between 0 and 69.6017.
+\end{solution}
 
 \spacepls
 
@@ -225,8 +286,20 @@ From the second machine, a sample of size 64 is taken, with a sample mean weight
 
 It is assumed that the weights of items from the first machine are normally distributed with mean $\mu_1$ and variance $\sigma^2$, and that the weights of items from the second machine are normally distributed with mean $\mu_2$ and variance $\sigma^2$ (that is, the variances are assumed to be equal).
 
-Find a 99\% confidence interval for $\mu1 - \mu_2$.}
+Find a 99\% confidence interval for $\mu_1 - \mu_2$.}
 
-aa
+\begin{solution}
+The 99\% confidence interval for $\mu_1 - \mu_2$ is calculated as follows:
+\[\overline{x} - \overline{y} \pm t_{\alpha /2,n+m-2}{s_p}\sqrt{1/n + 1/m}\]
+We need to calculate $s_p$ which is calculated as follows: $s^2_p = \sqrt{\frac{(n-1)s^2_1 + (m-1)s^2_2}{n+m-2}} = \sqrt{\frac{35 \times 4 + 63 \times 5}{98}} = 2.15472$.
+
+So, after substituting the values, we have
+\begin{align*}
+& 120 - 130 - 2.365 * 2.15472\sqrt{\frac{1}{36}+\frac{1}{64}} \\
+& = -11.06164\\[2ex]
+& 120 - 130 + 2.365 * 2.15472\sqrt{\frac{1}{36}+\frac{1}{64}} \\
+& = -8.93835 \qedhere
+\end{align*}
+\end{solution}
 
 \end{document}

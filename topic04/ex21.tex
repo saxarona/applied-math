@@ -141,19 +141,35 @@ Xavier Fernando Cuauhtémoc Sánchez Díaz \\
 {\large A population distribution is known to have a standard deviation 20.
 Determine the p-value of a test of the hypothesis that the population mean is equal to 50, if the average of a sample of 64 observations is 52.5.}
 
-aa
+\begin{solution}
+Let $H_0$ be our hypothesis that $\mu = \mu_0$.
+We will accept $H_0$ if $\frac{\sqrt{n}}{\sigma}|\overline{X}-\mu_0| \leq z_{\alpha/2}$.
+
+Substituting the correspondent values, we have that the test statistic is $\frac{\sqrt{64}}{20}|52.5-50| = 1 \leq 1.96$
+
+Now $P(|Z| > 1) = 0.159$.
+\end{solution}
 
 \spacepls
 
 {\large \textbf{b)} Use now an average sample of 55.}
 
-aa
+\begin{solution}
+Let $H_0$ be our hypothesis that $\mu = \mu_0$.
+The test statistic is calculated as follows: $\frac{\sqrt{64}}{20}|55-50| = 2$ which is greater than 1.96, so we reject $H_0$.
+
+The p-value is $P(|Z| > 2) = 0.023$.
+\end{solution}
 
 \spacepls
 
 {\large \textbf{c)} What if the average sample is 57.5?}
 
-aa
+\begin{solution}
+The test statistic is calculated as follows: $\frac{\sqrt{64}}{20}|57.5-50| = 3$, so we reject $H_0$.
+
+The p-value is $P(|Z| > 3) = 0.001$ which is way too low for us to accept $H_0$.
+\end{solution}
 
 \spacepls
 
@@ -164,19 +180,20 @@ The hatchery claims that the mean weight of this year's crop is at least 7.6 pou
 Suppose a random sample of 16 fish yielded an average weight of 7.2 pounds.
 Is this strong enough evidence to reject the hatchery's claims at the 5\% level of significance?}
 
-aa
+\begin{solution}
+Let $H_0$ be the hypothesis that $\mu_0 = 7.6$.
+The test statistic is $\frac{\sqrt{16}}{1.2}(7.2-7.6) = 1.33333$.
+The p-value is $1 - \Phi(1.33333) = 0.09121$, so this claim would be accepted.
+\end{solution}
 
 \spacepls
 
 {\large \textbf{b)} What about 1\% of significance?}
 
-aa
-
-\spacepls
-
-{\large \textbf{c} What is the p-value?}
-
-aa
+\begin{solution}
+The test statistic would be calculated in the same manner: $\frac{\sqrt{16}}{1.2}(7.2-7.6) = 1.33333$.
+The p-value is the same, 0.09121, and since it is greater than the 1\% level of significance, then it is also accepted.
+\end{solution}
 
 \spacepls
 
@@ -190,13 +207,18 @@ What inference would you draw from these data?
 In particular, are the data strong enough evidence to discredit the claim of the manufacturer?
 Use the 5\% level of significance.}
 
-aa
+\begin{solution}
+Let $H_0$ be our hypothesis that $\mu = 20$mg.
+The test statistic would be calculated as $\frac{\sqrt{25}}{1.3}|19.7-20| = 1.15384$.
+
+The p-value is $0.12428$, so at 5\% level of significance this is accepted and we can't discredit the manufacturer.
+\end{solution}
 
 \spacepls
 
 \section{Exercise 4.4.4}
 
-{\large a pharmaceutical house produces a certain drug item whose weight has a standard deviation of 0.5 milligrams.
+{\large A pharmaceutical house produces a certain drug item whose weight has a standard deviation of 0.5 milligrams.
 The company's research team has proposed a new method of producing the drug.
 However, this entails some costs and will be adopted only if there is strong evidence that the standard deviation of the weight of the items will drop to below 0.4 milligrams.
 If a sample of 10 items is produced and has the following weights, should the new method be adopted?
@@ -204,5 +226,16 @@ If a sample of 10 items is produced and has the following weights, should the ne
 5.728  5.731  5.727  5.724  5.723,
 5.718  5.726  5.722  5.719  5.722.}
 
-aa
+\begin{solution}
+Let $H_0$ our hypothesis that $\sigma \leq 0.4$.
+The p-value of the test data is the probability that a chi-square random variable with 9 degrees of freedom would exceed the observed value $c$.
+
+The test statistic $c$ is calculated as $\frac{(n-1)S^2}{\sigma^2_0} = \frac{9 \times 1.6444 \times 10^{-5}}{0.4^2} = 9.25 \times 10^{-4}$
+
+It is important to note that $1.6444\times 10^{-5}$ has been estimated with the sample variance using the data provided.
+
+The p-value is $P(\chi^2_{n-1} > c) = P(\chi^2_{9} > 9.25\times10^{-4}) \approx 1$.
+
+Therefore, the hypothesis $H_0$ is rejected and the method is not adopted.
+\end{solution}
 \end{document}

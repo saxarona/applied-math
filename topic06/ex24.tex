@@ -28,8 +28,8 @@
 
 \newcommand{\mahteacher}{Dr. Viacheslav Kalashnikov}
 \newcommand{\mahclass}{Applied Mathematics}
-\newcommand{\mahtitle}{Topic IV - Activity 23}
-\newcommand{\mahdate}{November 16, 2016}
+\newcommand{\mahtitle}{Topic VI - Activity 24}
+\newcommand{\mahdate}{November 23, 2016}
 \newcommand{\spacepls}{\vspace{5mm}}
 \newcommand{\until}{\mathscr{U}}
 \renewcommand\qedsymbol{\(\blacksquare\)}
@@ -115,8 +115,8 @@
 \large{\textit{\mahteacher}} \\
 \vspace{0.5in}
 \textsc{\mahtitle}\\
-\textsc{Analysis of Variance (ANOVA)}\\
-\textsc{4.6.1}\\
+\textsc{Elements of Linear Optimization}\\
+\textsc{6.1.1, 6.1.2}\\
 \author{01170065  - MIT \\
 Xavier Fernando Cuauhtémoc Sánchez Díaz \\
 \texttt{xavier.sanchezdz@gmail.com}}
@@ -133,60 +133,52 @@ Xavier Fernando Cuauhtémoc Sánchez Díaz \\
 % Actual document starts here~
 %
 
-\section{Exercise 4.6.1}
+\section{Exercise 6.1.1}
 
-{\large A purification process for a chemical involves passing it, in solution, through a resin on which impurities are adsorbed.
-A chemical engineer wishing to test the efficiency of 3 different resins took a chemical solution and broke it into 15 batches.
-She tested each resin 5 times and then measured the concentration of impurities after passing through the resins. Her data were as follows:}
+{\large Consider the following LP problem:
 
-\begin{table}[h!]
-\centering
-\begin{tabular}{@{}ccc@{}}
-\toprule
-Resin I & Resin II & Resin III \\ \midrule
-0.046 & 0.038 & 0.031 \\
-0.025 & 0.035 & 0.042 \\
-0.014 & 0.031 & 0.020 \\
-0.017 & 0.022 & 0.018 \\
-0.043 & 0.012 & 0.039 \\ \bottomrule
-\end{tabular}
-\caption{Concentration of Impurities}
-\label{tab4.6.1}
-\end{table}
+$$Z = -3x_1 + 2x_2 + 10x_3 - x_4 \to \max$$
 
-{\large Test the hypothesis that there is no difference in the efficiency of the resins.}
+s.t.
+
+\begin{align*}
+    -x1 + 2x_2 -3x_3 + 4x_4 \leq 7 \\
+    -3x_2 + 2x_3 - 5x_4 \leq 12 \\
+    2x_1 + 2x_2 + 7x_4 \leq 15 \\
+    x_j \geq 0, j = 1, \dots , 4
+\end{align*}
+
+\textbf{a)} Rewrite the problem as an augmented LP problem ready to be solved by the simplex method.}
 
 \begin{solution}
-Let $H_0$ be the hypothesis that $\mu_0 = \mu_1 = \mu_2$,
-versus $H_1$ that not all the means are equal.
-
-First we start by computing the between samples sum of squares using $SS_b = n\sum\limits_{i=1}^m(X_{i.} - X_{..})^2$
-
-For that, we need the mean of each sample: $X_{1.} = 0.029, X_{2.} = 0.0276, X_{3.} = 0.03$, and also  the estimator of $\mu, X_{..} = \dfrac{\sum\limits_{i=1}^m X_{i.}}{m} = 0.028866667$.
-
-We can now calculate $SS_b = 0.000014533$.
-
-We now calculate the sum of squares $SS = \sum\limits_{i=1}^n\sum\limits_{j=1}^m$, where $n$ is the number of samples (3) and $m$ is the number of measurements in each sample.
-
-Replacing the values, we have:
-\[SS = \sum\limits_{i=1}^3\sum\limits_{j=1}^5 = 0.014303\]
-
-We now need to compute SSW using the equation $SS_W = SS - nmX_{..}^2 - SS_b$ which yields 0.0017892.
-
-This number is later used in the test statistic $TS = \dfrac{SS_b / (m-1)}{SS_W/(nm-m)} = 0.0487368$.
-
-After that, the test statistic is checked against the $F$ value from the table, specifically $F_{m-1,nm-m,\alpha} = F_{2,12,0.05} = 3.89$.
-
-Since $TS < F_{2,12,0.05}$, we have not enough evidence to reject $H_0$.
-
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=0.98\textwidth]{img_4_6_1}
-	\caption{Screen capture of the software used for computations}
-	\label{fig:4.6.1}
-\end{figure}
-
-Software was used for most of the computations, as can be seen in Fig. \ref{fig:4.6.1}
+aa
 \end{solution}
+
+\spacepls
+
+{\large Work through the simplex method step by step to solve the augmented LP problem.}
+
+\begin{solution}
+aa
+\end{solution}
+
+\spacepls
+
+\section{Exercise 6.1.2}
+
+{\large Work through the simplex method step by step to solve the following problem.
+
+Mazimize $Z = 4x_1 + 3x_2 + 6x_3$ subject to}
+
+\begin{align*}
+3x_1 + x_2 + 3x_3 \leq 30 \\
+2x_1 + 2x_2 + 3x_3 \geq 10 \\
+x_1  \geq 0, x_2 \geq 0, x_3 \geq 0
+\end{align*}
+
+\begin{solution}
+aa
+\end{solution}
+
 
 \end{document}

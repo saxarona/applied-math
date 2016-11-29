@@ -1,0 +1,315 @@
+\documentclass[titlepage, letterpaper, fleqn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr} % fancy headers, of course!
+\usepackage{amsmath} % what do you think?
+\usepackage{amsthm} % theorems!
+\usepackage{extramarks} % more cute things
+\usepackage{enumitem} % i'm not sure...
+\usepackage{multicol} % multicolumn...?
+\usepackage{amssymb} % more symbols
+\usepackage{MnSymbol} % moar symbols?
+\usepackage{booktabs} % cool looking tables
+\usepackage{tikz} %venn and shizzle
+\usepackage{tikz-qtree-compat} %tableaux
+\usepackage{lipsum} %lorem ipsum dolor sit amet f u
+\usepackage{mathrsfs} %math script for calligraphic scripting, I GUESS
+\usepackage{listings}
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+
+%
+% You should change this things~
+%
+
+\newcommand{\mahteacher}{Dr. Viacheslav Kalashnikov}
+\newcommand{\mahclass}{Applied Mathematics}
+\newcommand{\mahtitle}{Topic VI - Activity 27}
+\newcommand{\mahdate}{November 30, 2016}
+\newcommand{\spacepls}{\vspace{5mm}}
+\newcommand{\until}{\mathscr{U}}
+\renewcommand\qedsymbol{\(\blacksquare\)}
+
+%
+% Header markings
+%
+
+\pagestyle{fancy}
+\lhead{1170065 - Xavier Sánchez}
+\chead{}
+\rhead{}
+\lfoot{}
+\rfoot{}
+
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+
+%
+% Create Problem Sections (stolen directly from jdavis/latex-homework-template @ github!)
+%
+
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+\stepcounter{#1}
+\nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Exercise \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%Solution Environment
+\newenvironment{solution}
+{\renewcommand\qedsymbol{$\square$}\begin{proof}[Solution]}
+{\end{proof}}
+
+% Alias for the Solution section header
+%\newcommand{\solution}{\textbf{\Large Solution}}
+
+%Alias for the new step section
+\newcommand{\steppy}[1]{\textbf{\large #1}}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+\ifnum#1>0
+\setcounter{homeworkProblemCounter}{#1}
+\fi
+\section{Exercise \arabic{homeworkProblemCounter}}
+\setcounter{partCounter}{1}
+\enterProblemHeader{homeworkProblemCounter}
+}{
+\exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% My actual info
+%
+
+\title{
+\vspace{1in}
+\textbf{Tecnológico de Monterrey} \\
+\vspace{0.5in}
+\textmd{\mahclass} \\
+\large{\textit{\mahteacher}} \\
+\vspace{0.5in}
+\textsc{\mahtitle}\\
+\textsc{Elements of Optimization with Uncertainty}\\
+\textsc{6.4.1, 6.4.2}\\
+\author{01170065  - MIT \\
+Xavier Fernando Cuauhtémoc Sánchez Díaz \\
+\texttt{xavier.sanchezdz@gmail.com}}
+\date{\mahdate}
+}
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+%
+% Actual document starts here~
+%
+
+\section{Exercise 6.4.1}
+
+{\large Solve the 2-persons zero-sum matrix game with the payoff table given below.
+Use the primal or dual simplex method after having reduced the game to a linear programming problem.
+
+$$A =
+\begin{bmatrix}
+-2 & 3 & 0 & 4 \\
+1 & -4 & 2 & -2 \\
+5 & 0 & 3 & -1
+\end{bmatrix}$$}
+
+\begin{solution}
+Assuming the player 1 is the row player, then we need to create $A^T$:
+$$
+A^T =
+\begin{bmatrix}
+-2 & 1 & 5 \\
+3 & -4 & 0 \\
+0 & 2 & 3 \\
+4 & -2 & -1
+\end{bmatrix}
+$$
+
+Then we need to convert it to a LP Problem.
+Since we only have coefficients and no values,
+we add another variable and include it as the value we're looking for.
+After some algebra, the equations look like these:
+
+\begin{align*}
+	Z = v \to \max \\
+	\text{subject to} \\
+	-2x_1 + x_2 + 5x_3 - x_4 \geq 0 \\
+	3x_1 + 4x_2 - x_4 \geq 0 \\
+	2x_2 + 3x_3 - x_4 \geq 0 \\
+	4x_1 - 2x_2 - x_3 - x_4 \geq 0
+\end{align*}
+
+And since we're looking for a probability distribution between actions $x_1, x_2, x_3$, then we add the constraint $x_1 + x_2 + x_3 = 1$.
+
+Solving automatically in IORTutorial yields the following output:
+
+\begin{lstlisting}[basicstyle=\tiny]
+Linear Programming Model:
+Number of Decision Variables:      4
+Number of Functional Constraints:  5
+
+Max Z =      0 X1 +    0 X2 +    0 X3 +    1 X4 
+
+subject to
+
+ 1)         -2 X1 +    1 X2 +    5 X3 -    1 X4 >=       0
+ 2)          3 X1 -    4 X2 +    0 X3 -    1 X4 >=       0
+ 3)          0 X1 +    2 X2 +    3 X3 -    1 X4 >=       0
+ 4)          4 X1 -    2 X2 -    1 X3 -    1 X4 >=       0
+ 5)          1 X1 +    1 X2 +    1 X3 +    0 X4  =       1
+
+and
+        X1 >= 0, X2 >= 0, X3 >= 0.
+
+
+Solve Automatically by the Simplex Method:
+
+Optimal Solution                            |       Sensitivity Analysis
+Objective Function: 1.5                     |    Objective Function Coefficients
+ Variable   |   Value                       |     Current Value | Minimum | Maximum 
+____________|___________                    |    _______________|_________|_________
+X1          |0.5                            |    0              |-5       |3
+X2          |0                              |    0              |-infin   |1
+X3          |0.5                            |    0              |-1       |5
+X4          |1.5                            |    1              |0        |infin
+                                            |
+                                            |
+                                            |         Right Hand Sides
+Constraint|Slack or Surplus|Shadow Price    |     Current Value | Minimum | Maximum 
+__________|________________|____________    |    _______________|_________|_________
+1         |0               |-0              |     0             |-infin   |0
+2         |0               |-0              |     0             |-infin   |0
+3         |0               |-0.625          |     0             |-0       |2.4
+4         |0               |-0.375          |     0             |-0       |0
+5         |0               |1.5             |     1             |0        |infin
+
+x1*=0.5, x2*=0, x3*=0.5
+Z=1.5
+\end{lstlisting}
+
+\end{solution}
+
+\section{Exercise 6.4.2}
+
+{\large Solve the 2-persons zero-sum matrix game with the payoff table given below.
+Use the primal or dual simplex method after having reduced the game to a linear programming problem.
+
+$$A =
+\begin{bmatrix}
+1 & -3 & 2 & -2 & 1 \\
+2 & 3 & 0 & 3 & -2 \\
+0 & 4 & -1 & -3 & 2 \\
+-4 & 0 & -2 & 2 & -1
+\end{bmatrix}$$}
+
+\begin{solution}
+Assuming the player 1 is the row player, then we need to create $A^T$:
+$$
+A^T =
+\begin{bmatrix}
+1 & 2 & 0 & -4 \\
+-3 & 3 & 4 & 0 \\
+2 & 0 & -1 & -2 \\
+-2 & 3 & -3 & 2 \\
+1 & -2 & 2 & -1
+\end{bmatrix}
+$$
+
+Then we need to convert it to a LP Problem.
+Since we only have coefficients and no values,
+we add another variable and include it as the value we're looking for.
+After some algebra, the equations look like these:
+
+\begin{align*}
+	Z = v \to \max \\
+	\text{subject to} \\
+	x_1 + 2x_2 -4x_4 - x_5 \geq 0 \\
+	-3x_1 + 3x_2 + 4x_3 - x_5 \geq 0 \\
+	2x_1 -x_3 -2x_4 - x_5 \geq 0 \\
+	-2x_1 3x_2 -3x_3 + 2x_4 - x_5 \geq 0 \\
+	x_1 -2x_2 + 2x_3 -x_4 -x_5 \geq 0
+\end{align*}
+
+And since we're looking for a probability distribution between actions $x_1, x_2, x_3, x_4$, then we add the constraint $x_1 + x_2 + x_3 + x_4 = 1$.
+
+Solving automatically in IORTutorial yields the following output:
+\begin{lstlisting}[basicstyle=\tiny]
+Linear Programming Model:
+Number of Decision Variables:      5
+Number of Functional Constraints:  6
+
+Max Z =      0 X1 +    0 X2 +    0 X3 +    0 X4 +    1 X5 
+
+subject to
+
+ 1)          1 X1 +    2 X2 +    0 X3 -    4 X4 -    1 X5 >=       0
+ 2)         -3 X1 +    3 X2 +    4 X3 +    0 X4 -    1 X5 >=       0
+ 3)          2 X1 +    0 X2 -    1 X3 -    2 X4 -    1 X5 >=       0
+ 4)         -2 X1 +    3 X2 -    3 X3 +    2 X4 -    1 X5 >=       0
+ 5)          1 X1 -    2 X2 +    2 X3 -    1 X4 -    1 X5 >=       0
+ 6)          1 X1 +    1 X2 +    1 X3 +    1 X4 +    0 X5  =       1
+
+and
+        X1 >= 0, X2 >= 0, X3 >= 0, X4 >= 0.
+
+
+Solve Automatically by the Simplex Method:
+
+Optimal Solution                            |       Sensitivity Analysis
+Objective Function: -0.019                  |    Objective Function Coefficients
+ Variable   |   Value                       |     Current Value | Minimum | Maximum 
+____________|___________                    |    _______________|_________|_________
+X1          |0.31                           |    0              |-0.1     |0.172
+X2          |0.266                          |    0              |-0.556   |0.071
+X3          |0.209                          |    0              |-0.208   |0.091
+X4          |0.215                          |    0              |-0.067   |1.25
+X5          |-0.019                         |    1              |0        |infin
+                                            |
+                                            |
+                                            |         Right Hand Sides
+Constraint|Slack or Surplus|Shadow Price    |     Current Value | Minimum | Maximum 
+__________|________________|____________    |    _______________|_________|_________
+1         |0               |-0.013          |     0             |-0.487   |1.133
+2         |0.722           |-0              |     0             |-infin   |0.722
+3         |0               |-0.063          |     0             |-0.3     |0.278
+4         |0               |-0.361          |     0             |-0.053   |2.882
+5         |0               |-0.563          |     0             |-0.034   |2.333
+6         |0               |-0.019          |     1             |0        |infin
+
+\end{lstlisting}
+\end{solution}
+
+\end{document}

@@ -1,0 +1,334 @@
+\documentclass[titlepage, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{extramarks}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{gensymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{hyperref}
+
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+\setlength{\parskip}{1ex}
+\setlength{\parindent}{0ex}
+
+\hypersetup{
+    colorlinks=true
+}
+
+%
+% You should change this things~
+%
+
+\newcommand{\mahclass}{AppMath}
+\newcommand{\mahtitle}{Study Guide}
+\newcommand{\mahdate}{\today}
+\newcommand{\spacepls}{\vspace{5mm}}
+
+%
+% Header markings
+%
+
+\pagestyle{fancy}
+\lhead{Study Guide}
+\chead{}
+\rhead{}
+\lfoot{}
+\rfoot{}
+
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+\renewcommand{\familydefault}{\sfdefault} %The sans-serif font and the like
+\newcommand{\qed}{\,\,\square}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solución}}
+
+%Alias for the new step section
+\newcommand{\steppy}[1]{\textbf{\large #1}}
+
+%
+% My actual info
+%
+
+\title{
+\vspace{1in}
+\textbf{Tecnológico de Monterrey} \\
+\vspace{0.5in}
+\textmd{\mahclass} \\
+\vspace{0.5in}
+\textsc{\mahtitle}
+\author{01170065  - MIT \\
+Xavier Fernando Cuauhtémoc Sánchez Díaz \\
+\texttt{xavier.sanchezdz@gmail.com}}
+\date{\mahdate}
+}
+
+\begin{document}
+
+\begin{titlepage}
+    \maketitle
+\end{titlepage}
+
+%
+% Actual document starts here~
+%
+
+\section{Ex. I.1} % (fold)
+\label{sec:exercise_i_1}
+
+The solution of EXI.1 is the Expected value of the dice being thrown once.
+That is:
+$$E[X] = \frac{1}{6} \times (1+2+3+4+5+6) = \frac{21}{6} = 3.5$$
+
+% section exercise_i_1 (end)
+
+\section{Ex. I.2} % (fold)
+\label{sec:ex_i_2}
+
+The expected amount of money drawn on the first draw would be $E[X] = \dfrac{1}{6} * 2 \times 5+10+25 = \dfrac{1}{2} \times 80 = \dfrac{40}{3}$.
+
+The expected value is obtained per coin, so a second draw would yield the same expectation, $\dfrac{40}{3}$.
+
+If we were to draw three coins, then the expected value would be 3 times that, which is 40.
+Of course, the expected value does not change if we take the three coins altogether.
+
+% section ex_i_2 (end)
+
+\section{Ex. II.1} % (fold)
+\label{sec:ex_ii_1}
+
+To obtain the value of $\lambda$, we need to integrate from 0 to infinity, and equal to 1 (because it is a probability distribution), i.e.:
+
+\begin{align}
+    \int\limits_0^\infty \lambda e^{-x/100} & = \frac{\lambda e^{-x/100}}{\tfrac{-1}{100}} = 1 \\
+    & = -100\lambda e^{-x/100}\Big|_0^\infty \\[3ex]
+    & = -100\lambda e^{-\infty} - 100\lambda e^0 \\
+    & = -100\lambda (0 - 1) = 1 \\
+    & \therefore \lambda = \frac{1}{100} = 0.01 \qed
+\end{align}
+
+Now, we evaluate from 50 to 150, that is
+$$-100 * 0.01(e^{-150/100} - e^{-50/100}) = -e^{-1.5} + e^{-0.5} \approx 0.3834$$
+
+The probability that it will function less than 100 hours will be obtained by evaluation from 0 to 100:
+$$-100 * 0.01 (e^{-100/100} - e^{-0/100}) = -e^{-1} + 1 \approx 0.6321$$
+% section ex_ii_1 (end)
+
+\section{Ex II.2} % (fold)
+\label{sec:ex_ii_2}
+This exercise is pretty much the same than the last one.
+First we integrate with respect to $y$:
+
+\begin{align}
+\int\limits_0^\infty xe^{-x+y}dy & = \\
+& = -xe^{-x+y} \Big|_0^\infty \\[3ex]
+& = (-xe^{-x+\infty}) - (-xe^{-x + 0}) \\
+& = (0) + xe^{-x} \qed 
+\end{align}
+
+For the second question, we need to integrate from 0 to infinity, but using integration by parts.
+This time we integrate with respect to $x$:
+
+Let $u = x$ and $dv = e^{-(x+y)}$, so that $du = dx$ and $v = - e^{-(x+y)}$.
+
+\begin{align}
+\int\limits_0^\infty xe^{-(x+y)}dx & = \\
+& = -xe^{-(x+y)} + \int\limits_0^\infty e^{-(x+y)}\cdot (-dx) \\
+& = -xe^{-(x+y)} - e^{-(x+y)}\Big|_0^\infty \\[3ex]
+& = (-\infty e^{-\infty} - e^{-\infty}) - (0 - e^{-y}) \\
+& = (0 - 0) - (0 - e^{-y}) \\
+& = e^{-y} \qed
+\end{align}
+
+To know if both variables are independent, we can try multiplying both and see if the product is equal to the density:
+
+$$xe^{-x} \times e^{-y} = xe^{-x-y} = xe^{-(x+y)}$$
+
+So these two variables are, indeed, independent.
+% section ex_ii_2 (end)
+
+\section{Ex. III.1} % (fold)
+\label{sec:ex_iii_1}
+
+Question a) asks for $P(Z < 104)$, which can be calculated with the following formula:
+\begin{equation}
+    \frac{Z_v - \overline{x}}{s/\sqrt{n}}
+\end{equation}
+
+Substituting accordingly, we get $\dfrac{104 - 100}{20 / \sqrt{16}} = 0.8$.
+
+Using the \href{http://stattrek.com/online-calculator/normal.aspx}{Stattrek website} (under normal distribution), the result yields that $P(Z < 0.8) = 0.78814 \qed$.
+
+The second question asks us to find between two values, so we can use the same formula applied to 98, and then subtract it from the previous answer ($X < 104$):
+
+$$\frac{98 - 100}{20/\sqrt{16} = -0.4}$$
+
+Therefore, $P(X < -0.4) = 0.34458$, and so $P(-0.4 < X < 0.8) = 0.78814 - 0.34458 = 0.44356 \qed$
+% section ex_iii_1 (end)
+
+\section{Ex. III.2} % (fold)
+\label{sec:ex_iii_2}
+We can compute the exact value using the \href{http://stattrek.com/online-calculator/binomial.aspx}{Stattrek Binomial} calculator.
+
+This value is exactly 0.0574595.
+
+Now, the approximation needs some additional data.
+
+First we need to calculate the expected value for this binomial problem:
+
+\begin{equation}
+E[X] = n \times p    
+\end{equation}
+
+So the expected value is $E[X] = 90$.
+Now the Standard deviation can be calculated as:
+
+\begin{equation}
+    s = \sqrt{n \cdot p \cdot (1-p)}
+\end{equation}
+
+Therefore, $s = \sqrt{150 \times 0.6 \times 0.4} = 6$.
+
+Now, we can approximate the value of $P(X \leq 80)$ by using the following equation:
+\begin{equation}
+    P(X\leq B_v) = \dfrac{B_v - E[X]}{s}
+\end{equation}
+
+Substituting accordingly, we have $\dfrac{80 - 90}{6} = -1.6667$. So now we can check in Stattrek, which yields 0.04779.
+
+If we were to use the continuity correction, then $\dfrac{80.5 - 90}{6} = -1.58333$
+
+Using Stattrek we get 0.05667, which is way closer to the exact value.
+% section ex_iii_2 (end)
+
+\section{Ex. IV.1} % (fold)
+\label{sec:ex_iv_1}
+
+Again, normal distribution with $\mu = 40$ and $\sigma = 4$.
+The probability of the 2 in the next 4 years wil exceed 50 inches is calculated as follows:
+
+$$P(X \geq 50) = P\left(\dfrac{50-40}{4}\right) = P(X \geq 2.5) = 1 - P(X \leq 2.5) = 0.00621 \qed$$.
+
+To answer 2 out of 4 years, then we need to calculate it using the following equation:
+
+\begin{equation}
+    B_p(4,2) = \binom{4}{2} \times p^2 \times (1-p)^2
+\end{equation}
+
+Therefore, substituting accordingly, we have $B_p(4,2) = \binom{4}{2} \times 0.00621^2 \times (0.99379)^2 = 0.00022851 \qed$
+% section ex_iv_1 (end)
+
+\section{IV.2} % (fold)
+\label{sec:iv_2}
+
+Since $\chi$ is a chi-square random variable with 6 degrees of freedom, then we can use \href{http://stattrek.com/online-calculator/chi-square.aspx}{Stattrek website} to calculate it.
+It yields $P(X \leq 6) = 0.58$.
+
+For the second part, $P(3 \leq X \leq 9)$ we can calculate $P(X \leq 9) - P(X \leq 3) = 0.83 - 0.19 = 0.64\qed$
+
+% section iv_2 (end)
+
+\section{Ex. V.1} % (fold)
+\label{sec:ex_v_1}
+
+We have a standard deviation of 0.3.
+We are calculating a sample needed, and since we're using 95\% confidence, the equation needed is:
+
+\begin{equation}
+    \mu \in \left(\overline{x} - 1.96\frac{\sigma}{\sqrt{n}}, \overline{x} + 1.96\frac{\sigma}{\sqrt{n}} \right)
+\end{equation}
+
+Multiplying, we can get that $\dfrac{0.588}{\sqrt{n}} \leq 0.1$.
+Applying some algebra, we can get that $\sqrt{n} \geq 5.88$ and $n \geq 34.57$.
+This means that, for this to be true, we need at least an $n=35$.
+
+% section ex_v_1 (end)
+
+\section{Ex. V.2} % (fold)
+\label{sec:ex_v_2}
+
+For this we need to determine a 95\% confidence interval for a lot of values.
+We need to calculate the value of the mean and the standard deviation, all of them are for the sample (you can use excel or your calculator).
+
+\(\overline{x} = 69.266667, s = 15.167948\)
+
+After the input of these two values, we can ask the \href{https://www.mccallum-layton.co.uk/tools/statistic-calculators/confidence-interval-for-mean-calculator/#confidence-interval-for-mean-calculator}{software} and it yields an interval of $\pm$ 7.68, that is from 61.59 to 76.94.
+
+Now, for the lower bound we will need to use this \href{https://home.ubalt.edu/ntsbarsh/Business-stat/otherapplets/Esteem.htm}{other page}.
+
+The lower bound, as expressed for this page, is 60.86696.
+% section ex_v_2 (end)
+
+\section{Ex. VI.6} % (fold)
+\label{sec:ex_vi_6}
+
+We have an average of 1.6 mg per cigarette.
+We also have a sample of 20.
+The standard deviation of a cigarette content is 0.8 mg.
+The average content of 20 cigarettes is 1.54.
+
+Our null hypothesis $H_0 \colon \mu \geq 1.6$ versus $H_1 \colon \mu < 1.6$.
+
+For that, we need the value of the test statistic, which is calculated as follows:
+
+\begin{equation}
+    \frac{\sqrt{n} (\overline{X} - \mu_0)}{\sigma}
+\end{equation}
+
+Substituting, we have that $\dfrac{\sqrt{20}(1.54 - 1.6)}{0.8} = -0.3354$.
+
+To calculate the p-value for  this hypothesis, we have that $P(Z < -0.3354) = 0.36866$ which is strictly greater than the 0.05 level of significance, then we can't reject the null hypothesis.
+That means that we don't have enough evidence to support the claim of the producer.
+
+% section ex_vi_6 (end)
+
+\section{Ex. VI.2} % (fold)
+\label{sec:ex_vi_2}
+
+We have a mean water use of 350 gallons per day.
+20 randomly selected homes were investigated.
+
+Using this \href{https://home.ubalt.edu/ntsbarsh/Business-stat/otherapplets/MeanTest.htm}{piece of software}, we can see that the T-statistic is 0.77784.
+
+Using the \href{http://www.sjsu.edu/faculty/gerstman/StatPrimer/t-table.pdf}{table} we can see that $t_{0.05,19} = 1.729$, which is greater than 0.05, so we can accept at the 10\% level of significance.
+
+The p-value, as wel as being given by the software as 0.22337, it needs to be multiplied by 2 to ensure it is inside the two-tails region, and therefore it is 0.4462.
+
+If $\alpha$ were greater than the p-value, then the null hypothesis would be accepted at any significance level which is reasonable.
+
+We could have also used the following equation:
+
+\begin{equation}
+    T = \frac{\sqrt{n}(\overline{X} - \mu_0)}{S}
+\end{equation}
+% section ex_vi_2 (end)
+
+\section{Ex VII.1} % (fold)
+\label{sec:ex_vii_1}
+
+This is regression, where you will need \href{https://home.ubalt.edu/ntsbarsh/Business-stat/otherapplets/Regression.htm}{this page}.
+Input some data, and compute.
+Remember the intercept is Y and the slope is X.
+
+Therefore, you'll find via software that $Y = -2.5104 +0.3232X$.
+% section ex_vii_1 (end)
+
+\section{VIII.1} % (fold)
+\label{sec:viii_1}
+For the ANOVA, you'll probably need \href{https://home.ubalt.edu/ntsbarsh/Business-stat/otherapplets/ANOVA.htm}{this page}.
+You need to check if the p-value is greater than your confidence level (0.05), then you can be certain about the difference between means.
+% section viii_1 (end)
+\end{document}

@@ -1,0 +1,919 @@
+\documentclass[titlepage, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{extramarks}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{gensymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{listings}
+
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+\setlength{\parskip}{1ex}
+\setlength{\parindent}{0ex}
+
+\hypersetup{
+    colorlinks=true
+}
+
+%
+% You should change this things~
+%
+
+\newcommand{\mahclass}{Applied Mathematics}
+\newcommand{\mahtitle}{Final Exam}
+\newcommand{\mahdate}{\today}
+\newcommand{\spacepls}{\vspace{5mm}}
+
+%
+% Header markings
+%
+
+\pagestyle{fancy}
+\lhead{Final Exam}
+\chead{}
+\rhead{1170065 - Xavier Sánchez}
+\lfoot{}
+\rfoot{}
+
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+% \renewcommand{\familydefault}{\sfdefault} %The sans-serif font and the like
+\newcommand{\qed}{\,\,\square}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solución}}
+
+%Alias for the new step section
+\newcommand{\steppy}[1]{\textbf{\large #1}}
+
+%
+% My actual info
+%
+
+\title{
+\vspace{1in}
+\textbf{Tecnológico de Monterrey} \\
+\vspace{0.5in}
+\textmd{\mahclass} \\
+\vspace{0.5in}
+\textsc{\mahtitle}
+\author{01170065  - MIT \\
+Xavier Fernando Cuauhtémoc Sánchez Díaz \\
+\texttt{xavier.sanchezdz@gmail.com}}
+\date{\mahdate}
+}
+
+\begin{document}
+
+\begin{titlepage}
+    \maketitle
+\end{titlepage}
+
+%
+% Actual document starts here~
+%
+
+\section{Exercise I.1} % (fold)
+\label{sec:exercise_i_1}
+
+The Expected Value $E(X^2)$ is calculated as folows:
+
+$$\dfrac{1}{6}(1 + 4 + 9 + 16 + 25 + 36) = \dfrac{91}{6} = 15.16667 \qed$$
+
+% section exercise_i_1 (end)
+
+\section{Exercise I.2} % (fold)
+\label{sec:exercise_i_2}
+The expected earnings would be the calculated as follows:
+$3 \text{P}3 \times P(win) \times 100 + P(lose) \times -1 $
+\begin{align}
+    E(X) & = 6 \times \frac{1}{1728} \times 100 + 0.99942 \times -1 \\
+    & = -0.646977\qed  
+\end{align}
+That is, for each play we lose around 65 cents.
+% section exercise_i_2 (end)
+
+\section{Exercise II.1} % (fold)
+\label{sec:exercise_ii_1}
+To obtain the value of $\lambda$, we need to integrate from 0 to infinity, and equal to 1 (because it is a probability distribution), i.e.:
+
+\begin{align}
+    \int\limits_0^\infty \lambda e^{-x/120} & = \frac{\lambda e^{-x/120}}{\tfrac{-1}{120}} = 1 \\
+    & = -120\lambda e^{-x/120}\Big|_0^\infty \\[3ex]
+    & = -120\lambda e^{-\infty} - 120\lambda e^0 \\
+    & = -120\lambda (0 - 1) = 1 \\
+    & \therefore \lambda = \frac{1}{120} = 0.008333 \qed
+\end{align}
+
+For question b), we now evaluate from 80 to 160, that is
+$$-120 * 0.008333(e^{-160/120} - e^{-80/120}) \approx 0.24981 \qed$$
+
+For question c), we need to evaluate from 0 to 110:
+$$-120 * 0.008333 (e^{-110/120} - e^{-0/120}) \approx 0.60015\qed$$
+% section exercise_ii_1 (end)
+
+\section{Exercise II.2} % (fold)
+\label{sec:exercise_ii_2}
+
+First we need to integrate with respect to $x$ but using integration by parts.
+Let $u = x$ and $dv = e^{-(x+y)}dx$ so that $du = dx$ and $v = -e^{-(x+y)}$.
+
+\begin{align}
+    \int_0^\infty xy e^{-(x+y)}dx &= \\
+    & = -x e^{-(x+y)} - y\int_0^\infty -e^{-(x+y)}dx \\
+    & = -xe^{-(x+y)} - ye^{-(x+y)}\Big|_0^\infty\\[3ex]
+    & = (-\infty e^{-\infty} - e^{-\infty}) - (0 - ye^-y) \\
+    & = ye^{-y} \qed 
+\end{align}
+
+The same applies for the second part.
+Let $u = y$ and $dv = e^{-(x+y)}dy$ so that $du = dy$ and $v = -e^{-(x+y)}$.
+
+\begin{align}
+    \int_0^\infty xy e^{-(x+y)}dx &= \\
+    & = -ye^{-(x+y)} - x\int_0^\infty - e^{-(x+y)}dy \\
+    & = -ye^{-(x+y)} - xe^{-(x+y)}\Big|_0^\infty \\[3ex]
+    & = (-\infty e^{-\infty} - xe^{-\infty}) - (0 - xe^{-x}) \\
+    & = xe^{-x} \qed
+\end{align}
+
+It is clear that both variables are independent, since their product is equal to the probability distribution.
+
+$$ye^{-y} \times xe^{-x} = xy e^{-(x+y)} \qed$$
+
+% section exercise_ii_2 (end)
+
+\section{Exercise III.1 - LATE} % (fold)
+\label{sec:exercise_iii_1}
+We have a mean of 5 weeks and a standard deviation of 1.5 weeks.
+
+We need to approximate that the probability of 13 or more batteries will be needed in 52 weeks, so we need $\dfrac{52}{13} = 4$ as a mean.
+
+Therefore, using the formula, we have:
+$$\dfrac{\sqrt{n} \cdot \overline{x} - \mu}{\sigma} = \dfrac{\sqrt{13} 4 - 1}{1.5} = -2.403700$$
+
+Using Stattrek, it yields that $P(X \leq -2.4037) = 0.00812 \qed$
+
+% section exercise_iii_1 (end)
+
+\section{Exercise III.2} % (fold)
+\label{sec:exercise_iii_2}
+The probability of a defective chip is 0.25.
+A sample of 1000 is tested.
+What is $P(X<200)$?
+
+The exact value, using Stattrek Binomial is 0.000080293.
+
+The approximation wil need some additional data.
+The expected value $E[X] = n \times p = 250$.
+The standard deviation can be calculated as $s=\sqrt{n \cdot p \cdot (1-p)}$.
+Substituting accordingly, we have that $s = \sqrt{250*0.75} = 13.69306$.
+
+The approximate value of $P(X \leq 200) = \dfrac{200 - 250}{13.69306} = -3.65$, so now we can check in Stattrek which yields 0.00013.
+
+Using continuity correction, we have that $P(X \leq 200) = \dfrac{200.5 - 250}{13.69306} = -3.6149$, which yields 0.00015 in Stattrek.
+% section exercise_iii_2 (end)
+
+\section{Exercise IV.1} % (fold)
+\label{sec:exercise_iv_1}
+The rainfall is normally distributed with $\mu = 65, \sigma = 5$. We're looking for 3 out of 5 years with more than 70 inches.
+
+This can be solved with the following:
+
+$$P(X \geq 70) = P(\frac{70 - 65}{5}) = P(X \geq 1) = 1 - P(X \geq 1) = 0.15866$$
+
+Now we need to compute the following:
+$$B_p(3,5) = \binom{5}{3} \times 0.15866^3 \times 0.84134^2 = 0.028271 \qed$$
+
+\section{Exercise IV.2 LATE} % (fold)
+\label{sec:exercise_iv_2}
+
+% section exercise_iv_2 (end)
+
+We have a variance of $\sigma^2$ which is normally distributed.
+The thermostat was tested five times.
+Therefore, we have 4 degrees of freedom.
+
+Using Stattrek, we can obtain that $P(S^2/\sigma^2 \leq 1.8) = 0.23$.
+
+Now $P(\chi \leq 1.15) = 0.11$, and $P(\chi \leq 0.85) = 0.07$, so the interval is $P(0.85 \leq \chi \leq 0.11) = 0.04\qed$.
+
+\section{Exercise V.1} % (fold)
+\label{sec:exercive_v_1}
+
+A standard deviation of 0.25 pounds.
+We want to be 92.5\% confident of our mean, so that it is correct to $\pm 0.05$ pounds.
+
+Therefore, we will need to do the following:
+
+$$\mu \in \left(\overline{x} - 1.96\frac{\sigma}{\sqrt{n}}, \overline{x} + 1.96\frac{\sigma}{\sqrt{n}} \right)$$
+
+Therefore, multiplying we can get that $\frac{0.49}{\sqrt{n}} \leq 0.05$. Applying some algebra, we can get that $\sqrt{n} \geq 9.8$, and therefore $n \geq 96.04$. So a mean of 97 salmon would suffice $\qed$.
+% section exercive_v_1 (end)
+
+\section{Exercise V.2} % (fold)
+\label{sec:exercise_v_2}
+
+We have a sample of 20, with average value of 1.2mg.
+We want a 99\% two-sided confidence interval for the mean.
+We know that the standard deviation $\sigma = 0.2$mg.
+
+We can input this value in McCallum Calculator, and we end up obtaining the following values:
+
+$$\pm 0.12, \text{from } 1.08 \text{ to } 1.32 \qed$$
+
+% section exercise_v_2 (end)
+
+\section{Exercise VI.1 - LATE} % (fold)
+\label{sec:exercise_vi_1}
+
+We have a standard deviation of 20.
+Our null hypothesis is $H_0 \colon \mu_0 = 50$ versus $H_1 \colon \mu_0 \not = 50$.
+Our sample average is 64.
+
+The T-statistic can be calculated as:
+
+$$\frac{\sqrt{n}(\overline{X} - \mu_0)}{\sigma}$$
+
+Substituting accordingly, we have that $\dfrac{\sqrt{64}(52.5 - 50)}{20} = 1$.
+
+The $p$-value is obtained via Stattrek, and yields $0.84134$.
+Since it's a two sided test, then we need to calculate as $1 - 0.84134 = 0.15866$, and then multiply by 2.
+
+Therefore, the $p$-value is 0.31732 $\qed$.
+
+For b), we calculate everything again: $\dfrac{\sqrt{64}(55 - 50)}{20} = 2$.
+The $p$-value is $2(1 - 0.97725) = 0.0455 \qed$
+
+For c), we calculate everything again: $\dfrac{\sqrt{64}(57.5 - 50)}{20} = 3$.
+The $p$-value is $2(1 - 0.99865) = 0.0027 \qed$
+
+% section exercise_vi_1 (end)
+
+\section{Exercise VI.2 - LATE} % (fold)
+\label{sec:exercise_vi_2}
+
+We have a standard deviation of 1.2 pounds.
+The hatchery claim is that $\mu_0 \geq 7.6$.
+
+16 fish were sampled, with an average sample of 7.2 pounds.
+
+For a), let's try with a 95\% confidence level.
+
+The T-statistic is $\sqrt{16} \dfrac{7.2 - 7.6}{1.2} = -1.333$.
+
+Since The $t_{0.05,15} = 1.753$ is greater than the obtained -1.333, we accept the null hypothesis at the 5\% level of significance.
+
+For b), we have that $t_{0.01,15} = 2.602$, so the null hypothesis is accepted at the 1\% of significance too.
+
+The $p$-value is 0.09127, so 0.05 and 0.01 levels of confidence are accepted.
+
+% section exercise_vi_2 (end)
+\section{Exercise VII.1} % (fold)
+\label{sec:exercise_vii_1}
+
+Using the linear regression calculator, we get that $Y = 86.9762 - 0.4206054 X$.
+
+So if the price would be 25, then $\dfrac{25 -86.9762}{- 0.4206054} = X = 147.3499$.
+
+This means that for a price of 25, around 148 units would be ordered.
+
+% section exercise_vii_1 (end)
+
+\section{Exercise VIII.1} % (fold)
+\label{sec:exercise_viii_1}
+Using the ANOVA tool provided, we can see that there is no significant difference amongst the means.
+This can be verified because the $p$-value reported (0.95311) is greater than our confidence level (95\%).
+
+\includegraphics{anova}
+% section exercise_viii_1 (end)
+
+\section{Exercise IX.1} % (fold)
+\label{sec:exercise_ix_1}
+
+Using the IORTutorial Big M, yields the following:
+
+\begin{lstlisting}[basicstyle=\tiny]
+Linear Programming Model:
+Number of Decision Variables:      3
+Number of Functional Constraints:  3
+
+Max Z =     -3 X1 +    2 X2 -    1 X3 
+
+subject to
+
+ 1)          2 X1 +    1 X2 +    2 X3 <=      20
+ 2)          2 X1 -    1 X2 +    3 X3 >=       6
+ 3)          1 X1 +    3 X2 +    2 X3 >=      10
+
+and
+        X1 >= 0, X2 >= 0, X3 >= 0.
+
+Solve Interactively by the Simplex Method:
+
+Bas|Eq|                    Coefficient of                  | Right
+Var|No| Z|   X1    X2    X3    X4    X5    X6    X7    X8  |  side
+___|__|__|_________________________________________________|______
+   |  |  |  -3M   -2M   -5M          1M    1M              |  -16M
+ Z | 0| 1|+   3 -   2 +   1     0 +   0 +   0     0     0  |     0
+ X4| 1| 0|    2     1     2     1     0     0     0     0  |    20
+ X7| 2| 0|    2    -1     3*    0    -1     0     1     0  |     6
+ X8| 3| 0|    1     3     2     0     0    -1     0     1  |    10
+
+
+Bas|Eq|                    Coefficient of                  | Right
+Var|No| Z|   X1    X2    X3    X4    X5    X6    X7    X8  |  side
+___|__|__|_________________________________________________|______
+   |  |  |0.33M -3.7M             -0.7M    1M 1.67M        |   -6M
+ Z | 0| 1|+2.33 -1.67     0     0 +0.33 +   0 -0.33     0  |    -2
+ X4| 1| 0|0.667 1.667     0     1 0.667     0 -0.67     0  |    16
+ X3| 2| 0|0.667 -0.33     1     0 -0.33     0 0.333     0  |     2
+ X8| 3| 0|-0.33 3.667*    0     0 0.667    -1 -0.67     1  |     6
+
+
+Bas|Eq|                    Coefficient of                  | Right
+Var|No| Z|   X1    X2    X3    X4    X5    X6    X7    X8  |  side
+___|__|__|_________________________________________________|______
+   |  |  |                                       1M    1M  | 
+ Z | 0| 1|2.182     0     0     0 0.636 -0.45 -0.64 +0.45  | 0.727
+ X4| 1| 0|0.818     0     0     1 0.364 0.455*-0.36 -0.45  | 13.27
+ X3| 2| 0|0.636     0     1     0 -0.27 -0.09 0.273 0.091  | 2.545
+ X2| 3| 0|-0.09     1     0     0 0.182 -0.27 -0.18 0.273  | 1.636
+
+
+
+
+
+Bas|Eq|                    Coefficient of                  | Right
+Var|No| Z|   X1    X2    X3    X4    X5    X6    X7    X8  |  side
+___|__|__|_________________________________________________|______
+   |  |  |                                       1M    1M  | 
+ Z | 0| 1|    3     0     0     1     1     0 -   1 +   0  |    14
+ X6| 1| 0|  1.8     0     0   2.2   0.8     1  -0.8    -1  |  29.2
+ X3| 2| 0|  0.8     0     1   0.2  -0.2     0   0.2     0  |   5.2
+ X2| 3| 0|  0.4     1     0   0.6   0.4     0  -0.4     0  |   9.6
+
+x1*=0, x2*=9.6, x3*=5.2, x4*=0, x5*=0, x6*=29.2, x7*=0, x8*=0
+Z = 14
+\end{lstlisting}
+
+Now, the two phase algorithm yields the following:
+
+\begin{lstlisting}[basicstyle=\tiny]
+Linear Programming Model:
+Number of Decision Variables:      3
+Number of Functional Constraints:  3
+
+Max Z =     -3 X1 +    2 X2 -    1 X3 
+subject to
+
+ 1)          2 X1 +    1 X2 +    2 X3 <=      20
+ 2)          2 X1 -    1 X2 +    3 X3 >=       6
+ 3)          1 X1 +    3 X2 +    2 X3 >=      10
+
+and
+        X1 >= 0, X2 >= 0, X3 >= 0.
+
+
+Solve Interactively by the Simplex Method:
+
+Phase 1:
+
+
+Bas|Eq|                    Coefficient of                  | Right
+Var|No| Z|   X1    X2    X3    X4    X5    X6    X7    X8  |  side
+___|__|__|_________________________________________________|______
+   |  |  |                                                 | 
+ Z | 0| 1|   -3    -2    -5     0     1     1     0     0  |   -16
+ X4| 1| 0|    2     1     2     1     0     0     0     0  |    20
+ X7| 2| 0|    2    -1     3*    0    -1     0     1     0  |     6
+ X8| 3| 0|    1     3     2     0     0    -1     0     1  |    10
+
+
+Bas|Eq|                    Coefficient of                  | Right
+Var|No| Z|   X1    X2    X3    X4    X5    X6    X7    X8  |  side
+___|__|__|_________________________________________________|______
+   |  |  |                                                 | 
+ Z | 0| 1|0.333 -3.67     0     0 -0.67     1 1.667     0  |    -6
+ X4| 1| 0|0.667 1.667     0     1 0.667     0 -0.67     0  |    16
+ X3| 2| 0|0.667 -0.33     1     0 -0.33     0 0.333     0  |     2
+ X8| 3| 0|-0.33 3.667*    0     0 0.667    -1 -0.67     1  |     6
+
+
+Bas|Eq|                    Coefficient of                  | Right
+Var|No| Z|   X1    X2    X3    X4    X5    X6    X7    X8  |  side
+___|__|__|_________________________________________________|______
+   |  |  |                                                 | 
+ Z | 0| 1|   -0     0     0     0     0     0     1     1  |     0
+ X4| 1| 0|0.818     0     0     1 0.364 0.455 -0.36 -0.45  | 13.27
+ X3| 2| 0|0.636     0     1     0 -0.27 -0.09 0.273 0.091  | 2.545
+ X2| 3| 0|-0.09     1     0     0 0.182 -0.27 -0.18 0.273  | 1.636
+
+
+Phase 2:
+
+
+Bas|Eq|              Coefficient of            | Right
+Var|No| Z|   X1    X2    X3    X4    X5    X6  |  side
+___|__|__|_____________________________________|______
+   |  |  |                                     | 
+ Z | 0| 1|2.182     0     0     0 0.636 -0.45  | 0.727
+ X4| 1| 0|0.818     0     0     1 0.364 0.455* | 13.27
+ X3| 2| 0|0.636     0     1     0 -0.27 -0.09  | 2.545
+ X2| 3| 0|-0.09     1     0     0 0.182 -0.27  | 1.636
+
+
+Bas|Eq|              Coefficient of            | Right
+Var|No| Z|   X1    X2    X3    X4    X5    X6  |  side
+___|__|__|_____________________________________|______
+   |  |  |                                     | 
+ Z | 0| 1|    3     0     0     1     1     0  |    14
+ X6| 1| 0|  1.8     0     0   2.2   0.8     1  |  29.2
+ X3| 2| 0|  0.8     0     1   0.2  -0.2     0  |   5.2
+ X2| 3| 0|  0.4     1     0   0.6   0.4     0  |   9.6
+
+ x1*=0, x2*=9.6, x3*=5.2, x4*=0, x5*=0, x6*=29.2, x7*=0, x8*=0
+ Z = 14
+
+\end{lstlisting}
+% section exercise_ix_1 (end)
+
+\section{Exercise IX.2} % (fold)
+\label{sec:exercise_ix_2}
+
+% section exercise_ix_2 (end)
+
+\section{Exercise X.1} % (fold)
+\label{sec:exercise_x_1}
+
+Using IORTutorial, we can get the following solution for the Fuerza Civil problem:
+
+\begin{lstlisting}[basicstyle=\tiny]
+
+
+
+Solve an Assignment Problem Interactively:
+Number of tasks:    6
+
+Step :
+Subtract the smallest number in each row from every number in the row.
+Enter the results in a new table.
+
+                              Task
+  Assignee| A      B      C      D      E      F      | Row Min
+__________|___________________________________________|________
+     0    | 9      12     13     999    999    999    | 9
+     0    | 8      6      5      999    999    999    | 5
+     0    | 5      9      4      999    999    999    | 4
+     0    | 4      8      3      999    999    999    | 3
+     5    | 10     5      6      999    999    999    | 5
+     6    | 7      2      6      999    999    999    | 2
+          |                                           | 
+
+Step :
+Subtract the smallest number in each column of the new table from every number in the column.
+
+                              Task
+  Assignee| A      B      C      D      E      F      |
+__________|___________________________________________|________
+     0    | 0      3      4      990    990    990    | 
+     0    | 3      1      0      994    994    994    | 
+     0    | 1      5      0      995    995    995    | 
+     0    | 1      5      0      996    996    996    | 
+     5    | 5      0      1      994    994    994    | 
+     6    | 5      0      4      997    997    997    | 
+Col Min   | 0      0      0      990    990    990    | 
+
+Step :
+Enter the results in a new table.
+
+
+                              Task
+  Assignee| A      B      C      D      E      F      |
+__________|___________________________________________|________
+     0    | 0      3      4      0      0      0      | 
+     0    | 3      1      0      4      4      4      | 
+     0    | 1      5      0      5      5      5      | 
+     0    | 1      5      0      6      6      6      | 
+     5    | 5      0      1      4      4      4      | 
+     6    | 5      0      4      7      7      7      | 
+          |                                           | 
+
+Step :
+Determine the minimum number of lines needed to cross out all zeros.
+
+                              Task
+  Assignee| A      B      C      D      E      F      |
+__________|___________________________________________|________
+          |        |      |                           |
+     0    |-0------3------4------0------0------0------|
+          |        |      |                           |
+
+
+     0    | 3      1      0      4      4      4      |
+          |        |      |                           |
+     0    | 1      5      0      5      5      5      |
+          |        |      |                           |
+     0    | 1      5      0      6      6      6      |
+          |        |      |                           |
+     5    | 5      0      1      4      4      4      |
+          |        |      |                           |
+     6    | 5      0      4      7      7      7      |
+          |        |      |                           |
+
+Step :
+Select the smallest number from all the uncovered numbers
+
+                              Task
+  Assignee| A      B      C      D      E      F      |
+__________|___________________________________________|________
+     0    | 0      3      4      0      0      0      | 
+     0    | 3      1      0      4      4      4      | 
+     0    | 1      5      0      5      5      5      | 
+     0    | [1]    5      0      6      6      6      | 
+     5    | 5      0      1      4      4      4      | 
+     6    | 5      0      4      7      7      7      | 
+          |                                           | 
+
+Step :
+The smallest number selected at the preceding step will be subtracted from every uncovered by 
+number and added to every number at the intersection of covering lines automatically. 
+
+                              Task
+  Assignee| A      B      C      D      E      F      |
+__________|___________________________________________|________
+     0    | 0      4      5      0      0      0      | 
+     0    | 2      1      0      3      3      3      | 
+     0    | 0      5      0      4      4      4      | 
+     0    | 0      5      0      5      5      5      | 
+     5    | 4      0      1      3      3      3      | 
+     6    | 4      0      4      6      6      6      | 
+          |                                           | 
+
+Step :
+Determine the minimum number of lines needed to cross out all zeros.
+
+                              Task
+  Assignee| A      B      C      D      E      F      |
+__________|___________________________________________|________
+          | |      |      |                           |
+     0    |-0------4------5------0------0------0------|
+          | |      |      |                           |
+     0    | 2      1      0      3      3      3      |
+          | |      |      |                           |
+     0    | 0      5      0      4      4      4      |
+          | |      |      |                           |
+     0    | 0      5      0      5      5      5      |
+          | |      |      |                           |
+     5    | 4      0      1      3      3      3      |
+
+
+          | |      |      |                           |
+     6    | 4      0      4      6      6      6      |
+          | |      |      |                           |
+
+Step :
+Select the smallest number from all the uncovered numbers
+
+                              Task
+  Assignee| A      B      C      D      E      F      |
+__________|___________________________________________|________
+     0    | 0      4      5      0      0      0      | 
+     0    | 2      1      0      3      3      [3]    | 
+     0    | 0      5      0      4      4      4      | 
+     0    | 0      5      0      5      5      5      | 
+     5    | 4      0      1      3      3      3      | 
+     6    | 4      0      4      6      6      6      | 
+          |                                           | 
+
+Step :
+The smallest number selected at the preceding step will be subtracted from every uncovered by 
+number and added to every number at the intersection of covering lines automatically. 
+
+                              Task
+  Assignee| A      B      C      D      E      F      |
+__________|___________________________________________|________
+     0    | 3      7      8      0      0      0      | 
+     0    | 2      1      0      0      0      0      | 
+     0    | 0      5      0      1      1      1      | 
+     0    | 0      5      0      2      2      2      | 
+     5    | 4      0      1      0      0      0      | 
+     6    | 4      0      4      3      3      3      | 
+          |                                           | 
+
+Step :
+Determine the minimum number of lines needed to cross out all zeros.
+
+                              Task
+  Assignee| A      B      C      D      E      F      |
+__________|___________________________________________|________
+          | |      |      |                           |
+     0    |-3------7------8------0------0------0------|
+          | |      |      |                           |
+     0    |-2------1------0------0------0------0------|
+          | |      |      |                           |
+     0    | 0      5      0      1      1      1      |
+          | |      |      |                           |
+     0    | 0      5      0      2      2      2      |
+          | |      |      |                           |
+     5    |-4------0------1------0------0------0------|
+          | |      |      |                           |
+     6    | 4      0      4      3      3      3      |
+          | |      |      |                           |
+
+Make the assignments.
+
+                              Task
+
+
+  Assignee| A      B      C      D      E      F      |
+__________|___________________________________________|________
+     0    | 3      7      8      0      0      [0]    | 
+     0    | 2      1      0      0      [0]    0      | 
+     0    | 0      5      0      1      1      1      | 
+     0    | 0      5      0      2      2      2      | 
+     5    | 4      0      1      0      0      0      | 
+     6    | 4      [0]    4      3      3      3      | 
+
+Task F is assigned to Assignee 1 (nothing)
+Task E is assigned to Assignee 2 (nothing)
+Task C is assigned to Assignee 3
+Task A is assigned to Assignee 4
+Task D is assigned to Assignee 5 (nothing)
+Task B is assigned to Assignee 6
+
+
+Car 4 attends call 1
+Car 6 attends call 2
+Car 3 attends call 3
+
+That is, total minimum movement is 4 + 2 + 4 = 10 blocks
+\end{lstlisting}
+% section exercise_x_1 (end)
+
+\section{Exercise X.2 - LATE} % (fold)
+\label{sec:exercise_x_2}
+
+% section exercise_x_2 (end)
+
+\section{Exercise XI.1} % (fold)
+\label{sec:exercise}
+
+The dual simplex method for this LP is as follows:
+
+\begin{lstlisting}[basicstyle=\tiny]
+Linear Programming Model:
+Number of Decision Variables:      3
+Number of Functional Constraints:  2
+
+Max Z =     -1 X1 -    2 X2 -    2 X3 
+
+subject to
+ 1)         -1 X1 +    1 X2 -    2 X3 >=      15
+ 2)          2 X1 -    1 X2 +    3 X3 >=      26
+
+and
+        X1 >= 0, X2 >= 0, X3 >= 0.
+
+Solve Interactively by the Modified Simplex Method:
+
+
+Bas|Eq|           Coefficient of         | Right
+Var|No| Z|   X1    X2    X3    X4    X5  |  side
+___|__|__|_______________________________|______
+   |  |  |                               | 
+ Z | 0| 1|    1     2     2     0     0  |     0
+ X4| 1| 0|    1    -1     2     1     0  |   -15
+ X5| 2| 0|   -2*    1    -3     0     1  |   -26
+
+
+Bas|Eq|           Coefficient of         | Right
+Var|No| Z|   X1    X2    X3    X4    X5  |  side
+___|__|__|_______________________________|______
+   |  |  |                               | 
+ Z | 0| 1|    0   2.5   0.5     0   0.5  |   -13
+ X4| 1| 0|    0  -0.5*  0.5     1   0.5  |   -28
+ X1| 2| 0|    1  -0.5   1.5     0  -0.5  |    13
+
+
+Bas|Eq|           Coefficient of         | Right
+Var|No| Z|   X1    X2    X3    X4    X5  |  side
+___|__|__|_______________________________|______
+   |  |  |                               | 
+ Z | 0| 1|    0     0     3     5     3  |  -153
+ X2| 1| 0|    0     1    -1    -2    -1  |    56
+ X1| 2| 0|    1     0     1    -1    -1  |    41
+
+x1*=41, x2*=56, Z = -153
+\end{lstlisting}
+
+% section exercise (end)
+
+\section{Exercise XI.2 - LATE} % (fold)
+\label{sec:exercise_xi_2}
+
+% section exercise_xi_2 (end)
+
+\section{Exercise XII.1} % (fold)
+\label{sec:exercise_xii_1}
+
+First we need to do the transposed:
+
+$$A^T = 
+\begin{bmatrix}
+-3 & 2 & -2 \\
+3 & -2 & -1 \\
+-1 & 2 & 0 \\
+0 & -1 & 2
+\end{bmatrix} 
+$$
+
+Then we need to convert it to a LP Problem.
+Since we only have coefficients and no values,
+we add another variable and include it as the value we're looking for.
+After some algebra, the equations look like these:
+
+\begin{align}
+    Z = v \to \max \\
+    \text{subject to} \\
+    -3x_1 + 2x_2 -2 x_3 -x_4 \geq 0 \\
+    3 x_1 - 2x_2 -x_3 -x_4 \geq 0 \\
+    -x_1 + x_2 -x_4 \geq 0 \\
+    -x_2 + 2x_3 -x_4 \geq 0
+\end{align}
+
+And since we're looking for a probability distribution between actions $x_1, x_2, x_3$, then we add the constraint $x_1 + x_2 + x_3 = 1$.
+
+Solving automatically in IORTutorial yields the following output:
+
+\begin{lstlisting}[basicstyle=\tiny]
+
+
+
+Linear Programming Model:
+
+Number of Decision Variables:      4
+
+Number of Functional Constraints:  5
+
+Max Z =      0 X1 +    0 X2 +    0 X3 +    1 X4 
+
+subject to
+
+ 1)         -3 X1 +    2 X2 -    2 X3 -    1 X4 >=       0
+
+ 2)          3 X1 -    2 X2 -    1 X3 -    1 X4 >=       0
+
+ 3)         -1 X1 +    2 X2 +    0 X3 -    1 X4 >=       0
+
+ 4)          0 X1 -    1 X2 +    2 X3 -    1 X4 >=       0
+
+ 5)          1 X1 +    1 X2 +    1 X3 +    0 X4  =       1
+
+and
+
+        X1 >= 0, X2 >= 0, X3 >= 0.
+
+
+
+Solve Automatically by the Simplex Method:
+
+Optimal Solution                            |       Sensitivity Analysis
+Objective Function: -0.225                  |    Objective Function Coefficients
+ Variable   |   Value                       |     Current Value | Minimum | Maximum 
+____________|___________                    |    _______________|_________|_________
+X1          |0.325                          |    0              |-3       |1.571
+X2          |0.525                          |    0              |-3       |2.333
+X3          |0.15                           |    0              |-1.833   |1.5
+X4          |-0.225                         |    1              |0        |infin
+                                            |
+                                            |
+                                            |         Right Hand Sides
+Constraint|Slack or Surplus|Shadow Price    |     Current Value | Minimum | Maximum 
+__________|________________|____________    |    _______________|_________|_________
+1         |0               |-0.35           |     0             |-0.643   |1.5
+2         |0               |-0.275          |     0             |-0.818   |1
+3         |0.95            |-0              |     0             |-infin   |0.95
+4         |0               |-0.375          |     0             |-0.6     |2.6
+5         |0               |-0.225          |     1             |0        |infin
+
+The game is in favor of player 2.
+Player 1 should play with probabilities
+0.325 for x1*
+0.525 for x2*
+0.15 for x3*
+\end{lstlisting}
+% section exercise_xii_1 (end)
+
+\section{Exercise XII.2} % (fold)
+\label{sec:exercise_xii_2}
+
+
+First we need to do the transposed:
+
+$$B^T = 
+\begin{bmatrix}
+1 & -4 & -2 & -1 & 4 \\
+-2 & 2 & 3 & -2 & 0 \\
+-3 & 3 & -5 & 1 & -4 \\
+1 & 0 & -2 & 4 & -2 \\
+\end{bmatrix}$$
+
+Then we need to convert it to a LP Problem.
+Since we only have coefficients and no values,
+we add another variable and include it as the value we're looking for.
+After some algebra, the equations look like these:
+
+\begin{align}
+    Z = v \to \max \\
+    \text{subject to} \\
+    x_1 -4x_2 -2x_3 -x_4 +4x_5 -x_6 \geq 0 \\
+    -2x_1 +2x_2 + 3x_3 -2x_4 -x_6 \geq 0 \\
+    -3x_1 + 3x_2 -5x_3 + x_4 -4x_5 -x_6 \geq 0 \\
+    x_1 -2 x_3 +4 x_4 -2x_5 -x_6 \geq 0 \\
+\end{align}
+
+And since we're looking for a probability distribution between actions $x_1, x_2, x_3, x_4, x_5$, then we add the constraint $x_1 + x_2 + x_3 + x_4 + x_5= 1$.
+
+Solving automatically in IORTutorial yields the following output:
+
+% section exercise_xii_2 (end)
+
+\begin{lstlisting}[basicstyle=\tiny]
+
+
+
+Linear Programming Model:
+
+Number of Decision Variables:      6
+
+Number of Functional Constraints:  5
+
+Max Z =      0 X1 +    0 X2 +    0 X3 +    0 X4 +    0 X5 +    1 X6 
+
+subject to
+
+ 1)          1 X1 -    4 X2 -    2 X3 -    1 X4 +    4 X5 -    1 X6 >=       0
+
+ 2)         -2 X1 +    2 X2 +    3 X3 -    2 X4 +    0 X5 -    1 X6 >=       0
+
+ 3)         -3 X1 +    3 X2 -    5 X3 +    1 X4 -    4 X5 -    1 X6 >=       0
+
+ 4)          1 X1 +    0 X2 -    2 X3 +    4 X4 -    2 X5 -    1 X6 >=       0
+
+ 5)          1 X1 +    1 X2 +    1 X3 +    1 X4 +    1 X5 +    0 X6  =       1
+
+and
+
+        X1 >= 0, X2 >= 0, X3 >= 0, X4 >= 0, X5 >= 0.
+
+
+
+Solve Automatically by the Simplex Method:
+
+Optimal Solution                            |       Sensitivity Analysis
+Objective Function: -0.145                  |    Objective Function Coefficients
+ Variable   |   Value                       |     Current Value | Minimum | Maximum 
+____________|___________                    |    _______________|_________|_________
+X1          |0                              |    0              |-infin   |1.018
+X2          |0.291                          |    0              |-2.067   |0.5
+X3          |0                              |    0              |-infin   |2.818
+X4          |0.364                          |    0              |-0.333   |1.824
+X5          |0.345                          |    0              |-1.75    |1
+X6          |-0.145                         |    1              |0        |infin
+                                            |
+                                            |
+                                            |         Right Hand Sides
+Constraint|Slack or Surplus|Shadow Price    |     Current Value | Minimum | Maximum 
+__________|________________|____________    |    _______________|_________|_________
+1         |0               |-0.436          |     0             |-0.333   |2.286
+2         |0               |-0.091          |     0             |-1.6     |0.769
+3         |0               |-0.473          |     0             |-0.308   |2.714
+4         |0.909           |-0              |     0             |-infin   |0.909
+5         |0               |-0.145          |     1             |0        |infin
+
+The game is in favor of player 2.
+
+Player 1 should opt to play with probabilities
+x1* = 0
+x2* = 0.291
+x3* = 0
+x4* = 0.364
+x5* = 0.345
+\end{lstlisting}
+
+\end{document}

@@ -1,0 +1,315 @@
+\documentclass[titlepage, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{extramarks}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{gensymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{listings}
+
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+\setlength{\parskip}{1ex}
+\setlength{\parindent}{0ex}
+
+\hypersetup{
+    colorlinks=true
+}
+
+%
+% You should change this things~
+%
+
+\newcommand{\mahclass}{Applied Mathematics}
+\newcommand{\mahtitle}{Final Exam - Late Answers}
+\newcommand{\mahdate}{\today}
+\newcommand{\spacepls}{\vspace{5mm}}
+
+%
+% Header markings
+%
+
+\pagestyle{fancy}
+\lhead{Final Exam}
+\chead{}
+\rhead{1170065 - Xavier Sánchez}
+\lfoot{}
+\rfoot{}
+
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+% \renewcommand{\familydefault}{\sfdefault} %The sans-serif font and the like
+\newcommand{\qed}{\,\,\square}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solución}}
+
+%Alias for the new step section
+\newcommand{\steppy}[1]{\textbf{\large #1}}
+
+%
+% My actual info
+%
+
+\title{
+\vspace{1in}
+\textbf{Tecnológico de Monterrey} \\
+\vspace{0.5in}
+\textmd{\mahclass} \\
+\vspace{0.5in}
+\textsc{\mahtitle}
+\author{01170065  - MIT \\
+Xavier Fernando Cuauhtémoc Sánchez Díaz \\
+\texttt{xavier.sanchezdz@gmail.com}}
+\date{\mahdate}
+}
+
+\begin{document}
+
+\begin{titlepage}
+    \maketitle
+\end{titlepage}
+
+%
+% Actual document starts here~
+%
+
+\section{Exercise III.1 - LATE} % (fold)
+\label{sec:exercise_iii_1}
+We have a mean of 5 weeks and a standard deviation of 1.5 weeks.
+
+We need to approximate that the probability of 13 or more batteries will be needed in 52 weeks, so we need $\dfrac{52}{13} = 4$ as a mean.
+
+Therefore, using the formula, we have:
+$$\dfrac{\sqrt{n} \cdot \overline{x} - \mu}{\sigma} = \dfrac{\sqrt{13} 4 - 1}{1.5} = -2.403700$$
+
+Using Stattrek, it yields that $P(X \leq -2.4037) = 0.00812 \qed$
+
+% section exercise_iii_1 (end)
+
+\section{Exercise IV.2 LATE} % (fold)
+\label{sec:exercise_iv_2}
+
+% section exercise_iv_2 (end)
+
+We have a variance of $\sigma^2$ which is normally distributed.
+The thermostat was tested five times.
+Therefore, we have 4 degrees of freedom.
+
+Using Stattrek, we can obtain that $P(S^2/\sigma^2 \leq 1.8) = 0.23$.
+
+Now $P(\chi \leq 1.15) = 0.11$, and $P(\chi \leq 0.85) = 0.07$, so the interval is $P(0.85 \leq \chi \leq 0.11) = 0.04\qed$.
+
+\section{Exercise VI.1 - LATE} % (fold)
+\label{sec:exercise_vi_1}
+
+We have a standard deviation of 20.
+Our null hypothesis is $H_0 \colon \mu_0 = 50$ versus $H_1 \colon \mu_0 \not = 50$.
+Our sample average is 64.
+
+The T-statistic can be calculated as:
+
+$$\frac{\sqrt{n}(\overline{X} - \mu_0)}{\sigma}$$
+
+Substituting accordingly, we have that $\dfrac{\sqrt{64}(52.5 - 50)}{20} = 1$.
+
+The $p$-value is obtained via Stattrek, and yields $0.84134$.
+Since it's a two sided test, then we need to calculate as $2P(Z \geq |z|) = 1 - 0.84134 = 0.15866 * 2 = 0.31732 \qed$.
+
+For b), we calculate everything again: $\dfrac{\sqrt{64}(55 - 50)}{20} = 2$.
+The $p$-value is $2(1 - 0.97725) = 0.0455 \qed$
+
+For c), we calculate everything again: $\dfrac{\sqrt{64}(57.5 - 50)}{20} = 3$.
+The $p$-value is $2(1 - 0.99865) = 0.0027 \qed$
+
+% section exercise_vi_1 (end)
+
+\section{Exercise VI.2 - LATE} % (fold)
+\label{sec:exercise_vi_2}
+
+We have a standard deviation of 1.2 pounds.
+The hatchery claim is that $\mu_0 \geq 7.6$.
+
+16 fish were sampled, with an average sample of 7.2 pounds.
+
+The T-statistic is $\sqrt{16} \dfrac{7.2 - 7.6}{1.2} = -1.333$.
+
+Therefore, the $p$-value is 0.09127, so 0.05 and 0.01 levels of confidence are ok.
+
+We do not have enough statistical evidence to reject the null hypothesis, neither at 5\% or 1\% significance levels.
+
+\section{Exercise IX.2 - LATE} % (fold)
+\label{sec:exercise_ix_2}
+
+% section exercise_ix_2 (end)
+
+\section{Exercise X.2 - LATE} % (fold)
+\label{sec:exercise_x_2}
+
+Using IORTutorial we can get the following solution for the MachineCo job assignment problem:
+
+\begin{lstlisting}[basicstyle=\tiny]
+Solve an Assignment Problem Interactively:
+Number of tasks:    4
+
+Step :
+Subtract the smallest number in each row from every number in the row.
+Enter the results in a new table.
+
+                       Task
+  Assignee| A      B      C      D      | Row Min
+__________|_____________________________|________
+     1    | 999    5      8      7      | 5
+     2    | 2      12     999    5      | 2
+     3    | 7      999    3      9      | 3
+     4    | 2      4      6      999    | 2
+          |                             | 
+
+Step :
+Subtract the smallest number in each column of the new table from every number in the column.
+
+                       Task
+  Assignee| A      B      C      D      |
+__________|_____________________________|________
+     1    | 994    0      3      2      | 
+     2    | 0      10     997    3      | 
+     3    | 4      996    0      6      | 
+     4    | 0      2      4      997    | 
+Col Min   | 0      0      0      2      | 
+
+Step :
+Enter the results in a new table.
+
+
+                       Task
+  Assignee| A      B      C      D      |
+__________|_____________________________|________
+     1    | 994    0      3      0      | 
+     2    | 0      10     997    1      | 
+     3    | 4      996    0      4      | 
+     4    | 0      2      4      995    | 
+          |                             | 
+
+Step :
+Determine the minimum number of lines needed to cross out all zeros.
+
+                       Task
+  Assignee| A      B      C      D      |
+__________|_____________________________|________
+          | |             |             |
+     1    |-994------0------3------0------|
+          | |             |             |
+     2    | 0      10     997    1      |
+          | |             |             |
+     3    | 4      996    0      4      |
+          | |             |             |
+     4    | 0      2      4      995    |
+          | |             |             |
+
+
+
+Step :
+Select the smallest number from all the uncovered numbers
+
+                       Task
+  Assignee| A      B      C      D      |
+__________|_____________________________|________
+     1    | 994    0      3      0      | 
+     2    | 0      10     997    [1]    | 
+     3    | 4      996    0      4      | 
+     4    | 0      2      4      995    | 
+          |                             | 
+
+Step :
+The smallest number selected at the preceding step will be subtracted from every uncovered by 
+number and added to every number at the intersection of covering lines automatically. 
+
+                       Task
+  Assignee| A      B      C      D      |
+__________|_____________________________|________
+     1    | 995    0      4      0      | 
+     2    | 0      9      997    0      | 
+     3    | 4      995    0      3      | 
+     4    | 0      1      4      994    | 
+          |                             | 
+
+Step :
+Determine the minimum number of lines needed to cross out all zeros.
+
+                       Task
+  Assignee| A      B      C      D      |
+__________|_____________________________|________
+          | |                    |      |
+     1    |-995------0------4------0------|
+          | |                    |      |
+     2    | 0      9      997    0      |
+          | |                    |      |
+     3    |-4------995------0------3------|
+          | |                    |      |
+     4    | 0      1      4      994    |
+          | |                    |      |
+
+Make the assignments.
+
+                       Task
+  Assignee| A      B      C      D      |
+__________|_____________________________|________
+     1    | 995    0      4      0      | 
+     2    | 0      9      997    0      | 
+     3    | 4      995    0      3      | 
+     4    | [0]    1      4      994    | 
+
+Task B is assigned to Assignee 1
+Task D is assigned to Assignee 2
+Task C is assigned to Assignee 3
+Task A is assigned to Assignee 4
+
+Machine 1 will do Job 2
+Machine 2 will do Job 4
+Machine 3 will do Job 3
+Machine 4 will do Job 1
+
+Therefore, the optimal production cost is
+5 + 5 + 3 + 2 = 15
+\end{lstlisting}
+
+% section exercise_x_2 (end)
+
+\section{Exercise XI.2 - LATE} % (fold)
+\label{sec:exercise_xi_2}
+
+To solve this problem, we first need to solve the dual:
+
+\begin{align*}
+    W & = 6y_1 + 9y_2 \to \min \\
+    \text{s.t.} \\
+    2y_1 & + y_2 \leq 1 \\
+    -y_1 & + 2y_2 = -2 \\
+    -3y_1 & -2y_2 \geq 3 \\
+    4y_1 & + 2y_2 \leq -4 \\
+    \text{and} \\
+    & y_1 \text{free}, y_2 \geq 0
+\end{align*}
+
+Nevertheless, the software mentions it is an unfeasible problem.
+
+If we go back to the original problem, we can see that the value $X= (0,0,-2,0)$ satisfies all constraints.
+
+Therefore, the original problem is unbounded $\qed$.
+
+% section exercise_xi_2 (end)
+
+\end{document}

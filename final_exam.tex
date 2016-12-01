@@ -668,6 +668,133 @@ That is, total minimum movement is 4 + 2 + 4 = 10 blocks
 \section{Exercise X.2 - LATE} % (fold)
 \label{sec:exercise_x_2}
 
+Using IORTutorial we can get the following solution for the MachineCo job assignment problem:
+
+\begin{lslisting}
+Solve an Assignment Problem Interactively:
+Number of tasks:    4
+
+Step :
+Subtract the smallest number in each row from every number in the row.
+Enter the results in a new table.
+
+                       Task
+  Assignee| A      B      C      D      | Row Min
+__________|_____________________________|________
+     1    | 999    5      8      7      | 5
+     2    | 2      12     999    5      | 2
+     3    | 7      999    3      9      | 3
+     4    | 2      4      6      999    | 2
+          |                             | 
+
+Step :
+Subtract the smallest number in each column of the new table from every number in the column.
+
+                       Task
+  Assignee| A      B      C      D      |
+__________|_____________________________|________
+     1    | 994    0      3      2      | 
+     2    | 0      10     997    3      | 
+     3    | 4      996    0      6      | 
+     4    | 0      2      4      997    | 
+Col Min   | 0      0      0      2      | 
+
+Step :
+Enter the results in a new table.
+
+
+                       Task
+  Assignee| A      B      C      D      |
+__________|_____________________________|________
+     1    | 994    0      3      0      | 
+     2    | 0      10     997    1      | 
+     3    | 4      996    0      4      | 
+     4    | 0      2      4      995    | 
+          |                             | 
+
+Step :
+Determine the minimum number of lines needed to cross out all zeros.
+
+                       Task
+  Assignee| A      B      C      D      |
+__________|_____________________________|________
+          | |             |             |
+     1    |-994------0------3------0------|
+          | |             |             |
+     2    | 0      10     997    1      |
+          | |             |             |
+     3    | 4      996    0      4      |
+          | |             |             |
+     4    | 0      2      4      995    |
+          | |             |             |
+
+
+
+Step :
+Select the smallest number from all the uncovered numbers
+
+                       Task
+  Assignee| A      B      C      D      |
+__________|_____________________________|________
+     1    | 994    0      3      0      | 
+     2    | 0      10     997    [1]    | 
+     3    | 4      996    0      4      | 
+     4    | 0      2      4      995    | 
+          |                             | 
+
+Step :
+The smallest number selected at the preceding step will be subtracted from every uncovered by 
+number and added to every number at the intersection of covering lines automatically. 
+
+                       Task
+  Assignee| A      B      C      D      |
+__________|_____________________________|________
+     1    | 995    0      4      0      | 
+     2    | 0      9      997    0      | 
+     3    | 4      995    0      3      | 
+     4    | 0      1      4      994    | 
+          |                             | 
+
+Step :
+Determine the minimum number of lines needed to cross out all zeros.
+
+                       Task
+  Assignee| A      B      C      D      |
+__________|_____________________________|________
+          | |                    |      |
+     1    |-995------0------4------0------|
+          | |                    |      |
+     2    | 0      9      997    0      |
+          | |                    |      |
+     3    |-4------995------0------3------|
+          | |                    |      |
+     4    | 0      1      4      994    |
+          | |                    |      |
+
+Make the assignments.
+
+                       Task
+  Assignee| A      B      C      D      |
+__________|_____________________________|________
+     1    | 995    0      4      0      | 
+     2    | 0      9      997    0      | 
+     3    | 4      995    0      3      | 
+     4    | [0]    1      4      994    | 
+
+Task B is assigned to Assignee 1
+Task D is assigned to Assignee 2
+Task C is assigned to Assignee 3
+Task A is assigned to Assignee 4
+
+Machine 1 will do Job 2
+Machine 2 will do Job 4
+Machine 3 will do Job 3
+Machine 4 will do Job 1
+
+Therefore, the optimal production cost is
+5 + 5 + 3 + 2 = 15
+\end{lslisting}
+
 % section exercise_x_2 (end)
 
 \section{Exercise XI.1} % (fold)
